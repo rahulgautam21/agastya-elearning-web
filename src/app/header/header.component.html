@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="container">
+    <div class="row v-center space-between">
+      <div class="logo">
+        <a class="logo" href="#" title="Agastya E-Learning"
+          ><span>AGASTYA</span></a
+        >
+      </div>
+      <div class="search-wrapper">
+        <div>
+          <mat-form-field
+            appearance="outline"
+            style="margin-right: 10px; float: right;"
+            class="search"
+            [ngClass]="{ 'show-search': showSearch }"
+          >
+            <mat-icon matSuffix *ngIf="!handSet">search</mat-icon>
+            <input
+              matInput
+              placeholder="Search Courses"
+              [(ngModel)]="searchInput"
+              (keyup.enter)="search($event)"
+              (blur)="search($event)"
+              (clickOutside)="close($event)"
+            />
+          </mat-form-field>
+        </div>
+        <mat-icon (click)="show($event)" class="mobile-search">search</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

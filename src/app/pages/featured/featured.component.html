@@ -1,0 +1,23 @@
+<section class="cases">
+  <div class="container-fluid">
+    <div class="cases-navigation">
+      <div class="cases-arrow prev">
+        <arrow-left></arrow-left>
+      </div>
+      <div class="cases-arrow next">
+        <arrow-right></arrow-right>
+      </div>
+    </div>
+    <div class="row" style="padding: 0px;">
+      <div class="case" *ngFor="let course of courses">
+        <div class="case-details">
+          <span>{{ course.subtitle }}</span>
+          <h2>{{ course.title }}</h2>
+        </div>
+        <div class="case-image">
+          <img src="assets/images/{{ course.img }}.jpg" alt="course.title" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

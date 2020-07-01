@@ -1,0 +1,32 @@
+<div>
+  <app-intro-overlay
+    (animationComplete)="overlayAnimationComplete($event)"
+  ></app-intro-overlay>
+  <app-banner
+    (animationComplete)="bannerAnimationComplete($event)"
+  ></app-banner>
+  <app-featured [category]="categories[0]"></app-featured>
+  <section class="featured-topic-1">
+    <article>
+      <h2>Learn at your own schedule</h2>
+      <p>
+        Study any topic, anytime. Choose from thousands of expert-led courses
+        now.
+      </p>
+      <a href="#" class="btn" title="Learn More">Learn More.</a>
+    </article>
+  </section>
+  <section class="featured-topic-1">
+    <blockquote>
+      <p class="quote">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <p class="credit">
+        <strong>Author Name</strong><br /><em>Business Title</em><br />Company
+      </p>
+    </blockquote>
+  </section>
+</div>
