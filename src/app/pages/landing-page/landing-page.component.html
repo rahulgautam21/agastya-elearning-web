@@ -1,11 +1,13 @@
 <div>
   <app-intro-overlay
     (animationComplete)="overlayAnimationComplete($event)"
+    [vh]="vh"
   ></app-intro-overlay>
   <app-banner
     (animationComplete)="bannerAnimationComplete($event)"
+    [vh]="vh"
   ></app-banner>
-  <app-featured [category]="categories[0]"></app-featured>
+  <app-featured [categories]="categories" [vh]="vh"></app-featured>
   <section class="featured-topic-1">
     <article>
       <h2>Learn at your own schedule</h2>

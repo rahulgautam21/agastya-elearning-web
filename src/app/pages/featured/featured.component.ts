@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
-import { ContentService } from 'src/app/services/content.service';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
+import CONSTANTS from '../../constants';
 
 const featuredCourses = [
   {
@@ -30,20 +30,60 @@ const featuredCourses = [
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.scss'],
 })
-export class FeaturedComponent implements OnInit {
+export class FeaturedComponent {
   @Input()
-  category: Category;
+  vh: number;
+  @Input()
+  categories: Category[];
+  featuredCat: Category[];
+  start = 0;
+  end = 1;
+
   categoryCourses: Observable<Course[]>;
+  url = CONSTANTS.CONTENT_SERVICE_URL1;
 
   courses = featuredCourses;
 
-  constructor(private contentService: ContentService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    if (this.category) {
-      this.categoryCourses = this.contentService.getCoursesByCategory(
-        this.category
-      );
+  ngOnChanges() {
+    if (this.categories) {
+      this.start = 0;
+      this.end = this.categories.length;
+      this.setFeatured();
+    }
+  }
+
+  onLeftArrowClick(event) {
+    event.stopPropagation();
+    if (this.start) {
+      this.start--;
+    } else {
+      this.start = this.end - 1;
+    }
+    this.setFeatured();
+  }
+
+  onRightArrowClick(event) {
+    event.stopPropagation();
+    if (this.start >= this.end - 1) {
+      this.start = 0;
+    } else {
+      this.start++;
+    }
+    this.setFeatured();
+  }
+
+  setFeatured() {
+    let next = this.start;
+    this.featuredCat = [];
+    for (let index = 0; index <= 2; index++) {
+      this.featuredCat[index] = this.categories[next];
+      if (next === this.end - 1) {
+        next = 0;
+      } else {
+        next++;
+      }
     }
   }
 }

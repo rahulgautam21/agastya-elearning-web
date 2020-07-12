@@ -24,10 +24,13 @@ import { IntroOverlayComponent } from './pages/intro-overlay/intro-overlay.compo
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { ViewportRuler } from '@angular/cdk/scrolling';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import { ClickOutsideDirective } from './utility/click-outside.directive';
 import { ArrowLeftComponent } from './svg/arrow-left/arrow-left.component';
 import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
+import { ImagePreloadDirective } from './utility/image-preload.directive';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
     ClickOutsideDirective,
     ArrowLeftComponent,
     ArrowRightComponent,
+    ImagePreloadDirective,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,7 @@ import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
     MatButtonModule,
     LayoutModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

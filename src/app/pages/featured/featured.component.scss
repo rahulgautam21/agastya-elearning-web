@@ -1,9 +1,23 @@
 @import "../../theme/general.scss";
 
 .cases {
-  height: 50vh;
-  // height: calc(var(--vh, 1vh) * 50);
-
+  height: 50vh; //fallback
+  .cases-title {
+    position: absolute;
+    top: 45vh;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-left: thick solid orangered;
+    @include media("<=phone") {
+      padding-left: 10px;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+    }
+  }
   .cases-navigation {
     position: absolute;
     bottom: 0px;
@@ -41,9 +55,8 @@
     }
     .case {
       position: relative;
+      height: 100vh; //fallback
       width: 33.33333vw;
-      // height: 40vh;
-      // height: calc(var(--vh, 1vh) * 50);
       background: $black;
       cursor: pointer;
       &:hover {
@@ -53,6 +66,8 @@
       }
       @include media("<=tablet") {
         width: 100vw;
+        min-height: 50vh;
+        padding: 0;
       }
       .case-details {
         display: flex;
@@ -110,6 +125,16 @@
           height: 100%;
           width: 100%;
           object-fit: cover;
+        }
+        .image-hidden {
+          display: none;
+        }
+        .image-loaded {
+          display: inline-block;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          position: absolute;
         }
       }
     }

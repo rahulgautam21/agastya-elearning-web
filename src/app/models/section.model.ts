@@ -3,9 +3,9 @@ import { Lesson } from './lesson.model';
 
 export interface Section {
   id: number;
-  title: string;
-  subTitle: string;
-  course: Course;
+  name: string;
+  description: string;
+  sequence: number;
   lessons: Lesson[];
   created_at: Date;
   updated_at: Date;

@@ -2,7 +2,6 @@
 
 .main {
   height: 50vh; //fallback option
-  height: calc(var(--vh, 1vh) * 50);
   background-color: white;
   .row {
     flex-direction: column;

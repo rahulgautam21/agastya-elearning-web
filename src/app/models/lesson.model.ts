@@ -1,13 +1,15 @@
 import { Section } from './section.model';
 import { Content } from './content.model';
+import { Url } from './url.model';
 
 export interface Lesson {
-  id: 1;
-  section: Section;
-  title: string;
-  content: Content[];
+  id: number;
+  name: string;
   description: string;
-  exercises: any;
+  sequence: number;
+  content: Content[];
+  animationUrl: Url[];
+  youtubeUrl: Url[];
   updated_at: Date;
   created_at: Date;
 }
