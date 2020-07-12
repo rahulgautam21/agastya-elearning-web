@@ -4,6 +4,7 @@ import {
   AfterViewInit,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { TimelineMax } from 'gsap';
 
@@ -13,6 +14,8 @@ import { TimelineMax } from 'gsap';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent implements OnInit, AfterViewInit {
+  @Input()
+  vh: number;
   @Output()
   animationComplete = new EventEmitter<TimelineMax>();
   constructor() {}

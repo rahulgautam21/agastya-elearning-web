@@ -61,9 +61,11 @@ export class HeaderComponent implements OnInit {
   }
 
   close(event) {
-    if (event.target.className.includes('mobile-search')) {
+    if (
+      typeof event.target.className === 'string' &&
+      event.target.className.includes('mobile-search')
+    )
       return;
-    }
 
     if (this.handSet && this.showSearch) {
       this.tl
@@ -83,7 +85,5 @@ export class HeaderComponent implements OnInit {
       this.showSearch = false;
       this.tl.play();
     }
-
-    // setTimeout(() => console.log('close', this.showSearch), 2000);
   }
 }

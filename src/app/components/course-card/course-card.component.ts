@@ -17,7 +17,7 @@ export class CourseCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.url =
-      CONSTANTS.CONTENT_SERVICE_URL1 +
+      CONSTANTS.CONTENT_SERVICE_URL +
       this.course.content[0].formats.thumbnail.url;
   }
 }

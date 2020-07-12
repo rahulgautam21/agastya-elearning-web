@@ -6,6 +6,7 @@ import {
   ViewChildren,
   AfterViewInit,
   Output,
+  Input,
   EventEmitter,
 } from '@angular/core';
 
@@ -17,6 +18,8 @@ import { TimelineLite, TimelineMax } from 'gsap';
   styleUrls: ['./intro-overlay.component.scss'],
 })
 export class IntroOverlayComponent implements OnInit, AfterViewInit {
+  @Input()
+  vh: number;
   @Output()
   animationComplete = new EventEmitter<TimelineMax>();
   // @ViewChildren('top')

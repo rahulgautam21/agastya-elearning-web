@@ -1,23 +1,38 @@
-<section class="cases">
+<section class="cases" [style.height]="vh / 2 + 'px'">
+  <div class="container">
+    <div class="row">
+      <div class="cases-title">
+        <span>FEATURED COURSES</span>
+      </div>
+      <div
+        class="case"
+        *ngFor="let category of featuredCat"
+        [style.height]="vh / 2 + 'px'"
+      >
+        <div class="case-details">
+          <span>{{ category.name }}</span>
+          <h2>{{ category.featuredCourse.name }}</h2>
+        </div>
+        <div class="case-image">
+          <img src="assets/images/history.jpg" />
+          <img
+            src="{{ url + category.featuredCourse.image.formats.small.url }}"
+            default="assets/images/history.jpg"
+            class="img-hidden"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid">
     <div class="cases-navigation">
       <div class="cases-arrow prev">
-        <arrow-left></arrow-left>
+        <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
       </div>
       <div class="cases-arrow next">
-        <arrow-right></arrow-right>
+        <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
       </div>
     </div>
-    <div class="row" style="padding: 0px;">
-      <div class="case" *ngFor="let course of courses">
-        <div class="case-details">
-          <span>{{ course.subtitle }}</span>
-          <h2>{{ course.title }}</h2>
-        </div>
-        <div class="case-image">
-          <img src="assets/images/{{ course.img }}.jpg" alt="course.title" />
-        </div>
-      </div>
-    </div>
+    <div class="row" style="padding: 0px;"></div>
   </div>
 </section>
