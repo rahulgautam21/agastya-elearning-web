@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "agastya-elearning-ui": {
+    "agastya-elearning-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/agastya-elearning-ui",
+            "outputPath": "dist/agastya-elearning-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "agastya-elearning-ui:build"
+            "browserTarget": "agastya-elearning-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "agastya-elearning-ui:build:production"
+              "browserTarget": "agastya-elearning-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "agastya-elearning-ui:build"
+            "browserTarget": "agastya-elearning-web:build"
           }
         },
         "test": {
@@ -111,11 +111,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "agastya-elearning-ui:serve"
+            "devServerTarget": "agastya-elearning-web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "agastya-elearning-ui:serve:production"
+              "devServerTarget": "agastya-elearning-web:serve:production"
             }
           }
         },
@@ -126,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "agastya-elearning-ui"
+  "defaultProject": "agastya-elearning-web"
 }
