@@ -2,22 +2,7 @@
 
 .cases {
   height: 50vh; //fallback
-  .cases-title {
-    position: absolute;
-    top: 45vh;
-    padding-left: 20px;
-    box-sizing: border-box;
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-left: thick solid orangered;
-    @include media("<=phone") {
-      padding-left: 10px;
-      font-size: 16px;
-      letter-spacing: 1.5px;
-    }
-  }
+
   .cases-navigation {
     position: absolute;
     bottom: 0px;
@@ -52,6 +37,23 @@
   .row {
     @include media("<=tablet") {
       flex-direction: column;
+      padding: 0;
+    }
+    .cases-title {
+      position: absolute;
+      top: 45vh;
+      padding-left: 20px;
+      box-sizing: border-box;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-left: thick solid orangered;
+      @include media("<=phone") {
+        padding-left: 10px;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+      }
     }
     .case {
       position: relative;
