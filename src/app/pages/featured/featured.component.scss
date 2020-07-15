@@ -2,7 +2,9 @@
 
 .cases {
   height: 50vh; //fallback
-
+  @include media("<=tablet") {
+    height: 100%;
+  }
   .cases-navigation {
     position: absolute;
     bottom: 0px;

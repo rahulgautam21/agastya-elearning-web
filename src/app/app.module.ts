@@ -31,6 +31,7 @@ import { ClickOutsideDirective } from './utility/click-outside.directive';
 import { ArrowLeftComponent } from './svg/arrow-left/arrow-left.component';
 import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
 import { ImagePreloadDirective } from './utility/image-preload.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ImagePreloadDirective } from './utility/image-preload.directive';
     MatMenuModule,
     MatButtonModule,
     LayoutModule,
+    FontAwesomeModule
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
