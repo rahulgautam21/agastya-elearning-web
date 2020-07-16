@@ -32,7 +32,11 @@ const featuredCourses = [
 })
 export class FeaturedComponent {
   @Input()
+  title: string = 'Featured Courses';
+
+  @Input()
   vh: number;
+
   @Input()
   categories: Category[];
   featuredCat: Category[];

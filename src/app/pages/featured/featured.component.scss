@@ -1,19 +1,21 @@
 @import "../../theme/general.scss";
 
 .cases {
-  height: 50vh; //fallback
-  @include media("<=tablet") {
-    height: 100%;
-  }
+  min-height: 60vh; //fallback
+  position: relative;
+  margin-bottom: 50px;
+  // @include media("<=tablet") {
+  //   height: 100%;
+  // }
   .cases-navigation {
     position: absolute;
-    bottom: 0px;
-    width: 100%;
+    top: 35%;
+    width: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 6;
-    padding: 32px;
+    padding: 37px;
     box-sizing: border-box;
     @include media("<=tablet") {
       display: none;
@@ -43,8 +45,9 @@
     }
     .cases-title {
       position: absolute;
-      top: 45vh;
+      top: -30px;
       padding-left: 20px;
+      margin: 0 16px;
       box-sizing: border-box;
       font-weight: 400;
       font-size: 20px;
@@ -52,6 +55,7 @@
       text-transform: uppercase;
       border-left: thick solid orangered;
       @include media("<=phone") {
+        top: -25px;
         padding-left: 10px;
         font-size: 16px;
         letter-spacing: 1.5px;
