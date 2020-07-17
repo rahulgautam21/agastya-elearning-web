@@ -29,9 +29,12 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.contentService
-      .getCategories()
-      .subscribe((data) => (this.categories = data));
+    this.contentService.getCategories().subscribe((data) => {
+      this.categories = data.filter((cat) => {
+        if (cat.featuredCourse) return cat;
+      });
+    });
+
     this.vh = this.viewPortRuler.getViewportSize().height;
   }
 

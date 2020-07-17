@@ -51,11 +51,14 @@ export class FeaturedComponent {
   constructor() {}
 
   ngOnChanges() {
+    // console.log('cats', this.categories);
+
     if (this.categories) {
       this.start = 0;
       this.end = this.categories.length;
       this.setFeatured();
     }
+    // console.log('fea', this.featuredCat);
   }
 
   onLeftArrowClick(event) {

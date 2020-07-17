@@ -16,7 +16,11 @@
         <div class="case-image">
           <img src="assets/images/placeholder.png" />
           <img
-            src="{{ url + category.featuredCourse.image.formats.small.url }}"
+            src="{{
+              category.featuredCourse.image
+                ? url + category.featuredCourse.image.formats.small.url
+                : 'assets/images/placeholder.png'
+            }}"
             default="assets/images/placeholder.png"
             class="img-hidden"
           />
