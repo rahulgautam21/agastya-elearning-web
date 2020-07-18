@@ -15,6 +15,8 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   to: any;
   categories: Category[];
   vh: number;
+  showOverlay: boolean = true;
+  mainTimeLine = new TimelineMax({ paused: true, reversed: false });
 
   constructor(
     private contentService: ContentService,
@@ -40,9 +42,13 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
 
   overlayAnimationComplete(overlayTl: TimelineMax) {
     this.overlayTl = overlayTl;
+    // this.showOverlay = false;
+    // this.mainTimeLine.add(this.overlayTl);
+    // this.mainTimeLine.play();
   }
 
   bannerAnimationComplete(bannerTl: TimelineMax) {
     this.bannerTl = bannerTl;
+    // this.mainTimeLine.add(this.bannerTl);
   }
 }

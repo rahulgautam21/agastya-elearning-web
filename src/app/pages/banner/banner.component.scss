@@ -3,6 +3,7 @@
 .main {
   height: 50vh; //fallback option
   background-color: white;
+  box-sizing: border-box;
   .row {
     flex-direction: column;
     justify-content: center;
@@ -13,6 +14,8 @@
       z-index: 10;
       color: white;
       mix-blend-mode: difference;
+      margin-top: 55px;
+      margin-bottom: 0;
       @include media("<=tablet") {
         font-size: 2.4rem;
         line-height: 3rem;

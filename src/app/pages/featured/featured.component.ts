@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import CONSTANTS from '../../constants';
+import { TimelineMax } from 'gsap';
 
 const featuredCourses = [
   {
@@ -43,22 +44,18 @@ export class FeaturedComponent {
   start = 0;
   end = 1;
 
-  categoryCourses: Observable<Course[]>;
   url = CONSTANTS.CONTENT_SERVICE_URL1;
 
-  courses = featuredCourses;
+  animationComplete = new EventEmitter<TimelineMax>();
 
   constructor() {}
 
   ngOnChanges() {
-    // console.log('cats', this.categories);
-
     if (this.categories) {
       this.start = 0;
       this.end = this.categories.length;
       this.setFeatured();
     }
-    // console.log('fea', this.featuredCat);
   }
 
   onLeftArrowClick(event) {
