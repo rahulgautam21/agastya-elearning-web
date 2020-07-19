@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import CONSTANTS from '../../constants';
+import { TimelineMax } from 'gsap';
 
 const featuredCourses = [
   {
@@ -32,17 +33,20 @@ const featuredCourses = [
 })
 export class FeaturedComponent {
   @Input()
+  title: string = 'Featured Courses';
+
+  @Input()
   vh: number;
+
   @Input()
   categories: Category[];
   featuredCat: Category[];
   start = 0;
   end = 1;
 
-  categoryCourses: Observable<Course[]>;
   url = CONSTANTS.CONTENT_SERVICE_URL1;
 
-  courses = featuredCourses;
+  animationComplete = new EventEmitter<TimelineMax>();
 
   constructor() {}
 

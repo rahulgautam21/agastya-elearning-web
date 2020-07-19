@@ -12,7 +12,7 @@ import { TimelineMax } from 'gsap';
 export class HeaderComponent implements OnInit {
   searchInput: string;
   categories: any;
-  showSearch = true;
+  showSearch = false;
   handSet = false;
   tl = new TimelineMax({ paused: true, reversed: true });
 
@@ -45,13 +45,13 @@ export class HeaderComponent implements OnInit {
   }
 
   show(event) {
-    if (this.handSet && !this.showSearch) {
+    if (!this.showSearch) {
       this.tl
         .to('.mobile-search', 0, {
           css: { display: 'none' },
         })
         .to('.search', 1, {
-          css: { width: '30vw', display: 'block' },
+          css: { width: '24vw', display: 'block' },
           ease: 'easeOut',
         });
 
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
     )
       return;
 
-    if (this.handSet && this.showSearch) {
+    if (this.showSearch) {
       this.tl
         .to('.search', 1, {
           css: { width: 0 },

@@ -32,6 +32,7 @@ import { ArrowLeftComponent } from './svg/arrow-left/arrow-left.component';
 import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
 import { ImagePreloadDirective } from './utility/image-preload.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ArrowLeftComponent,
     ArrowRightComponent,
     ImagePreloadDirective,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

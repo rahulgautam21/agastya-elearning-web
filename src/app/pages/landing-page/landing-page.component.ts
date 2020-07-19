@@ -15,6 +15,8 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   to: any;
   categories: Category[];
   vh: number;
+  showOverlay: boolean = true;
+  mainTimeLine = new TimelineMax({ paused: true, reversed: false });
 
   constructor(
     private contentService: ContentService,
@@ -29,17 +31,24 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.contentService
-      .getCategories()
-      .subscribe((data) => (this.categories = data));
+    this.contentService.getCategories().subscribe((data) => {
+      this.categories = data.filter((cat) => {
+        if (cat.featuredCourse) return cat;
+      });
+    });
+
     this.vh = this.viewPortRuler.getViewportSize().height;
   }
 
   overlayAnimationComplete(overlayTl: TimelineMax) {
     this.overlayTl = overlayTl;
+    // this.showOverlay = false;
+    // this.mainTimeLine.add(this.overlayTl);
+    // this.mainTimeLine.play();
   }
 
   bannerAnimationComplete(bannerTl: TimelineMax) {
     this.bannerTl = bannerTl;
+    // this.mainTimeLine.add(this.bannerTl);
   }
 }

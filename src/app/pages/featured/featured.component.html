@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="cases-title">
-        <span>FEATURED COURSES</span>
+        <span>{{ title }}</span>
       </div>
       <div
         class="case"
@@ -14,17 +14,21 @@
           <h2>{{ category.featuredCourse.name }}</h2>
         </div>
         <div class="case-image">
-          <img src="assets/images/placeholder.png" />
+          <img src="assets/images/child.jpg" />
           <img
-            src="{{ url + category.featuredCourse.image.formats.small.url }}"
-            default="assets/images/placeholder.png"
+            src="{{
+              category.featuredCourse.image
+                ? url + category.featuredCourse.image.formats.small.url
+                : 'assets/images/child.jpg'
+            }}"
+            default="assets/images/child.jpg"
             class="img-hidden"
           />
         </div>
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <div class="cases-navigation">
       <div class="cases-arrow prev">
         <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>

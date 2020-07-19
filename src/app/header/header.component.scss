@@ -22,42 +22,46 @@
       font-size: 1.4rem;
     }
   }
-  .search {
-    @include media("<=phone") {
-      display: none;
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    .mat-form-field {
       width: 0;
-      font-size: 0.7em;
     }
-    ::ng-deep .mat-form-field-wrapper {
-      padding-bottom: 0;
+    .search {
+      display: none;
+      margin-right: 10px;
+      float: right;
+      @include media("<=phone") {
+        font-size: 0.7em;
+      }
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
     }
-  }
 
-  .show-search {
-    display: block;
-  }
-
-  .mobile-search {
-    font-weight: bold;
-    display: none;
-    @include media("<=phone") {
+    .show-search {
       display: block;
     }
+
+    .mat-icon {
+      font-weight: bold;
+      margin: 0 10px;
+      // display: none;
+      @include media("<=phone") {
+        margin: 0 5px;
+        // display: block;
+      }
+    }
   }
-}
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
-  border-radius: 50px 50px 50px 50px !important;
-  border: 1px solid currentColor !important;
-  // background-color: rgba(235, 242, 243, 0.356) !important;
-}
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 50px 50px 50px 50px !important;
+    border: 1px solid currentColor !important;
+    // background-color: rgba(235, 242, 243, 0.356) !important;
+  }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
-  border: 0px !important;
-}
-
-@include media("<=phone") {
-  .mat-form-field {
-    width: 30vw;
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border: 0px !important;
   }
 }
