@@ -8,6 +8,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 const routes: Routes = [
   { path: 'landing', component: LandingPageComponent },
   { path: 'search', component: SearchPageComponent },
+  { path: 'search/category/:id', component: SearchPageComponent },
   { path: 'course', component: CourseDetailPageComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

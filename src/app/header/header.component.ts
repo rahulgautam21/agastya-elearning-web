@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { TweenLite, TweenMax, TimelineLite } from 'gsap/all';
 import { TimelineMax } from 'gsap';
 
 @Component({
@@ -18,9 +17,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private contentService: ContentService,
-    breakpointObserver: BreakpointObserver
-  ) {
-    breakpointObserver
+    private breakpointObserver: BreakpointObserver
+  ) {}
+
+  ngOnInit(): void {
+    this.breakpointObserver
       .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
       .subscribe((result) => {
         if (result.matches) {
@@ -28,8 +29,6 @@ export class HeaderComponent implements OnInit {
         }
       });
   }
-
-  ngOnInit(): void {}
 
   ngAfterViewInit() {}
 
@@ -51,7 +50,7 @@ export class HeaderComponent implements OnInit {
           css: { display: 'none' },
         })
         .to('.search', 1, {
-          css: { width: '24vw', display: 'block' },
+          css: { width: this.handSet ? '24vw' : '20vw', display: 'block' },
           ease: 'easeOut',
         });
 

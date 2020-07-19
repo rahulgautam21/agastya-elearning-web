@@ -33,6 +33,7 @@ import { ArrowRightComponent } from './svg/arrow-right/arrow-right.component';
 import { ImagePreloadDirective } from './utility/image-preload.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
+import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-circle.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MenuComponent } from './menu/menu.component';
     ArrowRightComponent,
     ImagePreloadDirective,
     MenuComponent,
+    UparrowCircleComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { MenuComponent } from './menu/menu.component';
     MatMenuModule,
     MatButtonModule,
     LayoutModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
