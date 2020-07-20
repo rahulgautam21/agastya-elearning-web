@@ -4,6 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { TimelineMax } from 'gsap';
 import { openMenu, closeMenu } from './menuAnimations.js';
 import { ViewportRuler } from '@angular/cdk/overlay';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-header',
@@ -96,11 +97,13 @@ export class HeaderComponent implements OnInit {
 
   openMenuBar() {
     this.menuState = 'open';
+    gsap.to('.mobile-search', 0, { css: { display: 'none' } });
     openMenu(this.vw, this.vh);
   }
 
   closeMenuBar() {
     this.menuState = 'close';
     closeMenu();
+    gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
   }
 }
