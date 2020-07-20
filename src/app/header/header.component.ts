@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { TimelineMax } from 'gsap';
+import { openMenu, closeMenu } from './menuAnimations.js';
+import { ViewportRuler } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +14,16 @@ export class HeaderComponent implements OnInit {
   searchInput: string;
   categories: any;
   showSearch = false;
+  menuState = 'close';
   handSet = false;
-  tl = new TimelineMax({ paused: true, reversed: true });
+  vw: number;
+  vh: number;
+  tl1 = new TimelineMax({ paused: true, reversed: true });
 
   constructor(
     private contentService: ContentService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private viewPortRuler: ViewportRuler
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +34,8 @@ export class HeaderComponent implements OnInit {
           this.activateHandsetLayout();
         }
       });
+    this.vw = this.viewPortRuler.getViewportSize().width;
+    this.vh = this.viewPortRuler.getViewportSize().height;
   }
 
   ngAfterViewInit() {}
@@ -45,7 +53,7 @@ export class HeaderComponent implements OnInit {
 
   show(event) {
     if (!this.showSearch) {
-      this.tl
+      this.tl1
         .to('.mobile-search', 0, {
           css: { display: 'none' },
         })
@@ -55,7 +63,7 @@ export class HeaderComponent implements OnInit {
         });
 
       this.showSearch = true;
-      this.tl.play();
+      this.tl1.play();
     }
   }
 
@@ -67,7 +75,7 @@ export class HeaderComponent implements OnInit {
       return;
 
     if (this.showSearch) {
-      this.tl
+      this.tl1
         .to('.search', 1, {
           css: { width: 0 },
           ease: 'easeOut',
@@ -82,7 +90,17 @@ export class HeaderComponent implements OnInit {
         });
 
       this.showSearch = false;
-      this.tl.play();
+      this.tl1.play();
     }
+  }
+
+  openMenuBar() {
+    this.menuState = 'open';
+    openMenu(this.vw, this.vh);
+  }
+
+  closeMenuBar() {
+    this.menuState = 'close';
+    closeMenu();
   }
 }

@@ -23,9 +23,16 @@
             (clickOutside)="close($event)"
           />
         </mat-form-field>
-
         <mat-icon (click)="show($event)" class="mobile-search">search</mat-icon>
-        <mat-icon>menu</mat-icon>
+        <div class="nav-toggle">
+          <div (click)="openMenuBar()" class="hamburger-menu">
+            <span></span>
+            <span></span>
+          </div>
+          <div (click)="closeMenuBar()" class="hamburger-menu-close">
+            <uparrow-circle></uparrow-circle>
+          </div>
+        </div>
       </div>
     </div>
   </div>

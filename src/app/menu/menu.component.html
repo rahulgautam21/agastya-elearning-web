@@ -1,13 +1,14 @@
 <nav>
-  <div className="container">
-    <div className="nav-columns">
-      <div className="nav-column">
-        <div className="nav-label">Menu</div>
-        <ul className="nav-links">
+  <div class="container">
+    <div class="nav-columns">
+      <div class="nav-column">
+        <div class="nav-label">Menu</div>
+        <ul class="nav-links">
           <li *ngFor="let category of categories">
             <a
               [routerLink]="'search/category/' + category.id"
               routerLinkActive="active"
+              (click)="closeMenuAnimation()"
             >
               {{ category.name }}
             </a>
@@ -29,11 +30,11 @@
           </li> -->
         </ul>
       </div>
-      <div className="nav-column">
-        <div className="nav-label">Contact</div>
-        <div className="nav-infos">
-          <ul className="nav-info">
-            <li className="nav-info-label">Email</li>
+      <div class="nav-column">
+        <div class="nav-label">Contact</div>
+        <div class="nav-infos">
+          <ul class="nav-info">
+            <li class="nav-info-label">Email</li>
             <li>
               <a routerLink="/contact" routerLinkActive="active">
                 Get in touch with us
@@ -45,18 +46,18 @@
               </a>
             </li>
           </ul>
-          <ul className="nav-info">
-            <li className="nav-info-label">Headquarter</li>
+          <ul class="nav-info">
+            <li class="nav-info-label">Headquarter</li>
             <li>Route du Jura 49</li>
             <li>1700 Fribourg</li>
             <li>Switzerland</li>
           </ul>
-          <ul className="nav-info">
-            <li className="nav-info-label">Phone</li>
+          <ul class="nav-info">
+            <li class="nav-info-label">Phone</li>
             <li>+41 (0) 79 510 28 70</li>
           </ul>
-          <ul className="nav-info">
-            <li className="nav-info-label">Legal</li>
+          <ul class="nav-info">
+            <li class="nav-info-label">Legal</li>
             <li>Privacy & Cookies</li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { Category } from '../models/category.model';
+import { openMenu, closeMenu } from '../header/menuAnimations.js';
 
 @Component({
   selector: 'app-menu',
@@ -16,5 +17,9 @@ export class MenuComponent implements OnInit {
     this.contentService.getCategories().subscribe((data) => {
       this.categories = data;
     });
+  }
+
+  closeMenuAnimation() {
+    closeMenu();
   }
 }

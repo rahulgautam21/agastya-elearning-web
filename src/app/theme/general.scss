@@ -2,6 +2,7 @@
 
 $white: white;
 $black: black;
+$yellow: rgb(243, 243, 205);
 $grey: rgba(100, 97, 97, 0.514);
 
 $breakpoints: (
@@ -11,6 +12,10 @@ $breakpoints: (
   "LGdesktop": 1920px,
 );
 
+.page {
+  position: relative;
+  background: white;
+}
 .container {
   width: 1560px;
   min-width: 1560px;
