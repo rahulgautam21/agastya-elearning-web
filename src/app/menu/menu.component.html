@@ -2,63 +2,56 @@
   <div class="container">
     <div class="nav-columns">
       <div class="nav-column">
-        <div class="nav-label">Menu</div>
+        <div class="nav-label">Categories</div>
         <ul class="nav-links">
-          <li *ngFor="let category of categories">
+          <li *ngFor="let cat of categories">
+            <!-- {{ cat.id }} -->
             <a
-              [routerLink]="'search/category/' + category.id"
+              [routerLink]="'search/category/' + cat.id"
               routerLinkActive="active"
               (click)="closeMenuAnimation()"
+              (mouseover)="onMouseOver(cat)"
             >
-              {{ category.name }}
+              {{ cat.name }}
             </a>
           </li>
-          <!-- <li>
-            <a routerLink="/approach" routerLinkActive="active">
-              Approach
-            </a>
-          </li>
-          <li>
-            <a routerLink="/services" routerLinkActive="active">
-              Services
-            </a>
-          </li>
-          <li>
-            <a routerLink="/about-us" routerLinkActive="active">
-              About us
-            </a>
-          </li> -->
         </ul>
       </div>
       <div class="nav-column">
-        <div class="nav-label">Contact</div>
-        <div class="nav-infos">
+        <div class="nav-label">Courses</div>
+        <div *ngIf="category" class="nav-infos">
           <ul class="nav-info">
-            <li class="nav-info-label">Email</li>
-            <li>
-              <a routerLink="/contact" routerLinkActive="active">
-                Get in touch with us
-              </a>
-            </li>
-            <li>
-              <a routerLink="/audit" routerLinkActive="active">
-                Get a free audit
+            <li class="nav-info-label">All</li>
+            <li *ngFor="let course of category.courses">
+              <a
+                [routerLink]="'course/' + course.id"
+                routerLinkActive="active"
+                (click)="closeMenuAnimation()"
+              >
+                {{ course.name }}
               </a>
             </li>
           </ul>
           <ul class="nav-info">
             <li class="nav-info-label">Headquarter</li>
-            <li>Route du Jura 49</li>
-            <li>1700 Fribourg</li>
-            <li>Switzerland</li>
+            <li>101 Varsav Plaza,</li>
+            <li>12 Jaymahal Main Road,</li>
+            <li>Bangalore - 560046, INDIA</li>
+          </ul>
+          <ul class="nav-info">
+            <li class="nav-info-label">Featured</li>
+            <li>
+              <a
+                [routerLink]="'course/' + category.featuredCourse.id"
+                routerLinkActive="active"
+              >
+                {{ category.featuredCourse.name }}
+              </a>
+            </li>
           </ul>
           <ul class="nav-info">
             <li class="nav-info-label">Phone</li>
-            <li>+41 (0) 79 510 28 70</li>
-          </ul>
-          <ul class="nav-info">
-            <li class="nav-info-label">Legal</li>
-            <li>Privacy & Cookies</li>
+            <li>(+91) 80 41124132</li>
           </ul>
         </div>
       </div>
