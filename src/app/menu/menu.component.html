@@ -1,1 +1,60 @@
-<p>menu works!</p>
+<nav>
+  <div class="container">
+    <div class="nav-columns">
+      <div class="nav-column">
+        <div class="nav-label">Categories</div>
+        <ul class="nav-links">
+          <li *ngFor="let cat of categories">
+            <!-- {{ cat.id }} -->
+            <a
+              [routerLink]="'search/category/' + cat.id"
+              routerLinkActive="active"
+              (click)="closeMenuAnimation()"
+              (mouseover)="onMouseOver(cat)"
+            >
+              {{ cat.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-column">
+        <div class="nav-label">Courses</div>
+        <div *ngIf="category" class="nav-infos">
+          <ul class="nav-info">
+            <li class="nav-info-label">All</li>
+            <li *ngFor="let course of category.courses">
+              <a
+                [routerLink]="'course/' + course.id"
+                routerLinkActive="active"
+                (click)="closeMenuAnimation()"
+              >
+                {{ course.name }}
+              </a>
+            </li>
+          </ul>
+          <ul class="nav-info">
+            <li class="nav-info-label">Headquarter</li>
+            <li>101 Varsav Plaza,</li>
+            <li>12 Jaymahal Main Road,</li>
+            <li>Bangalore - 560046, INDIA</li>
+          </ul>
+          <ul class="nav-info">
+            <li class="nav-info-label">Featured</li>
+            <li>
+              <a
+                [routerLink]="'course/' + category.featuredCourse.id"
+                routerLinkActive="active"
+              >
+                {{ category.featuredCourse.name }}
+              </a>
+            </li>
+          </ul>
+          <ul class="nav-info">
+            <li class="nav-info-label">Phone</li>
+            <li>(+91) 80 41124132</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -36,7 +36,7 @@
     height: 50vh;
     // height: calc(var(--vh, 1vh) * 50);
     position: absolute;
-    bottom: 0;
+    top: 50vh;
     width: 100%;
     z-index: 8;
     .overlay-bottom {
