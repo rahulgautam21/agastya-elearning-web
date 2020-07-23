@@ -37,6 +37,18 @@ export class HeaderComponent implements OnInit {
       });
     this.vw = this.viewPortRuler.getViewportSize().width;
     this.vh = this.viewPortRuler.getViewportSize().height;
+
+    //sroll animation
+    gsap.to('.header', {
+      scrollTrigger: {
+        trigger: '.line', // start the animation when ".box" enters the viewport (once)
+        scrub: 1,
+        refreshPriority: 1,
+        start: 'top top', // when the top of the trigger hits the top of the viewport
+      },
+      y: -128,
+      duration: 1,
+    });
   }
 
   ngAfterViewInit() {}

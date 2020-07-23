@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CSSRulePlugin } from 'gsap/CSSRulePlugin';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(CSSRulePlugin);
+gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
 
 @Component({
   selector: 'app-root',
