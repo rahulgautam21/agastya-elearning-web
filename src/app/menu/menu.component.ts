@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit {
     this.contentService.getCategories().subscribe((data) => {
       this.categories = data;
       this.category = this.categories[0];
-      console.log(this.categories);
     });
   }
 

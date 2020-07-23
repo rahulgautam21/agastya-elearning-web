@@ -9,6 +9,7 @@
   @include media("<=phone") {
     height: 96px;
   }
+
   .logo {
     a {
       font-size: 1.2rem;
@@ -18,7 +19,7 @@
       font-weight: 700;
     }
     .first-letter {
-      color: orangered;
+      // color: orangered;
       font-size: 1.4rem;
     }
   }
