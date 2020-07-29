@@ -1,7 +1,25 @@
 <div class="page">
   <div class="container">
     <div class="row">
-      <p>course-detail-page works!</p>
+      <div class="course">
+        <div class="heading">
+            <div class="category-name">{{categoryName}}</div>
+            <div class="course-name">{{courseName}}</div>
+        </div>
+        <mat-card class="lessons" *ngFor="let section of sections">
+          <br>
+          <mat-card-title>{{section.name}}</mat-card-title>
+             <mat-card-actions>
+                <div class="lesson" *ngFor="let lesson of section.lessons">
+                   <button  mat-button  (click)="onClick($event,lesson.lessonContents)">
+                      <img class="logo" src="assets/images/agastya-logo-small.png" />
+                      <span>{{lesson.name}}</span>
+                    </button>
+                </div>
+             </mat-card-actions>
+          <br>
+        </mat-card>
     </div>
   </div>
-</div>
+</div>  
+

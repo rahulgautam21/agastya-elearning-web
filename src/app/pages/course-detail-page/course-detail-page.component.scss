@@ -1,10 +1,56 @@
 @import "../../theme/general.scss";
 .page {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: $white;
+  
   .row {
     display: flex;
     align-items: center;
+    
+    .course {
+      width: 100%;
+      margin-top: 15vh;
+
+      .heading{
+        background-color: orangered;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+        padding-left: 10vh;
+  
+        .category-name{
+            text-transform: capitalize;
+            font-size: large;
+            padding-left: 1vh;
+        }
+  
+        .course-name{
+            text-transform: capitalize;
+            font-size: xx-large;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+      }
+    
+      .lessons {
+        padding-left: 2vw;
+        margin-top: 5vh;
+  
+        .lesson {
+          padding-left: 1vw;
+          margin-top: 2vh;
+        
+            .logo {
+                height: 30px;
+                width: 30px;
+            }
+
+            span { 
+              padding: 5vh; 
+              font-size: medium;
+          } 
+        }
+      }
+    }
   }
 }

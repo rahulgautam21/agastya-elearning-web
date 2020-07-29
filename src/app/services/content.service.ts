@@ -26,6 +26,12 @@ export class ContentService {
     );
   }
 
+  getCourseByCourseID(courseId: String) {
+    return this.httpClient.get<Course>(
+      CONSTANTS.CONTENT_SERVICE_URL + 'courses' + `/${courseId}`
+    );
+  }
+
   getCoursesByCategory(category: Category) {
     return this.httpClient.get<Course[]>(
       CONSTANTS.CONTENT_SERVICE_URL + 'courses' + `?category.id=${category.id}`

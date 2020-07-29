@@ -1,0 +1,15 @@
+.dialog {
+    height: 70vh;
+    width: 70vw;
+
+    .title {
+        display: flex;
+        direction: row;
+        justify-content: space-between;
+    }
+    
+    .content {
+        height: 85%;
+        width: 100%; 
+    }
+}
