@@ -1,30 +1,18 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  AfterViewInit,
+  ViewChild,
+  TemplateRef,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { Category } from 'src/app/models/category.model';
-import { Observable } from 'rxjs';
-import { Course } from 'src/app/models/course.model';
 import CONSTANTS from '../../constants';
-import { TimelineMax } from 'gsap';
-
-const featuredCourses = [
-  {
-    id: 1,
-    subtitle: 'History',
-    title: 'Mohenjo-daro Civilization',
-    img: 'history',
-  },
-  {
-    id: 2,
-    subtitle: 'Science',
-    title: 'Physical Chemistry for Class 12',
-    img: 'science',
-  },
-  {
-    id: 3,
-    subtitle: 'Computer Science',
-    title: 'Algorithms and Data Structures',
-    img: 'computer',
-  },
-];
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-featured',
@@ -32,6 +20,12 @@ const featuredCourses = [
   styleUrls: ['./featured.component.scss'],
 })
 export class FeaturedComponent {
+  @ViewChildren('placeholder1')
+  pl1: QueryList<ElementRef>;
+
+  @ViewChildren('placeholder2')
+  pl2: QueryList<ElementRef>;
+
   @Input()
   title: string = 'Featured Courses';
 
@@ -41,12 +35,11 @@ export class FeaturedComponent {
   @Input()
   categories: Category[];
   featuredCat: Category[];
+  placeholder = ['', '', ''];
   start = 0;
   end = 1;
 
   url = CONSTANTS.CONTENT_SERVICE_URL1;
-
-  animationComplete = new EventEmitter<TimelineMax>();
 
   constructor() {}
 
@@ -56,6 +49,34 @@ export class FeaturedComponent {
       this.end = this.categories.length;
       this.setFeatured();
     }
+  }
+
+  ngAfterViewInit() {
+    this.startAnimation();
+  }
+
+  startAnimation() {
+    gsap.to(
+      this.pl1.toArray().map((el) => el.nativeElement),
+      0.5,
+      {
+        opacity: 0,
+        ease: 'expo.inOut',
+        yoyo: true,
+        repeat: -1,
+      }
+    );
+
+    gsap.to(
+      this.pl2.toArray().map((el) => el.nativeElement),
+      0.5,
+      {
+        opacity: 0,
+        ease: 'expo.inOut',
+        yoyo: true,
+        repeat: -1,
+      }
+    );
   }
 
   onLeftArrowClick(event) {
@@ -89,5 +110,6 @@ export class FeaturedComponent {
         next++;
       }
     }
+    // this.featuredCat = null;
   }
 }

@@ -2,13 +2,14 @@ import gsap from "gsap";
 
 let tl = gsap.timeline();
 
-export const openMenu = (width, height) => {
+export const openMenu = (width, height, delay) => {
   tl.to("nav", 0, {
     css: { display: "block" },
+    delay,
   })
     .to("body", 0, { css: { overflow: "hidden" } })
     .to(".App", 1, {
-      y: height * 0.75,
+      y: height,
       ease: "expo.inOut",
     })
     .to(".hamburger-menu span", 0.6, {
