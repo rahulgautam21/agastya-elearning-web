@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -38,6 +39,7 @@ import { ImagePreloadDirective } from './utility/image-preload.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
 import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-circle.component';
+import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-cir
     ImagePreloadDirective,
     MenuComponent,
     UparrowCircleComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,5 +84,6 @@ import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-cir
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
+  entryComponents: [DialogBoxComponent]
 })
 export class AppModule {}
