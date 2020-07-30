@@ -65,6 +65,9 @@
       width: 33.33333vw;
       background: $black;
       cursor: pointer;
+      a {
+        text-decoration: none;
+      }
       &:hover {
         .case-image {
           opacity: 0.4;
@@ -111,6 +114,42 @@
           font-size: 2.4rem;
           line-height: 3.4rem;
           width: 85%;
+          margin-top: 16px;
+          color: $white;
+          @include media("<=desktop", ">tablet") {
+            font-size: 2rem;
+            line-height: 2.4rem;
+          }
+          @include media("<=phone") {
+            font-size: 1.7rem;
+            line-height: 2.2rem;
+            margin-top: 8px;
+          }
+        }
+        .placeholder1 {
+          margin-top: 200px;
+          font-size: 1.6rem;
+          opacity: 0.3;
+          width: 90%;
+          color: $white;
+          font-weight: 600;
+          background-color: lightgrey;
+          @include media("<=desktop", ">tablet") {
+            font-size: 1.4rem;
+          }
+          @include media("<=phone") {
+            font-size: 1.2rem;
+            line-height: 2.2rem;
+            margin-top: 210px;
+          }
+        }
+        .placeholder2 {
+          width: 150px;
+          background-color: lightgrey;
+          opacity: 0.3;
+          font-size: 2.4rem;
+          line-height: 2.8rem;
+          width: 75%;
           margin-top: 16px;
           color: $white;
           @include media("<=desktop", ">tablet") {

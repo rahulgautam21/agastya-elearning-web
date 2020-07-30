@@ -89,17 +89,17 @@ export class HeaderComponent implements OnInit {
 
     if (this.showSearch) {
       this.tl1
-        .to('.search', 1, {
+        .to('.search', 0.5, {
           css: { width: 0 },
           ease: 'easeOut',
         })
         .to('.mobile-search', 0, {
           css: { display: 'block' },
-          delay: -0.7,
+          delay: -0.3,
         })
         .to('.search', 0, {
           css: { display: 'none' },
-          delay: -0.7,
+          delay: -0.3,
         });
 
       this.showSearch = false;
@@ -109,8 +109,9 @@ export class HeaderComponent implements OnInit {
 
   openMenuBar() {
     this.menuState = 'open';
-    gsap.to('.mobile-search', 0, { css: { display: 'none' } });
-    openMenu(this.vw, this.vh);
+    gsap.to('.mobile-search', 0, { css: { display: 'none' }, delay: 0.5 });
+
+    openMenu(this.vw, this.vh, 0.3);
   }
 
   closeMenuBar() {

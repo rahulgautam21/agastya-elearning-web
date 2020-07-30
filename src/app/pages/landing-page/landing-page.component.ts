@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { TimelineMax, TimelineLite } from 'gsap';
 import { ContentService } from 'src/app/services/content.service';
 import { Category } from 'src/app/models/category.model';
@@ -9,7 +9,7 @@ import { ViewportRuler } from '@angular/cdk/overlay';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
 })
-export class LandingPageComponent implements OnInit, AfterViewInit {
+export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
   overlayTl: TimelineMax;
   bannerTl: TimelineMax;
   to: any;
@@ -38,6 +38,10 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
     });
 
     this.vh = this.viewPortRuler.getViewportSize().height;
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.to);
   }
 
   overlayAnimationComplete(overlayTl: TimelineMax) {

@@ -1,34 +1,54 @@
-<section class="cases">
+<section class="cases" [style.height]="vh / 2 + 'px'">
   <div class="container">
-    <div class="row">
+    <!-- <div class="row" *ngIf="!featuredCat" style="justify-content: center;">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div> -->
+    <div class="row" *ngIf="featuredCat">
       <div class="cases-title">
         <span>{{ title }}</span>
       </div>
-      <div
-        class="case"
-        *ngFor="let category of featuredCat"
-        [style.height]="vh / 2 + 'px'"
-      >
+      <div class="case" *ngFor="let category of featuredCat">
+        <a
+          [routerLink]="'/course/' + category.featuredCourse.id"
+          routerLinkActive="active"
+        >
+          <div class="case-details">
+            <span>{{ category.name }}</span>
+            <h2>{{ category.featuredCourse.name }}</h2>
+          </div>
+          <div class="case-image">
+            <img src="assets/images/child.jpg" />
+            <img
+              src="{{
+                category.featuredCourse.image
+                  ? category.featuredCourse.image.formats.small.url
+                  : 'assets/images/child.jpg'
+              }}"
+              default="assets/images/child.jpg"
+              class="img-hidden"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row aaa" *ngIf="!featuredCat">
+      <div class="cases-title">
+        <span>{{ title }}</span>
+      </div>
+      <div class="case" *ngFor="let p of placeholder">
         <div class="case-details">
-          <span>{{ category.name }}</span>
-          <h2>{{ category.featuredCourse.name }}</h2>
+          <div #placeholder1 class="placeholder1">&nbsp;</div>
+          <div #placeholder2 class="placeholder2">&nbsp;</div>
         </div>
         <div class="case-image">
-          <img src="assets/images/child.jpg" />
-          <img
-            src="{{
-              category.featuredCourse.image
-                ? category.featuredCourse.image.formats.small.url
-                : 'assets/images/child.jpg'
-            }}"
-            default="assets/images/child.jpg"
-            class="img-hidden"
-          />
+          <img src="assets/images/placeholder.png" />
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
+
+  <div class="container" *ngIf="featuredCat">
     <div class="cases-navigation">
       <div class="cases-arrow prev">
         <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
@@ -37,6 +57,5 @@
         <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
       </div>
     </div>
-    <div class="row" style="padding: 0px;"></div>
   </div>
 </section>
