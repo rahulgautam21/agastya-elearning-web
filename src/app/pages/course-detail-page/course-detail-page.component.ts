@@ -60,6 +60,7 @@ export class CourseDetailPageComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.panelClass = 'myapp-no-padding-dialog';
 
     dialogConfig.data = {
       url: link,

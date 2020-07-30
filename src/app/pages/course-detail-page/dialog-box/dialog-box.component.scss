@@ -1,15 +1,18 @@
 .dialog {
-    height: 70vh;
-    width: 70vw;
+    height: 75vh;
+    width: 75vw;
 
     .title {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-top: 4vh;
         display: flex;
         direction: row;
         justify-content: space-between;
     }
     
     .content {
-        height: 85%;
+        height: 80%;
         width: 100%; 
     }
 }

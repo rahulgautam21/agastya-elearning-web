@@ -33,3 +33,7 @@ img {
   margin: 0 auto;
   position: relative;
 }
+
+.myapp-no-padding-dialog .mat-dialog-container {
+  padding: 0;
+}
