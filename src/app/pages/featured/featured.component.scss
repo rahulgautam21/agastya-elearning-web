@@ -65,6 +65,9 @@
       width: 33.33333vw;
       background: $black;
       cursor: pointer;
+      a {
+        text-decoration: none;
+      }
       &:hover {
         .case-image {
           opacity: 0.4;

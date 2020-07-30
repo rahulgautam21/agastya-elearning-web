@@ -8,22 +8,27 @@
         <span>{{ title }}</span>
       </div>
       <div class="case" *ngFor="let category of featuredCat">
-        <div class="case-details">
-          <span>{{ category.name }}</span>
-          <h2>{{ category.featuredCourse.name }}</h2>
-        </div>
-        <div class="case-image">
-          <img src="assets/images/child.jpg" />
-          <img
-            src="{{
-              category.featuredCourse.image
-                ? category.featuredCourse.image.formats.small.url
-                : 'assets/images/child.jpg'
-            }}"
-            default="assets/images/child.jpg"
-            class="img-hidden"
-          />
-        </div>
+        <a
+          [routerLink]="'/course/' + category.featuredCourse.id"
+          routerLinkActive="active"
+        >
+          <div class="case-details">
+            <span>{{ category.name }}</span>
+            <h2>{{ category.featuredCourse.name }}</h2>
+          </div>
+          <div class="case-image">
+            <img src="assets/images/child.jpg" />
+            <img
+              src="{{
+                category.featuredCourse.image
+                  ? category.featuredCourse.image.formats.small.url
+                  : 'assets/images/child.jpg'
+              }}"
+              default="assets/images/child.jpg"
+              class="img-hidden"
+            />
+          </div>
+        </a>
       </div>
     </div>
 
