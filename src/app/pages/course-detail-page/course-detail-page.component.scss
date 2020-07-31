@@ -1,34 +1,28 @@
 @import "../../theme/general.scss";
 .page {
-  height: 100%;
-  width: 100%;
-  background: $white;
-  
+ 
   .row {
-    display: flex;
-    align-items: center;
     
     .course {
       width: 100%;
       margin-top: 15vh;
 
       .heading{
-        background-color: orangered;
-        padding-top: 4vh;
-        padding-bottom: 4vh;
-        padding-left: 10vh;
+        border-left: thick solid orangered;
+        box-sizing: border-box;
+        font-weight: 400;
+        padding: 2%;
   
         .category-name{
-            text-transform: capitalize;
-            font-size: large;
-            padding-left: 1vh;
+          text-transform: uppercase;
+          font-size: large;
         }
   
         .course-name{
             text-transform: capitalize;
             font-size: xx-large;
             font-weight: bold;
-            margin-top: 10px;
+            line-height:5vh;
         }
       }
     
