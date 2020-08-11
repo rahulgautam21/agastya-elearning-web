@@ -9,10 +9,14 @@ import {
   ElementRef,
   ViewChildren,
   QueryList,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import CONSTANTS from '../../constants';
 import gsap from 'gsap';
+import { ContentService } from 'src/app/services/content.service';
+import { SubTopic } from 'src/app/models/sub-topic.model';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-featured',
@@ -34,25 +38,78 @@ export class FeaturedComponent {
 
   @Input()
   categories: Category[];
-  featuredCat: Category[];
+  displayedTopics: SubTopic[];
+  subTopics: SubTopic[];
   placeholder = ['', '', ''];
   start = 0;
   end = 1;
 
   url = CONSTANTS.CONTENT_SERVICE_URL1;
 
-  constructor() {}
+  constructor(
+    // private cdr: ChangeDetectorRef,
+    private contentService: ContentService
+  ) {}
 
-  ngOnChanges() {
-    if (this.categories) {
-      this.start = 0;
-      this.end = this.categories.length;
-      this.setFeatured();
-    }
+  ngOnInit() {
+    this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
+      if (data.subTopics) {
+        this.subTopics = data.subTopics;
+
+        this.subTopics.forEach((subTopic) => {
+          if (typeof subTopic.topic === 'number') {
+            this.contentService
+              .getTopicById(subTopic.topic)
+              .subscribe((topic) => {
+                subTopic.topic = topic;
+                // this.cdr.detectChanges();
+              });
+          }
+        });
+        this.start = 0;
+        this.end = this.subTopics.length;
+        this.setTopicsDisplay();
+      }
+    });
   }
+
+  ngOnChanges() {}
 
   ngAfterViewInit() {
     this.startAnimation();
+  }
+
+  onLeftArrowClick(event) {
+    event.stopPropagation();
+    if (this.start) {
+      this.start--;
+    } else {
+      this.start = this.end - 1;
+    }
+    this.setTopicsDisplay();
+  }
+
+  onRightArrowClick(event) {
+    event.stopPropagation();
+    if (this.start >= this.end - 1) {
+      this.start = 0;
+    } else {
+      this.start++;
+    }
+    this.setTopicsDisplay();
+  }
+
+  setTopicsDisplay() {
+    let next = this.start;
+    this.displayedTopics = [];
+    for (let index = 0; index <= 2; index++) {
+      this.displayedTopics[index] = this.subTopics[next];
+      if (next === this.end - 1) {
+        next = 0;
+      } else {
+        next++;
+      }
+    }
   }
 
   startAnimation() {
@@ -77,39 +134,5 @@ export class FeaturedComponent {
         repeat: -1,
       }
     );
-  }
-
-  onLeftArrowClick(event) {
-    event.stopPropagation();
-    if (this.start) {
-      this.start--;
-    } else {
-      this.start = this.end - 1;
-    }
-    this.setFeatured();
-  }
-
-  onRightArrowClick(event) {
-    event.stopPropagation();
-    if (this.start >= this.end - 1) {
-      this.start = 0;
-    } else {
-      this.start++;
-    }
-    this.setFeatured();
-  }
-
-  setFeatured() {
-    let next = this.start;
-    this.featuredCat = [];
-    for (let index = 0; index <= 2; index++) {
-      this.featuredCat[index] = this.categories[next];
-      if (next === this.end - 1) {
-        next = 0;
-      } else {
-        next++;
-      }
-    }
-    // this.featuredCat = null;
   }
 }

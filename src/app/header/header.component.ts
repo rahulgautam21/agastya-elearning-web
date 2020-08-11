@@ -12,9 +12,9 @@ import gsap from 'gsap';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  searchInput: string;
+  // searchInput: string;
   categories: any;
-  showSearch = false;
+  // showSearch = false;
   menuState = 'close';
   handSet = false;
   vw: number;
@@ -55,57 +55,57 @@ export class HeaderComponent implements OnInit {
 
   activateHandsetLayout() {
     this.handSet = true;
-    this.showSearch = false;
+    // this.showSearch = false;
   }
 
-  search(event) {
-    if (this.searchInput) {
-      this.categories = this.contentService.searchCategories(this.searchInput);
-    }
-  }
+  // search(event) {
+  //   if (this.searchInput) {
+  //     this.categories = this.contentService.searchCategories(this.searchInput);
+  //   }
+  // }
 
-  show(event) {
-    if (!this.showSearch) {
-      this.tl1
-        .to('.mobile-search', 0, {
-          css: { display: 'none' },
-        })
-        .to('.search', 1, {
-          css: { width: this.handSet ? '24vw' : '20vw', display: 'block' },
-          ease: 'easeOut',
-        });
+  // show(event) {
+  //   if (!this.showSearch) {
+  //     this.tl1
+  //       .to('.mobile-search', 0, {
+  //         css: { display: 'none' },
+  //       })
+  //       .to('.search', 1, {
+  //         css: { width: this.handSet ? '24vw' : '20vw', display: 'block' },
+  //         ease: 'easeOut',
+  //       });
 
-      this.showSearch = true;
-      this.tl1.play();
-    }
-  }
+  //     this.showSearch = true;
+  //     this.tl1.play();
+  //   }
+  // }
 
-  close(event) {
-    if (
-      typeof event.target.className === 'string' &&
-      event.target.className.includes('mobile-search')
-    )
-      return;
+  // close(event) {
+  //   if (
+  //     typeof event.target.className === 'string' &&
+  //     event.target.className.includes('mobile-search')
+  //   )
+  //     return;
 
-    if (this.showSearch) {
-      this.tl1
-        .to('.search', 0.5, {
-          css: { width: 0 },
-          ease: 'easeOut',
-        })
-        .to('.mobile-search', 0, {
-          css: { display: 'block' },
-          delay: -0.3,
-        })
-        .to('.search', 0, {
-          css: { display: 'none' },
-          delay: -0.3,
-        });
+  //   if (this.showSearch) {
+  //     this.tl1
+  //       .to('.search', 0.5, {
+  //         css: { width: 0 },
+  //         ease: 'easeOut',
+  //       })
+  //       .to('.mobile-search', 0, {
+  //         css: { display: 'block' },
+  //         delay: -0.3,
+  //       })
+  //       .to('.search', 0, {
+  //         css: { display: 'none' },
+  //         delay: -0.3,
+  //       });
 
-      this.showSearch = false;
-      this.tl1.play();
-    }
-  }
+  //     this.showSearch = false;
+  //     this.tl1.play();
+  //   }
+  // }
 
   openMenuBar() {
     this.menuState = 'open';

@@ -1,27 +1,27 @@
 <section class="cases" [style.height]="vh / 2 + 'px'">
   <div class="container">
-    <!-- <div class="row" *ngIf="!featuredCat" style="justify-content: center;">
+    <!-- <div class="row" *ngIf="!displayedTopics" style="justify-content: center;">
       <mat-spinner diameter="50"></mat-spinner>
     </div> -->
-    <div class="row" *ngIf="featuredCat">
+    <div class="row" *ngIf="displayedTopics">
       <div class="cases-title">
         <span>{{ title }}</span>
       </div>
-      <div class="case" *ngFor="let category of featuredCat">
-        <a
-          [routerLink]="'/course/' + category.featuredCourse.id"
-          routerLinkActive="active"
-        >
-          <div class="case-details">
-            <span>{{ category.name }}</span>
-            <h2>{{ category.featuredCourse.name }}</h2>
+      <div class="case" *ngFor="let subTopic of displayedTopics">
+        <a [routerLink]="'/course/' + subTopic.id" routerLinkActive="active">
+          <div  *ngIf="subTopic.topic.categories" class="case-details">
+            <!-- <span>{{ subTopic.topic.catergories }}</span> -->
+            <span class="category-detail"
+              >{{ subTopic?.topic.categories[0].name }} - {{subTopic?.topic?.name}}</span>
+            <!-- <span class="topic-detail"></span> -->
+            <h2>{{ subTopic?.name }}</h2>
           </div>
           <div class="case-image">
             <img src="assets/images/child.jpg" />
             <img
               src="{{
-                category.featuredCourse.image
-                  ? category.featuredCourse.image.formats.small.url
+                subTopic.image
+                  ? subTopic.image.formats.small.url
                   : 'assets/images/child.jpg'
               }}"
               default="assets/images/child.jpg"
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="row aaa" *ngIf="!featuredCat">
+    <div class="row aaa" *ngIf="!displayedTopics">
       <div class="cases-title">
         <span>{{ title }}</span>
       </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="container" *ngIf="featuredCat">
+  <div class="container" *ngIf="displayedTopics">
     <div class="cases-navigation">
       <div class="cases-arrow prev">
         <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>

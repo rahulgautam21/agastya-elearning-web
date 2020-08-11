@@ -6,53 +6,53 @@
         <ul class="nav-links">
           <li *ngFor="let cat of categories">
             <!-- {{ cat.id }} -->
-            <a
-              [routerLink]="'search/category/' + cat.id"
-              routerLinkActive="active"
-              (click)="closeMenuAnimation()"
-              (mouseover)="onMouseOver(cat)"
-            >
+            <a (mouseover)="onMouseOverCategory(cat)">
               {{ cat.name }}
             </a>
           </li>
         </ul>
       </div>
-      <div class="nav-column">
-        <div class="nav-label">Courses</div>
-        <div *ngIf="category" class="nav-infos">
+      <div *ngIf="category?.topics.length" class="nav-column">
+        <div class="nav-label">Topics</div>
+        <div class="nav-infos">
           <ul class="nav-info">
-            <li class="nav-info-label">All</li>
-            <li *ngFor="let course of category.courses">
-              <a
-                [routerLink]="'course/' + course.id"
-                routerLinkActive="active"
-                (click)="closeMenuAnimation()"
-              >
-                {{ course.name }}
+            <li class="nav-info-label">
+              {{ category?.name }}
+            </li>
+            <li *ngFor="let topic of category?.topics">
+              <a (mouseover)="onMouseOverTopic(topic)">
+                {{ topic?.name }}
               </a>
             </li>
           </ul>
-          <ul class="nav-info">
-            <li class="nav-info-label">Headquarter</li>
-            <li>101 Varsav Plaza,</li>
-            <li>12 Jaymahal Main Road,</li>
-            <li>Bangalore - 560046, INDIA</li>
+          <ul *ngIf="topic?.subTopics.length" class="nav-info">
+            <li class="nav-info-label">{{ topic?.name }}</li>
+            <li *ngFor="let subTopic of topic?.subTopics">
+              <a
+                [routerLink]="'course/' + subTopic.id"
+                routerLinkActive="active"
+                (click)="closeMenuAnimation()"
+              >
+                {{ subTopic?.name }}
+              </a>
+            </li>
           </ul>
-          <ul class="nav-info">
+          <!-- <ul class="nav-info">
             <li class="nav-info-label">Featured</li>
             <li>
               <a
-                [routerLink]="'course/' + category.featuredCourse.id"
+                [routerLink]="'course/' + category.id"
                 routerLinkActive="active"
-              >
-                {{ category.featuredCourse.name }}
-              </a>
+              ></a>
+              <span>
+                {{ category.name }}
+              </span>
             </li>
           </ul>
           <ul class="nav-info">
             <li class="nav-info-label">Phone</li>
             <li>(+91) 80 41124132</li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

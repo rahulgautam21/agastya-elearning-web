@@ -1,4 +1,3 @@
-import { Section } from './section.model';
 import { Content } from './content.model';
 import { Url } from './url.model';
 

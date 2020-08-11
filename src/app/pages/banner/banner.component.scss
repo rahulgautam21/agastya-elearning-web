@@ -41,49 +41,49 @@
         }
       }
     }
-    .btn-row {
-      width: 256px;
-      position: relative;
-      z-index: 2;
-      a {
-        font-size: 1.6rem;
-        color: black;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-        @include media("<=tablet") {
-          font-size: 1.3rem;
-        }
-        @include media("<=phone") {
-          font-size: 1.1rem;
-        }
-        svg {
-          margin-left: 16px;
-          border: 2px solid black;
-          padding: 12px;
-          height: 24px;
-          width: 24px;
-          border-radius: 100px;
-          transition: 0.4s ease-in-out;
-          @include media("<=tablet") {
-            padding: 6px;
-            width: 20px;
-            height: 20px;
-          }
-          @include media("<=phone") {
-            padding: 4px;
-            width: 16px;
-            height: 16px;
-          }
-        }
-        &:hover {
-          svg {
-            background: black;
-            color: $white;
-          }
-        }
-      }
-    }
+    // .btn-row {
+    //   width: 256px;
+    //   position: relative;
+    //   z-index: 2;
+    //   a {
+    //     font-size: 1.6rem;
+    //     color: black;
+    //     text-decoration: none;
+    //     display: flex;
+    //     align-items: center;
+    //     font-weight: 600;
+    //     @include media("<=tablet") {
+    //       font-size: 1.3rem;
+    //     }
+    //     @include media("<=phone") {
+    //       font-size: 1.1rem;
+    //     }
+    //     svg {
+    //       margin-left: 16px;
+    //       border: 2px solid black;
+    //       padding: 12px;
+    //       height: 24px;
+    //       width: 24px;
+    //       border-radius: 100px;
+    //       transition: 0.4s ease-in-out;
+    //       @include media("<=tablet") {
+    //         padding: 6px;
+    //         width: 20px;
+    //         height: 20px;
+    //       }
+    //       @include media("<=phone") {
+    //         padding: 4px;
+    //         width: 16px;
+    //         height: 16px;
+    //       }
+    //     }
+    //     &:hover {
+    //       svg {
+    //         background: black;
+    //         color: $white;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }

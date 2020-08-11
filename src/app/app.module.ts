@@ -16,7 +16,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CourseCardComponent } from './components/course-card/course-card.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -46,7 +45,6 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CourseCardComponent,
     NavComponent,
     SearchPageComponent,
     LandingPageComponent,
@@ -84,6 +82,6 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
-  entryComponents: [DialogBoxComponent]
+  entryComponents: [DialogBoxComponent],
 })
 export class AppModule {}
