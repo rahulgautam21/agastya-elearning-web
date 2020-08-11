@@ -6,19 +6,32 @@
             <div class="category-name">{{categoryName}}</div>
             <div class="course-name">{{courseName}}</div>
         </div>
-        <mat-card class="lessons" *ngFor="let section of sections">
-          <br>
-          <mat-card-title>{{section.name}}</mat-card-title>
-             <mat-card-actions>
-                <div class="lesson" *ngFor="let lesson of section.lessons">
-                   <button  mat-button  (click)="onClick($event,lesson.lessonContents)">
-                      <img class="logo" src="assets/images/agastya-logo-small.png" />
-                      <span>{{lesson.name}}</span>
-                    </button>
-                </div>
-             </mat-card-actions>
-          <br>
-        </mat-card>
+        <i class="fa fa-file-image-o"></i>
+
+        <mat-slide-toggle class="toggle">
+        Teacher/Student
+        </mat-slide-toggle>
+
+        <mat-expansion-panel  class="levels" *ngFor="let level of levels">
+          <mat-expansion-panel-header>
+             <mat-panel-title>
+                {{level}}
+             </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card class="lessons" *ngFor="let section of sections">
+            <br>
+            <mat-card-title>{{section.name}}</mat-card-title>
+               <mat-card-actions>
+                  <div class="lesson" *ngFor="let lesson of section.lessons">
+                     <button  mat-button  (click)="onClick($event,lesson.lessonContents)">
+                        <fa-icon class="logo" [icon]="icon"></fa-icon>  
+                        <span>{{lesson.name}}</span>
+                      </button>
+                  </div>
+               </mat-card-actions>
+            <br>
+          </mat-card>
+       </mat-expansion-panel>
     </div>
   </div>
 </div>  
