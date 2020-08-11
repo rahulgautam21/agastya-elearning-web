@@ -47,14 +47,16 @@ export class FeaturedComponent {
   url = CONSTANTS.CONTENT_SERVICE_URL1;
 
   constructor(
-    // private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private contentService: ContentService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges() {
     this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
-      if (data.subTopics) {
-        this.subTopics = data.subTopics;
+      if (data[0].subTopics) {
+        this.subTopics = data[0].subTopics;
 
         this.subTopics.forEach((subTopic) => {
           if (typeof subTopic.topic === 'number') {
@@ -72,8 +74,6 @@ export class FeaturedComponent {
       }
     });
   }
-
-  ngOnChanges() {}
 
   ngAfterViewInit() {
     this.startAnimation();
@@ -110,6 +110,7 @@ export class FeaturedComponent {
         next++;
       }
     }
+    // console.log(this.displayedTopics);
   }
 
   startAnimation() {
