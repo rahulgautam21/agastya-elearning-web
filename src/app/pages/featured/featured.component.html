@@ -9,10 +9,12 @@
       </div>
       <div class="case" *ngFor="let subTopic of displayedTopics">
         <a [routerLink]="'/course/' + subTopic.id" routerLinkActive="active">
-          <div  *ngIf="subTopic.topic.categories" class="case-details">
+          <div *ngIf="subTopic.topic.categories" class="case-details">
             <!-- <span>{{ subTopic.topic.catergories }}</span> -->
             <span class="category-detail"
-              >{{ subTopic?.topic.categories[0].name }} - {{subTopic?.topic?.name}}</span>
+              >{{ (subTopic?.topic.categories)[0].name }} -
+              {{ subTopic?.topic.name }}</span
+            >
             <!-- <span class="topic-detail"></span> -->
             <h2>{{ subTopic?.name }}</h2>
           </div>
@@ -20,7 +22,7 @@
             <img src="assets/images/child.jpg" />
             <img
               src="{{
-                subTopic.image
+                subTopic.image.formats.small
                   ? subTopic.image.formats.small.url
                   : 'assets/images/child.jpg'
               }}"
@@ -48,14 +50,12 @@
     </div>
   </div>
 
-  <div class="container" *ngIf="displayedTopics">
-    <div class="cases-navigation">
-      <div class="cases-arrow prev">
-        <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
-      </div>
-      <div class="cases-arrow next">
-        <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
-      </div>
+  <div class="cases-navigation" *ngIf="displayedTopics">
+    <div class="cases-arrow prev">
+      <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
+    </div>
+    <div class="cases-arrow next">
+      <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
     </div>
   </div>
 </section>

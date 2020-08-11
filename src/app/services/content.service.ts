@@ -16,7 +16,7 @@ export class ContentService {
 
   getFeaturedSubTopic() {
     return this.httpClient.get(
-      CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics/1'
+      CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics'
     );
   }
 

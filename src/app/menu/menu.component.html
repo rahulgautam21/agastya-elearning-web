@@ -12,7 +12,7 @@
           </li>
         </ul>
       </div>
-      <div *ngIf="category?.topics.length" class="nav-column">
+      <div class="nav-column">
         <div class="nav-label">Topics</div>
         <div class="nav-infos">
           <ul class="nav-info">
@@ -25,6 +25,12 @@
               </a>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div class="nav-column">
+        <div class="nav-label">Sub-Topics</div>
+        <div class="nav-infos">
           <ul *ngIf="topic?.subTopics.length" class="nav-info">
             <li class="nav-info-label">{{ topic?.name }}</li>
             <li *ngFor="let subTopic of topic?.subTopics">
@@ -37,22 +43,6 @@
               </a>
             </li>
           </ul>
-          <!-- <ul class="nav-info">
-            <li class="nav-info-label">Featured</li>
-            <li>
-              <a
-                [routerLink]="'course/' + category.id"
-                routerLinkActive="active"
-              ></a>
-              <span>
-                {{ category.name }}
-              </span>
-            </li>
-          </ul>
-          <ul class="nav-info">
-            <li class="nav-info-label">Phone</li>
-            <li>(+91) 80 41124132</li>
-          </ul> -->
         </div>
       </div>
     </div>
