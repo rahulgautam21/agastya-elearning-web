@@ -1,13 +1,14 @@
-import { Topic } from './topic.model';
 import { Media } from './media.model';
+import { Topic } from './topic.model';
+import { Content } from './content.model';
 
-export interface Category {
+export interface SubTopic {
   id: number;
   name: string;
   description?: string;
-  featuredCourse?: number;
+  topic: Topic;
   created_at: Date;
   updated_at: Date;
   image: Media;
-  topics: Topic[];
+  contents: Content[];
 }

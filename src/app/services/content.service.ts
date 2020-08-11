@@ -5,12 +5,26 @@ import { Observable } from 'rxjs';
 import { Category } from '../models/category.model';
 import { Course } from '../models/course.model';
 import { Lesson } from '../models/lesson.model';
+import { SubTopic } from '../models/sub-topic.model';
+import { Topic } from '../models/topic.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContentService {
   constructor(private httpClient: HttpClient) {}
+
+  getFeaturedSubTopic() {
+    return this.httpClient.get(
+      CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics/1'
+    );
+  }
+
+  getTopicById(id): Observable<Topic> {
+    return this.httpClient.get<Topic>(
+      CONSTANTS.CONTENT_SERVICE_URL + 'topics' + `/${id}`
+    );
+  }
 
   getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(

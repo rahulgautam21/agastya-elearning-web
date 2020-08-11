@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { Category } from '../models/category.model';
-import { openMenu, closeMenu } from '../header/menuAnimations.js';
-import { Course } from '../models/course.model';
+import { closeMenu } from '../header/menuAnimations.js';
+import { Topic } from '../models/topic.model';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +12,7 @@ import { Course } from '../models/course.model';
 export class MenuComponent implements OnInit {
   categories: Category[];
   category: Category;
+  topic: Topic;
 
   constructor(private contentService: ContentService) {}
 
@@ -19,6 +20,7 @@ export class MenuComponent implements OnInit {
     this.contentService.getCategories().subscribe((data) => {
       this.categories = data;
       this.category = this.categories[0];
+      this.topic = this.categories[0].topics[0];
     });
   }
 
@@ -26,9 +28,16 @@ export class MenuComponent implements OnInit {
     closeMenu();
   }
 
-  onMouseOver(category: Category) {
+  onMouseOverCategory(category: Category) {
     this.category = category;
+    if (category.topics) {
+      this.topic = category.topics[0];
+    } else {
+      this.topic = null;
+    }
   }
 
-  onMouseOut() {}
+  onMouseOverTopic(topic: Topic) {
+    this.topic = topic;
+  }
 }
