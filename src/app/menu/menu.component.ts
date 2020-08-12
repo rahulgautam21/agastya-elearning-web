@@ -13,7 +13,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class MenuComponent implements OnInit {
   @Input()
   menuState: string = 'Categories';
-
+  title: string = 'Categories';
   categories: Category[];
   category: Category;
   topic: Topic;
@@ -43,6 +43,19 @@ export class MenuComponent implements OnInit {
     closeMenu();
   }
 
+  setTitle() {
+    switch (this.menuState) {
+      case 'Topics':
+        this.title = this.category.name;
+        break;
+      case 'Sub-Topics':
+        this.title = this.topic.name;
+        break;
+      default:
+        this.title = 'Categories';
+    }
+  }
+
   onMouseOverCategory(category: Category) {
     this.category = category;
     if (category.topics) {
@@ -61,11 +74,13 @@ export class MenuComponent implements OnInit {
         this.topic = null;
       }
       this.menuState = 'Topics';
+      this.setTitle();
     }
   }
 
   onClickShowAllCategories() {
     this.menuState = 'Categories';
+    this.setTitle();
   }
 
   onMouseOverTopic(topic: Topic) {
@@ -76,10 +91,12 @@ export class MenuComponent implements OnInit {
     if (this.handSet) {
       this.topic = topic;
       this.menuState = 'Sub-Topics';
+      this.setTitle();
     }
   }
 
   onClickShowAllTopics() {
     this.menuState = 'Topics';
+    this.setTitle();
   }
 }
