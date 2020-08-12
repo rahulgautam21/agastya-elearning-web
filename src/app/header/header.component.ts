@@ -109,14 +109,13 @@ export class HeaderComponent implements OnInit {
 
   openMenuBar() {
     this.menuState = 'open';
-    gsap.to('.mobile-search', 0, { css: { display: 'none' }, delay: 0.5 });
-
+    // gsap.to('.mobile-search', 0, { css: { display: 'none' }, delay: 0.5 });
     openMenu(this.vw, this.vh, 0.3);
   }
 
   closeMenuBar() {
     this.menuState = 'close';
     closeMenu();
-    gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
+    // gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
   }
 }

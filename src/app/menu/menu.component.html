@@ -2,17 +2,51 @@
   <div class="container">
     <div class="nav-columns">
       <div class="nav-column">
-        <div class="nav-label">Categories</div>
-        <ul class="nav-links">
+        <div
+          *ngIf="
+            handSet && (menuState === 'Topics' || menuState === 'Sub-Topics')
+          "
+          class="nav-label"
+          (click)="onClickShowAllCategories()"
+        >
+          <span class="left-arrow">&#60;</span> All - Categories
+        </div>
+        <div
+          *ngIf="handSet && menuState === 'Sub-Topics'"
+          class="nav-label"
+          (click)="onClickShowAllTopics()"
+        >
+          <span class="left-arrow">&#60;</span> All - {{ category.name }}
+        </div>
+        <div class="nav-title">{{ title }}</div>
+        <ul *ngIf="menuState === 'Categories'" class="nav-links">
           <li *ngFor="let cat of categories">
-            <!-- {{ cat.id }} -->
-            <a (mouseover)="onMouseOverCategory(cat)">
+            <a
+              (mouseover)="onMouseOverCategory(cat)"
+              (click)="onClickCategory(cat)"
+            >
               {{ cat.name }}
             </a>
           </li>
         </ul>
+        <ul *ngIf="handSet && menuState === 'Topics'" class="nav-links">
+          <li *ngFor="let top of category.topics">
+            <a (click)="onClickTopic(top)">{{ top.name }} </a>
+          </li>
+        </ul>
+        <ul *ngIf="handSet && menuState === 'Sub-Topics'" class="nav-links">
+          <li *ngFor="let subTopic of topic?.subTopics">
+            <a
+              [routerLink]="'course/' + subTopic.id"
+              routerLinkActive="active"
+              (click)="closeMenuAnimation()"
+            >
+              {{ subTopic?.name }}
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="nav-column">
+      <div class="nav-column sub-nav">
         <div class="nav-label">Topics</div>
         <div class="nav-infos">
           <ul class="nav-info">
@@ -28,7 +62,7 @@
         </div>
       </div>
 
-      <div class="nav-column">
+      <div class="nav-column sub-nav">
         <div class="nav-label">Sub-Topics</div>
         <div class="nav-infos">
           <ul *ngIf="topic?.subTopics.length" class="nav-info">

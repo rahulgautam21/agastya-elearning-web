@@ -8,7 +8,7 @@
   .cases-navigation {
     position: absolute;
     top: 42%;
-    min-width: 100%;
+    width: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
