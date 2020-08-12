@@ -9,19 +9,18 @@
           class="nav-label"
           (click)="onClickShowAllCategories()"
         >
-          &#8249; All - Categories
+          <span class="left-arrow">&#60;</span> All - Categories
         </div>
         <div
           *ngIf="handSet && menuState === 'Sub-Topics'"
           class="nav-label"
           (click)="onClickShowAllTopics()"
         >
-          &#8249; All - {{ category.name }}
+          <span class="left-arrow">&#60;</span> All - {{ category.name }}
         </div>
-        <div class="nav-label">{{ menuState }}</div>
+        <div class="nav-title">{{ title }}</div>
         <ul *ngIf="menuState === 'Categories'" class="nav-links">
           <li *ngFor="let cat of categories">
-            <!-- {{ cat.id }} -->
             <a
               (mouseover)="onMouseOverCategory(cat)"
               (click)="onClickCategory(cat)"
@@ -32,9 +31,7 @@
         </ul>
         <ul *ngIf="handSet && menuState === 'Topics'" class="nav-links">
           <li *ngFor="let top of category.topics">
-            <a (click)="onClickTopic(top)">
-              {{ top.name }}
-            </a>
+            <a (click)="onClickTopic(top)">{{ top.name }} </a>
           </li>
         </ul>
         <ul *ngIf="handSet && menuState === 'Sub-Topics'" class="nav-links">

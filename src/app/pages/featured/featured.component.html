@@ -1,8 +1,5 @@
 <section class="cases" [style.height]="vh / 2 + 'px'">
   <div class="container">
-    <!-- <div class="row" *ngIf="!displayedTopics" style="justify-content: center;">
-      <mat-spinner diameter="50"></mat-spinner>
-    </div> -->
     <div class="row" *ngIf="displayedTopics">
       <div class="cases-title">
         <span>{{ title }}</span>
@@ -50,12 +47,14 @@
     </div>
   </div>
 
-  <div class="cases-navigation" *ngIf="displayedTopics">
-    <div class="cases-arrow prev">
-      <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
-    </div>
-    <div class="cases-arrow next">
-      <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
+  <div class="container" style="height: 0;">
+    <div class="cases-navigation" *ngIf="displayedTopics">
+      <div class="cases-arrow prev">
+        <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
+      </div>
+      <div class="cases-arrow next">
+        <arrow-right (click)="onRightArrowClick($event)"></arrow-right>
+      </div>
     </div>
   </div>
 </section>
