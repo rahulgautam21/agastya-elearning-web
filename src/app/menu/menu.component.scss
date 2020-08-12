@@ -42,6 +42,11 @@ nav {
         padding: 0 16px;
       }
     }
+    .sub-nav {
+      @include media("<=phone") {
+        display: none;
+      }
+    }
     .nav-column {
       width: 45%;
       @include media("<=654px") {
@@ -74,12 +79,7 @@ nav {
         .nav-info {
           padding: 0;
           width: 50%;
-          &:nth-child(2),
-          &:nth-child(3) {
-            @include media("<=654px") {
-              display: none;
-            }
-          }
+
           .nav-info-label {
             font-weight: 600;
           }
