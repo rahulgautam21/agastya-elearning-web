@@ -40,9 +40,9 @@ export class ContentService {
     );
   }
 
-  getAllSubTopics() {
-    return this.httpClient.get<SubTopic[]>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics'
+  getSubTopicById(id:number) {
+    return this.httpClient.get<SubTopic>(
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics'+ `/${id}`
     );
   }
 
