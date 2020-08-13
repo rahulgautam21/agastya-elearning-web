@@ -7,10 +7,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 import { faFilePdf , faVideo, faCoffee} from '@fortawesome/free-solid-svg-icons';
-import { Category } from 'src/app/models/category.model';
 import { SubTopic } from 'src/app/models/sub-topic.model';
-import { Topic } from 'src/app/models/topic.model';
 import { Content } from 'src/app/models/content.model';
+
 
 @Component({
   selector: 'app-course-detail-page',
@@ -20,14 +19,24 @@ import { Content } from 'src/app/models/content.model';
 export class CourseDetailPageComponent implements OnInit {
 
   public categoryId: number;
-  public topic: Topic;
-  public levels = ['Beginner','Intermediate','Expert'];
-  public intermediate: SubTopic[];
-  public beginner: SubTopic[];
-  public expert: SubTopic[];
-  public all: SubTopic[];
-
+  public subTopic: SubTopic;
+ 
+  public intermediary: Content[];
+  public basic: Content[];
+  public advanced: Content[];
   public icon = faFilePdf;
+
+
+  public languageFilter:string = "English";
+  public classFilter:string;
+  public levelFilter:string;
+  public audienceFilter:string = "both";
+  
+  
+  public levels = ['basic','intermediary','advanced'];
+  public languages: string[] = ['English','Hindi','Sanskrit'];
+  public classes: string[] = ['Class-1','Class-2','Class-3'];
+
 
   constructor(private contentService :ContentService,private snackbar: MatSnackBar, 
     private activatedRoute: ActivatedRoute,
@@ -38,60 +47,57 @@ export class CourseDetailPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contentService.getTopicById(this.categoryId.toString()).subscribe(topic => {
-      this.topic = topic;
-      this.distributeSubTopicsBasedonLevel();
-      this.loadView();
-      //this.setIcons();
+    this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
+      this.subTopic = subTopic;
+      this.distributeContent();
     });
-
-    this.contentService.getAllSubTopics().subscribe(all => {
-      this.all = all;
-    });
-    
   }
 
-  distributeSubTopicsBasedonLevel(){
-      let i=0;
-      this.beginner = [];
-      this.intermediate = [];
-      this.expert = [];
-      for(var topic of this.topic.subTopics){
-        if(i==0){
-          this.beginner.push(topic);
-        } else if(i==1){
-          this.intermediate.push(topic);
-        } else{
-          this.expert.push(topic);
-        }
-        i++;
-        if(i==3)
-          i=0;
+  
+  isEligibleAfterFiltering(content:Content){
+    if (content.audience != this.audienceFilter)
+      return false;
+    if (this.levelFilter != undefined && content.level != this.levelFilter )
+      return false;  
+    // if (content.class != this.classFilter)
+    //   return false;    
+    if (content.language != this.languageFilter)
+      return false;     
+
+    return true;
+  }
+
+  assignContentByLevel(content:Content){
+    if(content.level == 'basic'){
+      this.basic.push(content);
+    } else if(content.level == 'intermediary'){
+      this.intermediary.push(content);
+    } else{
+      this.advanced.push(content);
+    }
+  }
+
+  distributeContent(){
+
+    this.basic = [];
+    this.intermediary = [];
+    this.advanced = [];
+
+    for(var content of this.subTopic.contents){
+      if(this.isEligibleAfterFiltering(content)){
+        this.assignContentByLevel(content)
       }
-     
+    }
   }
 
-  loadView() {
-    
-   
+  getContentByLevel(level:string):Content[]{
+    if(level == 'basic')
+      return this.basic;
+    else if(level == 'intermediary')
+      return this.intermediary;
+    else  
+      return this.advanced;
   }
-
-  getSubTopicsByLevel(level:string) :SubTopic[]{
-    if(level == 'Intermediate')
-      return this.intermediate;
-    else if (level == 'Beginner')
-      return this.beginner;
-    else
-      return this.expert;
-  }
-
-  getContentBySubTopicId(id:number) :Content[]{
-     for(let subtopic of this.all){
-       if(subtopic.id == id)
-          return subtopic.contents;
-     }
-  }
-
 
   onClick(event: Event, content: Content){
     if(content == null) {

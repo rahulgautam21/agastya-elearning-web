@@ -2,45 +2,66 @@
   <div class="container">
     <div class="row">
       <div class="course">
-        <div class="heading">
-         <img src={{topic.categories[0].image.url}}>
-         <div class="text">
-            <div class="category-name">{{topic.categories[0].name}}</div>
-            <div class="category-desc">{{topic.categories[0].description}}</div>
-           
-        </div>
-        </div>
-       
-        <div class="panel">
-            <div class="topic-name">{{topic.name}}</div>
-            <mat-slide-toggle class="toggle">
-            Teacher/Student
-            </mat-slide-toggle>
-        </div>
+         <div id="banner" class="heading">
+            <img class="banner-image" src={{subTopic.image.url}}>  
+            <div class="topic-name">{{subTopic.topic.name}}</div>
+            <div class="subtopic-name">{{subTopic.name}}</div>
+         </div>
+
+         <div class="filter-panel">
+            <div class='filter'>
+               <mat-form-field appearance="fill">
+                  <mat-label>Language</mat-label>
+                  <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContent()">  
+                    <mat-option *ngFor="let language of languages" [value]="language">
+                      {{language}}
+                    </mat-option>
+                  </mat-select>
+               </mat-form-field>
+   
+               <mat-form-field appearance="fill">
+                  <mat-label>Level</mat-label>
+                  <mat-select [(ngModel)]="levelFilter" (selectionChange)="distributeContent()">  
+                    <mat-option *ngFor="let level of levels" [value]="level">
+                      {{level}}
+                    </mat-option>
+                  </mat-select>
+               </mat-form-field>
+   
+               <mat-form-field appearance="fill">
+                  <mat-label>Class</mat-label>
+                  <mat-select [(ngModel)]="classFilter" (selectionChange)="distributeContent()">  
+                    <mat-option *ngFor="let class of classes" [value]="class">
+                      {{class}}
+                    </mat-option>
+                  </mat-select>
+               </mat-form-field>
+            </div>
+            <mat-button-toggle-group class="btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContent()" >
+               <mat-button-toggle value="student">Student</mat-button-toggle>
+               <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
+               <mat-button-toggle value="both">Both</mat-button-toggle>
+            </mat-button-toggle-group>
+         </div>
         
         <mat-expansion-panel  class="levels" *ngFor="let level of levels">
-          <mat-expansion-panel-header>
+           <mat-expansion-panel-header *ngIf="getContentByLevel(level).length>0">
              <mat-panel-title>
-                {{level}}
+               <div class="level">{{level}}</div>
              </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="subtopic" *ngFor="let subtopic of getSubTopicsByLevel(level)">
-            <img class="card-img" src={{subtopic.image.url}}>
-            <mat-card>
-               <br>
-               <mat-card-title>{{subtopic.name}}</mat-card-title>
+            </mat-expansion-panel-header>
+         
+            <mat-card class="contents" >
                <mat-card-actions>
-                  <div class="content" *ngFor="let content of getContentBySubTopicId(subtopic.id)">
+                  <div class="content" *ngFor="let content of getContentByLevel(level)">
                      <button  mat-button  (click)="onClick($event,content)">
                         <fa-icon class="logo" [icon]="icon"></fa-icon>  
                         <span>{{content.name}}</span>
                         </button>
                   </div>
                </mat-card-actions>
-               <br>
-             </mat-card>
-          </div>
-       </mat-expansion-panel>
+            </mat-card>
+         </mat-expansion-panel>
     </div>
   </div>
 </div>  
