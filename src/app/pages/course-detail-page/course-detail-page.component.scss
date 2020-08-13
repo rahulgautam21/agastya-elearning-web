@@ -5,43 +5,73 @@
     
     .course {
       width: 100%;
-      margin-top: 15vh;
+      margin-top: 18vh;
       display: flex;
       flex-direction: column;
 
-      .heading{
-        border-left: thick solid orangered;
-        box-sizing: border-box;
-        font-weight: 400;
-        padding: 2%;
-  
-        .category-name{
-          text-transform: uppercase;
-          font-size: large;
+      .heading {
+        display: flex;
+        flex-direction: row;
+
+        img {
+          height: 15vh;
+          width: 15vh;
         }
-  
-        .course-name{
-            text-transform: capitalize;
-            font-size: xx-large;
-            font-weight: bold;
+
+        .text{
+          font-weight: 400;
+          padding: 2%;
+    
+          .category-name{
+            text-transform: uppercase;
+            font-size: x-large;
+          }
+
+          .category-desc{
+            font-style: italic;
+            font-size: large;
             line-height:5vh;
+        }
         }
       }
 
-      .toggle {
-        margin-top: 4vh;
-        align-self: flex-end;
+      .panel{
+        display: flex;
+        margin-top: 5vh;
+        justify-content: space-between;
+        height: 8vh;
+        border-left: thick solid orangered;
+        
+
+        .topic-name{
+          align-self: center;
+          text-transform: capitalize;
+          font-size: xx-large;
+          font-weight: bold;
+          padding-left: 1vw;;
+        }
+
+        .toggle{
+          align-self: center;;
+        }
         
       }
     
       .levels {
         margin-top: 5vh;
 
-        .lessons {
+        .subtopic {
           padding-left: 2vw;
           margin-top: 5vh;
+          display: flex;
+          flex-direction: row;
+
+          .card-img{
+            height: 20vh;
+            width: 20vw;
+          }
     
-          .lesson {
+          .content {
             padding-left: 1vw;
             margin-top: 2vh;
           
