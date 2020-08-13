@@ -51,20 +51,17 @@
           text-transform: uppercase;
         }
 
-        .contents {
+        .content {
+        
+            .logo {
+                height: 30px;
+                width: 30px;
+            }
 
-          .content {
-          
-              .logo {
-                  height: 30px;
-                  width: 30px;
-              }
-  
-              span { 
-                padding-left: 2vw;
-                font-size: medium;
-            } 
-          }
+            span { 
+              padding-left: 2vw;
+              font-size: medium;
+          } 
         }
       }
     }

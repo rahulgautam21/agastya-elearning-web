@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ContentService } from 'src/app/services/content.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Lesson } from 'src/app/models/lesson.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
-import { faFilePdf , faVideo, faCoffee} from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf , faVideo, faCoffee, IconDefinition, faFileWord, faCogs} from '@fortawesome/free-solid-svg-icons';
 import { SubTopic } from 'src/app/models/sub-topic.model';
 import { Content } from 'src/app/models/content.model';
 
+export interface CustomContent{
+   data: Content;
+   icon:IconDefinition;
+}
 
 @Component({
   selector: 'app-course-detail-page',
@@ -21,21 +24,21 @@ export class CourseDetailPageComponent implements OnInit {
   public categoryId: number;
   public subTopic: SubTopic;
  
-  public intermediary: Content[];
-  public basic: Content[];
-  public advanced: Content[];
-  public icon = faFilePdf;
+  public intermediary: CustomContent[];
+  public basic: CustomContent[];
+  public advanced: CustomContent[];
 
 
   public languageFilter:string = "English";
   public classFilter:string;
   public levelFilter:string;
-  public audienceFilter:string = "both";
+  public audienceFilter:string = "student";
   
   
   public levels = ['basic','intermediary','advanced'];
   public languages: string[] = ['English','Hindi','Sanskrit'];
   public classes: string[] = ['Class-1','Class-2','Class-3'];
+  public iconType: string[] = ['scorm','pdf','youtube','word'];
 
 
   constructor(private contentService :ContentService,private snackbar: MatSnackBar, 
@@ -69,11 +72,11 @@ export class CourseDetailPageComponent implements OnInit {
 
   assignContentByLevel(content:Content){
     if(content.level == 'basic'){
-      this.basic.push(content);
+      this.basic.push({data:content,icon:this.getIcon(content.type)});
     } else if(content.level == 'intermediary'){
-      this.intermediary.push(content);
+      this.intermediary.push({data:content,icon:this.getIcon(content.type)});
     } else{
-      this.advanced.push(content);
+      this.advanced.push({data:content,icon:this.getIcon(content.type)});
     }
   }
 
@@ -90,7 +93,7 @@ export class CourseDetailPageComponent implements OnInit {
     }
   }
 
-  getContentByLevel(level:string):Content[]{
+  getContentByLevel(level:string):CustomContent[]{
     if(level == 'basic')
       return this.basic;
     else if(level == 'intermediary')
@@ -108,20 +111,20 @@ export class CourseDetailPageComponent implements OnInit {
     } 
   }
 
-  // setIcons() {
-  //   for( let section of this.sections) {
-  //     for (let lesson of section.lessons) {
-  //          let url: String = lesson.contentng[0].url;
-  //          if (url.endsWith(".pdf")){
-  //             this.icon = faFilePdf
-  //          } else if (url.includes("youtube")) {
-  //             this.icon = faVideo
-  //          } else {
-  //             this.icon = faCoffee
-  //          }
-  //     }
-  //   }
-  // }
+  getIcon(type:string): IconDefinition{
+    if (type == "scorm"){
+      return faCogs
+    }
+    if (type == "pdf"){
+      return faFilePdf
+    } 
+    if (type == "youtube"){
+      return faVideo
+    } 
+    if (type == "word"){
+      return faFileWord
+    } 
+  }
 
   loadDialogBox(link: String, desc: String) {
     const dialogConfig = new MatDialogConfig();
