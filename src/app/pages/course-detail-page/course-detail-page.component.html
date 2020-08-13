@@ -3,34 +3,43 @@
     <div class="row">
       <div class="course">
         <div class="heading">
-            <div class="category-name">{{categoryName}}</div>
-            <div class="course-name">{{courseName}}</div>
+         <img src={{topic.categories[0].image.url}}>
+         <div class="text">
+            <div class="category-name">{{topic.categories[0].name}}</div>
+            <div class="category-desc">{{topic.categories[0].description}}</div>
+           
         </div>
-        <i class="fa fa-file-image-o"></i>
-
-        <mat-slide-toggle class="toggle">
-        Teacher/Student
-        </mat-slide-toggle>
-
+        </div>
+       
+        <div class="panel">
+            <div class="topic-name">{{topic.name}}</div>
+            <mat-slide-toggle class="toggle">
+            Teacher/Student
+            </mat-slide-toggle>
+        </div>
+        
         <mat-expansion-panel  class="levels" *ngFor="let level of levels">
           <mat-expansion-panel-header>
              <mat-panel-title>
                 {{level}}
              </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-card class="lessons" *ngFor="let section of sections">
-            <br>
-            <mat-card-title>{{section.name}}</mat-card-title>
+          <div class="subtopic" *ngFor="let subtopic of getSubTopicsByLevel(level)">
+            <img class="card-img" src={{subtopic.image.url}}>
+            <mat-card>
+               <br>
+               <mat-card-title>{{subtopic.name}}</mat-card-title>
                <mat-card-actions>
-                  <div class="lesson" *ngFor="let lesson of section.lessons">
-                     <button  mat-button  (click)="onClick($event,lesson.lessonContents)">
+                  <div class="content" *ngFor="let content of getContentBySubTopicId(subtopic.id)">
+                     <button  mat-button  (click)="onClick($event,content)">
                         <fa-icon class="logo" [icon]="icon"></fa-icon>  
-                        <span>{{lesson.name}}</span>
-                      </button>
+                        <span>{{content.name}}</span>
+                        </button>
                   </div>
                </mat-card-actions>
-            <br>
-          </mat-card>
+               <br>
+             </mat-card>
+          </div>
        </mat-expansion-panel>
     </div>
   </div>
