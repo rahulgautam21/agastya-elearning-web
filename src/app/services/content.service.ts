@@ -40,9 +40,9 @@ export class ContentService {
     );
   }
 
-  getCourseByCourseID(courseId: String) {
-    return this.httpClient.get<Course>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'courses' + `/${courseId}`
+  getAllSubTopics() {
+    return this.httpClient.get<SubTopic[]>(
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics'
     );
   }
 

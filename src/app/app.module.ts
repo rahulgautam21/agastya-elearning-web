@@ -7,11 +7,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -79,6 +81,8 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
     MatCardModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
