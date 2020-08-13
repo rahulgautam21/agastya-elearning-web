@@ -44,24 +44,22 @@
             </mat-button-toggle-group>
          </div>
         
-        <mat-expansion-panel  class="levels" *ngFor="let level of levels">
-           <mat-expansion-panel-header *ngIf="getContentByLevel(level).length>0">
-             <mat-panel-title>
-               <div class="level">{{level}}</div>
-             </mat-panel-title>
-            </mat-expansion-panel-header>
-         
-            <mat-card class="contents" >
-               <mat-card-actions>
-                  <div class="content" *ngFor="let content of getContentByLevel(level)">
-                     <button  mat-button  (click)="onClick($event,content)">
-                        <fa-icon class="logo" [icon]="icon"></fa-icon>  
-                        <span>{{content.name}}</span>
-                        </button>
-                  </div>
-               </mat-card-actions>
-            </mat-card>
-         </mat-expansion-panel>
+         <div class="levels" *ngFor="let level of levels"> 
+            <mat-expansion-panel   *ngIf="getContentByLevel(level).length>0" [expanded]="true">
+               <mat-expansion-panel-header >
+                 <mat-panel-title>
+                   <div class="level">{{level}}</div>
+                 </mat-panel-title>
+                </mat-expansion-panel-header>
+             
+                <div class="content" *ngFor="let content of getContentByLevel(level)">
+                  <button  mat-button  (click)="onClick($event,content.data)">
+                     <fa-icon class="logo" [icon]="content.icon"></fa-icon>  
+                     <span>{{content.data.name}}</span>
+                  </button>
+               </div>
+             </mat-expansion-panel>
+         </div>
     </div>
   </div>
 </div>  
