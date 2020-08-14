@@ -10,49 +10,54 @@
       flex-direction: column;
 
       .heading {
-        position: relative;
-        color: white;
+        background-color: rgb(7, 6, 14);
+        height: 18vh;
+        display: flex;
+        flex-direction: row;
   
         .banner-image{
-          width: 100%;
-          height: 20vh;
+          width: 30vh;
+          height: 100%;
         }
 
-        .topic-name{
-          position: absolute;
-          bottom: 10vh;
-          left: 5vh;
-          text-transform: uppercase;
-          font-size: xx-large;
-        }
+        .text {
+          color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          padding-left: 1vw;
 
-        .subtopic-name{
-          position: absolute;
-          bottom: 5vh;
-          left: 5vh;
-          font-size: large;
+          .topic-name{
+            text-transform: uppercase;
+            font-size: large;
+          }
+  
+          .subtopic-name{
+            font-size: xx-large;
+            text-transform: capitalize;
+          }
         }
       }
 
       .filter-panel{
         display: flex;
-        margin-top: 5vh;
+        margin-top: 2vh;
         justify-content: space-between;
 
         .btn-group {
-          height: 8vh;
+          height: 7vh;
         }
       }
     
       .levels {
-        margin-top: 5vh;
+        margin-top: 1vh;
 
         .level {
           text-transform: uppercase;
         }
 
         .content {
-        
+
             .logo {
                 height: 30px;
                 width: 30px;

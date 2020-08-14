@@ -7,7 +7,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 import { faFilePdf , faVideo, faCoffee, IconDefinition, faFileWord, faCogs} from '@fortawesome/free-solid-svg-icons';
 import { SubTopic } from 'src/app/models/sub-topic.model';
-import { Content } from 'src/app/models/content.model';
+import { Content, Class } from 'src/app/models/content.model';
 
 export interface CustomContent{
    data: Content;
@@ -31,13 +31,12 @@ export class CourseDetailPageComponent implements OnInit {
 
   public languageFilter:string = "English";
   public classFilter:string;
-  public levelFilter:string;
   public audienceFilter:string = "student";
   
   
   public levels = ['basic','intermediary','advanced'];
-  public languages: string[] = ['English','Hindi','Sanskrit'];
-  public classes: string[] = ['Class-1','Class-2','Class-3'];
+  public languages: string[];
+  public classes: string[];
   public iconType: string[] = ['scorm','pdf','youtube','word'];
 
 
@@ -52,22 +51,44 @@ export class CourseDetailPageComponent implements OnInit {
   ngOnInit(): void {
     this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
       this.subTopic = subTopic;
+      this.loadFilters();
       this.distributeContent();
     });
   }
 
+  loadFilters(){
+    let languages = new Set<string>();
+    let classes = new Set<string>();
+
+    for(var content of this.subTopic.contents){
+      languages.add(content.language);
+
+      for(var cls of content.classes)
+        classes.add(cls.name);
+    }
+
+    this.languages = Array.from<string>(languages).sort();
+    this.classes = Array.from<string>(classes).sort();
+  }
+
   
   isEligibleAfterFiltering(content:Content){
-    if (content.audience != this.audienceFilter)
-      return false;
-    if (this.levelFilter != undefined && content.level != this.levelFilter )
+    if (content.audience != this.audienceFilter && content.audience != 'both')
       return false;  
-    // if (content.class != this.classFilter)
-    //   return false;    
+    if (!this.isClassEligible(content.classes))
+      return false;  
     if (content.language != this.languageFilter)
       return false;     
 
     return true;
+  }
+
+  isClassEligible(classes:Class[]):boolean{
+    for(var cls of classes){
+      if(cls.name == this.classFilter || this.classFilter == undefined)
+        return true;
+    }
+    return false;
   }
 
   assignContentByLevel(content:Content){
@@ -105,9 +126,11 @@ export class CourseDetailPageComponent implements OnInit {
   onClick(event: Event, content: Content){
     if(content == null) {
       this.snackbar.open("Data not present");
-     
-    } else {
-      this.loadDialogBox(content.url,content.name);
+    } else {  
+      let url = content.url;
+      if(content.type=='word')
+          url='https://docs.google.com/viewer?url='+content.url+'&embedded=true';
+      this.loadDialogBox(url,content.name);
     } 
   }
 
