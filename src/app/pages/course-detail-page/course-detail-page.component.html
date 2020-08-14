@@ -45,7 +45,7 @@
                 </mat-expansion-panel-header>
              
                 <div class="content" *ngFor="let content of getContentByLevel(level)">
-                  <button  mat-button  (click)="onClick($event,content.data)">
+                  <button class="content-btn" mat-button  (click)="onClick($event,content.data)">
                      <fa-icon class="logo" [icon]="content.icon"></fa-icon>  
                      <span>{{content.data.name}}</span>
                   </button>

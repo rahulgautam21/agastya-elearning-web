@@ -35,6 +35,7 @@
           .subtopic-name{
             font-size: xx-large;
             text-transform: capitalize;
+            line-height: normal;
           }
         }
       }
@@ -43,6 +44,10 @@
         display: flex;
         margin-top: 2vh;
         justify-content: space-between;
+
+        .filter{
+          width: 40%;
+        }
 
         .btn-group {
           height: 7vh;
@@ -56,18 +61,28 @@
           text-transform: uppercase;
         }
 
-        .content {
+        .content { 
+          .content-btn{
+            position: relative;
+            top: 0;
+            transition: top ease 0.1s;
 
             .logo {
-                height: 30px;
-                width: 30px;
+              height: 30px;
+              width: 30px;
             }
 
             span { 
-              padding-left: 2vw;
-              font-size: medium;
-          } 
+            padding-left: 2vw;
+            font-size: medium;
+            } 
+
+          }
+          .content-btn:hover{
+            top: -1vh;
+          }
         }
+        
       }
     }
   }
