@@ -43,6 +43,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
 import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-circle.component';
 import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog-box.component';
+import { RecentCoursesComponent } from './pages/recent-courses/recent-courses.component';
+import {MatGridListModule} from '@angular/material/grid-list'
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
     MenuComponent,
     UparrowCircleComponent,
     DialogBoxComponent,
+	RecentCoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,9 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
     MatExpansionModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+	MatGridListModule
+    
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
