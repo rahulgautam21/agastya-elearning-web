@@ -8,8 +8,21 @@ nav {
   z-index: 1;
   display: none;
   position: fixed;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background: $yellow;
+  .category-image {
+    position: fixed;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    opacity: 0.4;
+    z-index: -1;
+    @include media("<=phone") {
+      width: auto;
+      height: 100%;
+    }
+  }
   a {
     position: relative;
     &:after {
@@ -139,6 +152,18 @@ nav {
             @include media("<=phone") {
               font-size: 2rem;
               line-height: 2rem;
+              position: relative;
+              &:after {
+                content: "";
+                position: absolute;
+                height: 2px;
+                display: block;
+                margin-top: 5px;
+                right: 0;
+                background: $black;
+                width: 100%;
+                left: 0;
+              }
             }
           }
         }
