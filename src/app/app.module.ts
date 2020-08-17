@@ -12,7 +12,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -22,7 +21,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NavComponent } from './nav/nav.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AboutusPageComponent } from './pages/aboutus-page/aboutus-page.component';
@@ -46,14 +44,13 @@ import { MenuComponent } from './menu/menu.component';
 import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-circle.component';
 import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog-box.component';
 import { RecentCoursesComponent } from './pages/recent-courses/recent-courses.component';
-import {MatGridListModule} from '@angular/material/grid-list'
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NavComponent,
     SearchPageComponent,
     LandingPageComponent,
     AboutusPageComponent,
@@ -69,7 +66,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MenuComponent,
     UparrowCircleComponent,
     DialogBoxComponent,
-	RecentCoursesComponent
+    RecentCoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +91,6 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatButtonToggleModule,
     MatGridListModule,
     MatSidenavModule
-    
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],

@@ -9,11 +9,11 @@
           <div *ngIf="subTopic.topic.categories" class="case-details">
             <!-- <span>{{ subTopic.topic.catergories }}</span> -->
             <span class="category-detail"
-              >{{ (subTopic?.topic.categories)[0].name }} -
-              {{ subTopic?.topic.name }}</span
+              >{{ subTopic?.topic.categories[0].name }} -
+              {{ subTopic?.topic.name  }}</span
             >
             <!-- <span class="topic-detail"></span> -->
-            <h2>{{ subTopic?.name }}</h2>
+            <h2>{{ slice(subTopic.name) }}</h2>
           </div>
           <div class="case-image">
             <img src="assets/images/child.jpg" />

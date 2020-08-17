@@ -19,6 +19,7 @@ export interface Media {
 }
 
 export interface Formats {
+  large?: MediaAttribute;
   small?: MediaAttribute;
   medium?: MediaAttribute;
   thumbnail?: MediaAttribute;

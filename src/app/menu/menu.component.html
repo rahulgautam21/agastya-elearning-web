@@ -1,4 +1,9 @@
 <nav>
+  <img
+    *ngIf="category.image.formats.large"
+    [src]="category.image.formats.large.url"
+    class="category-image"
+  />
   <div class="container">
     <div class="nav-columns">
       <div class="nav-column">
