@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
@@ -90,7 +92,8 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatSlideToggleModule,
     MatSelectModule,
     MatButtonToggleModule,
-	MatGridListModule
+    MatGridListModule,
+    MatSidenavModule
     
   ],
   providers: [HttpClient, ViewportRuler],

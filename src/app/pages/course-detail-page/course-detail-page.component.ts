@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentService } from 'src/app/services/content.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -8,6 +8,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { faFilePdf , faVideo, faCoffee, IconDefinition, faFileWord, faCogs} from '@fortawesome/free-solid-svg-icons';
 import { SubTopic } from 'src/app/models/sub-topic.model';
 import { Content, Class } from 'src/app/models/content.model';
+import { MatSidenav } from '@angular/material/sidenav';
 
 export interface CustomContent{
    data: Content;
@@ -40,20 +41,30 @@ export class CourseDetailPageComponent implements OnInit {
   public iconType: string[] = ['scorm','pdf','youtube','word'];
 
 
+  @ViewChild('drawer') sidenav: MatSidenav;
+  
   constructor(private contentService :ContentService,private snackbar: MatSnackBar, 
     private activatedRoute: ActivatedRoute,
     public matDialog: MatDialog) { 
     this.activatedRoute.params.subscribe((params: Params)=>{
       this.categoryId = parseInt(params['id']);
+
+      this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
+        this.subTopic = subTopic;
+        this.clearPrevStateAndSetDefault()
+        this.loadFilters();
+        this.distributeContent();
+      }); 
     });
   }
 
+  clearPrevStateAndSetDefault(){
+    this.languageFilter = "English";
+    this.audienceFilter = "student";
+    this.classFilter = undefined;
+  }
+
   ngOnInit(): void {
-    this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
-      this.subTopic = subTopic;
-      this.loadFilters();
-      this.distributeContent();
-    });
   }
 
   loadFilters(){
@@ -154,6 +165,8 @@ export class CourseDetailPageComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.panelClass = 'myapp-no-padding-dialog';
+    dialogConfig.height = '100%';
+    dialogConfig.width = '100%';
 
     dialogConfig.data = {
       url: link,
@@ -162,5 +175,15 @@ export class CourseDetailPageComponent implements OnInit {
     
     this.matDialog.open(DialogBoxComponent, dialogConfig);
     
+  }
+
+  onNavBarOpen(){
+    document.getElementById('mobile-nav-panel').style.height = '45vh';
+    this.sidenav.toggle();
+  }
+
+  onNavBarClose(){
+    document.getElementById('mobile-nav-panel').style.height = 'fit-content';
+    this.sidenav.toggle();
   }
 }
