@@ -8,8 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
@@ -89,6 +90,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatButtonToggleModule,
     MatGridListModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
