@@ -1,8 +1,6 @@
 @import "../../theme/general.scss";
 .page {
- 
   .row {
-    
     .course {
       width: 100%;
       margin-top: 18vh;
@@ -12,11 +10,12 @@
       .heading {
         position: relative;
         height: 25vh;
-      
-        .banner-image{
+
+        .banner-image {
           width: 100%;
           height: 100%;
-          opacity: 0.8;
+          opacity: 0.4;
+          object-fit: cover;
         }
 
         .text {
@@ -29,13 +28,12 @@
           justify-content: space-evenly;
           padding-left: 1vw;
 
-
-          .topic-name{
+          .topic-name {
             text-transform: uppercase;
             font-size: large;
           }
-  
-          .subtopic-name{
+
+          .subtopic-name {
             font-size: xx-large;
             text-transform: capitalize;
             line-height: normal;
@@ -43,16 +41,16 @@
         }
       }
 
-      .main-filter-panel{
+      .main-filter-panel {
         display: flex;
         margin-top: 2vh;
         justify-content: space-between;
 
-        @include media("<=phone"){
+        @include media("<=phone") {
           display: none;
         }
 
-        .main-filter{
+        .main-filter {
           width: fit-content;
         }
 
@@ -63,7 +61,7 @@
 
       .mobile-nav-panel {
         display: none;
-        
+
         @include media("<=phone") {
           display: flex;
           height: fit-content;
@@ -82,20 +80,14 @@
             width: fit-content;
           }
 
-          .mobile-filter{
+          .mobile-filter {
             width: fit-content;
             margin-top: 3vh;
-
           }
-  
-          
 
-          .closeBtn{
-         
+          .closeBtn {
           }
         }
-
-       
       }
 
       .levels {
@@ -105,8 +97,8 @@
           text-transform: uppercase;
         }
 
-        .content { 
-          .content-btn{
+        .content {
+          .content-btn {
             position: relative;
             top: 0;
             transition: top ease 0.1s;
@@ -116,17 +108,15 @@
               width: 30px;
             }
 
-            span { 
-            padding-left: 2vw;
-            font-size: medium;
-            } 
-
+            span {
+              padding-left: 2vw;
+              font-size: medium;
+            }
           }
-          .content-btn:hover{
+          .content-btn:hover {
             top: -1vh;
           }
         }
-        
       }
     }
   }
