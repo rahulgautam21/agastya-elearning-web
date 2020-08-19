@@ -49,13 +49,49 @@ export class RecentCoursesComponent implements OnInit {
             this.subTopics.push(this.subTopics[0]);
           }
         }
+        
+
+        
 
         this.course1 = this.subTopics[5];
         this.course2 = this.subTopics[0];
         this.course3 = this.subTopics[4];
 
         this.restOfTheCourses = this.subTopics.slice(0,6);
-        this.restOfTheCoursesMobile = this.subTopics
+        this.restOfTheCoursesMobile = this.subTopics.slice(0,5)
+
+
+        this.restOfTheCourses.map(data =>{
+              data.description = data.name
+        })
+
+
+        this.contentService
+              .getTopicById(this.course1.topic)
+              .subscribe((topic:any) => {
+                this.course1.name = topic.categories[0].name+" - "+topic.name
+          });
+
+        this.contentService
+            .getTopicById(this.course2.topic)
+            .subscribe((topic:any) => {
+              this.course2.name = topic.categories[0].name+" - "+topic.name
+        });  
+
+        this.contentService
+          .getTopicById(this.course3.topic)
+          .subscribe((topic:any) => {
+            this.course3.name = topic.categories[0].name+" - "+topic.name
+      });
+
+      this.restOfTheCourses.map(data =>{
+        this.contentService
+          .getTopicById(data.topic)
+          .subscribe((topic:any) => {
+            data.name = topic.categories[0].name+" - "+topic.name
+      });
+      })
+
 
       }
     });
