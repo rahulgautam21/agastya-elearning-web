@@ -1,7 +1,17 @@
 <nav>
   <img
-    *ngIf="category.image.formats.large"
-    [src]="category.image.formats.large.url"
+    *ngIf="
+      category.image.formats.large ||
+      category.image.formats.medium ||
+      category.image.formats.small
+    "
+    [src]="
+      category.image.formats.large
+        ? category.image.formats.large.url
+        : category.image.formats.medium.url
+        ? category.image.formats.medium.url
+        : category.image.formats.small.url
+    "
     class="category-image"
   />
   <div class="container">

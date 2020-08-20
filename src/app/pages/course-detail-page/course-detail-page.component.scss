@@ -3,7 +3,7 @@
   .row {
     .course {
       width: 100%;
-      margin-top: 18vh;
+      margin-top: 15vh;
       display: flex;
       flex-direction: column;
 
@@ -14,8 +14,19 @@
         .banner-image {
           width: 100%;
           height: 100%;
+<<<<<<< HEAD
           opacity: 0.4;
           object-fit: cover;
+=======
+          opacity: 0.8;
+          object-fit: cover;
+
+          @include media("<=phone"){
+            width: 116%;
+            margin-left: -16px;
+          }
+
+>>>>>>> upstream/master
         }
 
         .text {
@@ -65,12 +76,13 @@
         @include media("<=phone") {
           display: flex;
           height: fit-content;
-          width: 100%;
+          background: none;
           margin-top: 2vh;
           margin-bottom: 2vh;
           justify-content: space-between;
         }
 
+<<<<<<< HEAD
         .mobile-filter-panel {
           display: flex;
           flex-direction: column;
@@ -86,6 +98,28 @@
           }
 
           .closeBtn {
+=======
+        .drawer {
+      
+          .mobile-filter-panel {
+            display: flex;
+            flex-direction: column;
+  
+            .mobile-btn-group {
+              height: 7vh;
+              width: fit-content;
+            }
+  
+            .mobile-filter{
+              width: fit-content;
+              margin-top: 3vh;
+  
+            }
+    
+            .closeBtn{
+              width: 100%;
+            }
+>>>>>>> upstream/master
           }
         }
       }
