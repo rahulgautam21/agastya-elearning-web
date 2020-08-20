@@ -75,16 +75,20 @@
           display: flex;
           height: fit-content;
           background: none;
-          margin-top: 2vh;
-          margin-bottom: 2vh;
-          justify-content: space-between;
+          margin-top: 4vh;
+          margin-bottom: 3vh;
+          justify-content: flex-end;
         }
 
         .drawer {
-      
+          border:none;
+          padding: 5%;
+          border:1px solid darkgrey;
+        
           .mobile-filter-panel {
             display: flex;
             flex-direction: column;
+          
   
             .mobile-btn-group {
               height: 7vh;
