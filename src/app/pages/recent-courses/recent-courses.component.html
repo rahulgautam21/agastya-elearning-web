@@ -7,7 +7,6 @@
         </div>
     </div>
     
-
    <div class="main-panel"> 
     <div class="container" style="margin-top: 5px;">
         <div class="row">
@@ -34,24 +33,24 @@
                             <div *ngIf="course2">
                                 <div class="section2-courses-img-container">
                                     <div class="">
-                                        <img [src]="course2.image.formats.small.url" class="section2-courses-img-container-img "   />
+                                        <img [src]="course2?.image?.formats.small.url" class="section2-courses-img-container-img "   />
                                     </div>
                                     <div style="padding-left: 5px;">
-                                        <h5><b>{{course2.name | uppercase }}</b> </h5>
-                                        <h1><b>{{(course2.description)? (course2.description | slice:0:120)+'..':(course2.description) }}</b></h1>
+                                        <h5><b>{{course2?.name | uppercase }}</b> </h5>
+                                        <h1><b>{{(course2?.description)}}</b></h1>
                                     </div>
                                 </div>
                             </div>
                         </mat-grid-tile>
-                        <mat-grid-tile class="mat-card section2-courses" *ngIf="course3"> 
+                        <mat-grid-tile class="mat-card section2-courses" > 
                             <div *ngIf="course3">
                                 <div class="section2-courses-img-container">
                                     <div class="">
-                                        <img [src]="course3.image.formats.small.url" class="section2-courses-img-container-img "   />
+                                        <img [src]="course3.image?.formats.small.url" class="section2-courses-img-container-img "   />
                                     </div>
                                     <div style="padding-left: 5px;">
                                         <h5><b>{{course3.name | uppercase }}</b> </h5>
-                                        <h1><b>{{(course3.description)? (course3.description | slice:0:120)+'..':(course3.description) }}</b></h1>
+                                        <h1><b>{{(course3.description)}}</b></h1>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +70,7 @@
                             <mat-grid-tile colspan=2  >
                                 <div style="padding-left: 5px;">
                                     <h5><b>{{course.name | uppercase }}</b> </h5>
-                                    <h3><b>{{(course.description)? (course.description | slice:0:90)+'...':(course.description) }}</b></h3>
+                                    <h3><b>{{(course.description)}}</b></h3>
                                 </div>
                             </mat-grid-tile>
                      </mat-grid-list>
