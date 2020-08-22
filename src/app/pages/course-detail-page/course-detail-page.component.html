@@ -36,7 +36,7 @@
           </mat-button-toggle-group>
        </div>
       
-        <mat-drawer-container id="mobile-nav-panel" class="mobile-nav-panel" [hasBackdrop]="true">
+        <mat-drawer-container id="mobile-nav-panel" class="mobile-nav-panel">
           <mat-drawer #drawer mode="side" class="drawer">
             <div class="mobile-filter-panel">
               <mat-button-toggle-group class="mobile-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContent()" >
@@ -44,7 +44,7 @@
                 <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
              </mat-button-toggle-group>
               <div class='mobile-filter'>
-                 <mat-form-field appearance="fill">
+                 <mat-form-field appearance="fill"> 
                     <mat-label>Language</mat-label>
                     <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContent()">  
                       <mat-option *ngFor="let language of languages" [value]="language">

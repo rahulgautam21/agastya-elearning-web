@@ -61,7 +61,7 @@ export class CourseDetailPageComponent implements OnInit {
   clearPrevStateAndSetDefault(){
     this.languageFilter = "English";
     this.audienceFilter = "student";
-    this.classFilter = undefined;
+    this.classFilter = "All";
   }
 
   ngOnInit(): void {
@@ -77,6 +77,8 @@ export class CourseDetailPageComponent implements OnInit {
       for(var cls of content.classes)
         classes.add(cls.name);
     }
+
+    classes.add('All');
 
     this.languages = Array.from<string>(languages).sort();
     this.classes = Array.from<string>(classes).sort();
@@ -96,7 +98,7 @@ export class CourseDetailPageComponent implements OnInit {
 
   isClassEligible(classes:Class[]):boolean{
     for(var cls of classes){
-      if(cls.name == this.classFilter || this.classFilter == undefined)
+      if(cls.name == this.classFilter || this.classFilter == 'All')
         return true;
     }
     return false;
@@ -178,7 +180,7 @@ export class CourseDetailPageComponent implements OnInit {
   }
 
   onNavBarOpen(){
-    document.getElementById('mobile-nav-panel').style.height = '45vh';
+    document.getElementById('mobile-nav-panel').style.height = '48vh';
     this.sidenav.toggle();
   }
 
