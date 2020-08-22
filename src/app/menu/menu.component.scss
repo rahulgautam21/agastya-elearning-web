@@ -10,18 +10,18 @@ nav {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  background: $yellow;
+  background: $grey;
   .category-image {
     position: fixed;
     object-fit: cover;
+    opacity: 0.7;
     width: 100%;
-    height: auto;
-    opacity: 0.4;
+    height: 100%;
     z-index: -1;
-    @include media("<=phone") {
-      width: auto;
-      height: 100%;
-    }
+    // @include media("<=phone") {
+    //   width: 100%;
+    //   height: 100%;
+    // }
   }
   a {
     position: relative;
@@ -73,7 +73,9 @@ nav {
       }
       .nav-label {
         margin-bottom: 3rem;
-        font-size: 1.2rem;
+        font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
         @include media("<=tablet") {
           font-size: 0.8rem;
           margin-bottom: 1.4rem;
@@ -87,7 +89,9 @@ nav {
       }
 
       .nav-title {
-        font-size: 1.2rem;
+        font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
         margin-bottom: 1.6rem;
         @include media("<=phone") {
           font-size: 1rem;

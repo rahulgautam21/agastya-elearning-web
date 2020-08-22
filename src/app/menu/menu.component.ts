@@ -40,7 +40,7 @@ export class MenuComponent implements OnInit {
   }
 
   closeMenuAnimation() {
-    closeMenu();
+    closeMenu(this.handSet);
   }
 
   setTitle() {
