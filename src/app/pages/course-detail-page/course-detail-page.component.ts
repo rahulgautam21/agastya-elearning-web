@@ -178,7 +178,7 @@ export class CourseDetailPageComponent implements OnInit {
   }
 
   onNavBarOpen(){
-    document.getElementById('mobile-nav-panel').style.height = '48vh';
+    document.getElementById('mobile-nav-panel').style.height = '45vh';
     this.sidenav.toggle();
   }
 
