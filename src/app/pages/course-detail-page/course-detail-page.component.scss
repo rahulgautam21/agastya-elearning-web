@@ -16,6 +16,7 @@
           height: 100%;
           opacity: 0.8;
           object-fit: cover;
+          background: grey;
 
           @include media("<=phone") {
             width: 116%;
@@ -24,7 +25,7 @@
         }
 
         .text {
-          color: white;
+          color: black;
           position: absolute;
           bottom: 4vh;
           left: 2vw;
@@ -60,7 +61,7 @@
         }
 
         .main-btn-group {
-          height: 7vh;
+          height: fit-content;
         }
       }
 
@@ -84,11 +85,10 @@
           .mobile-filter-panel {
             display: flex;
             flex-direction: column;
+            
           
-  
-
             .mobile-btn-group {
-              height: 7vh;
+              height: fit-content;
               width: fit-content;
             }
 
