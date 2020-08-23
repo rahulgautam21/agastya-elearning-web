@@ -167,8 +167,6 @@ export class CourseDetailPageComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.panelClass = 'myapp-no-padding-dialog';
-    dialogConfig.height = '100%';
-    dialogConfig.width = '100%';
 
     dialogConfig.data = {
       url: link,
