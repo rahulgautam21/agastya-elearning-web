@@ -10,6 +10,7 @@ export interface Content {
   level: string;
   language: string;
   audience: string;
+  type: string;
   created_at: Date;
   updated_at: Date;
   media?: Media[];

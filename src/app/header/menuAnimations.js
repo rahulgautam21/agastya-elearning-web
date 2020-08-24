@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 let tl = gsap.timeline();
 
-export const openMenu = (width, height, delay) => {
+export const openMenu = (width, height, delay, handset) => {
   tl.to("nav", 0, {
     css: { display: "block" },
     delay,
@@ -12,7 +12,7 @@ export const openMenu = (width, height, delay) => {
       y: height,
       ease: "expo.inOut",
     })
-    .to(".hamburger-menu span", 0.6, {
+    .to(handset ? ".hamburger-menu span" : ".hamburger-menu button", 0.6, {
       delay: -1,
       scaleX: 0,
       transformOrigin: "50% 0%",
@@ -52,7 +52,7 @@ export const openMenu = (width, height, delay) => {
     });
 };
 
-export const closeMenu = () => {
+export const closeMenu = (handset) => {
   tl.to(".App", 1, {
     y: 0,
     ease: "expo.inOut",
@@ -85,7 +85,7 @@ export const closeMenu = () => {
         strokeDasharray: 40,
       },
     })
-    .to(".hamburger-menu span", 0.6, {
+    .to(handset ? ".hamburger-menu span" : ".hamburger-menu button", 0.6, {
       delay: -0.6,
       scaleX: 1,
       transformOrigin: "50% 0%",

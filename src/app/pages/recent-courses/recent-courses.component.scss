@@ -1,42 +1,32 @@
 @import "../../theme/general.scss";
 
+img {
+  filter: brightness(0.9);
+  object-fit: cover;
+}
+
+.zoom-image:hover {
+  img {
+    transform: scale(1.2);
+    cursor: pointer;
+    object-fit: cover;
+  }
+}
+
+::ng-deep .mat-figure {
+  display: block !important;
+}
+
+::ng-deep .mat-grid-tile .mat-figure {
+  align-items: flex-start !important;
+  padding-top: 10px;
+}
+
 .cases {
   min-height: 50vh; //fallback
   position: relative;
   margin-bottom: 65px;
 
-  .cases-navigation {
-    position: absolute;
-    top: 42%;
-    width: inherit;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 6;
-    padding: 0 37px;
-    box-sizing: border-box;
-    @include media("<=tablet") {
-      // display: none;
-      padding: 0 16px;
-    }
-    .cases-arrow {
-      background: rgba(0, 0, 0, 0.4);
-      height: 72px;
-      width: 72px;
-      border-radius: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      svg {
-        color: $white;
-        height: 28px;
-        width: 28px;
-      }
-      &.disabled {
-        opacity: 0.3;
-      }
-    }
-  }
   .row {
     @include media("<=tablet") {
       flex-direction: column;
@@ -96,23 +86,9 @@
         @include media("<=phone") {
           padding: 16px;
         }
-
-        .category-detail {
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          font-weight: 500;
-          font-size: 0.8rem;
+        span {
           margin-top: 200px;
-          opacity: 1;
-          color: $white;
-          font-weight: 600;
-          @include media("<=phone") {
-            margin-top: 230px;
-          }
-        }
-        .topic-detail {
           font-size: 1.6rem;
-          margin-top: 10px;
           opacity: 0.8;
           color: $white;
           font-weight: 600;
@@ -122,13 +98,14 @@
           @include media("<=phone") {
             font-size: 1.2rem;
             line-height: 2.2rem;
+            margin-top: 210px;
           }
         }
         h2 {
           font-size: 2.4rem;
           line-height: 3.4rem;
           width: 85%;
-          margin-top: 5px;
+          margin-top: 16px;
           color: $white;
           @include media("<=desktop", ">tablet") {
             font-size: 2rem;
@@ -204,4 +181,159 @@
       }
     }
   }
+}
+
+.main-panel {
+  @include media("<=tablet") {
+    // display: none;
+  }
+  @include media("<=phone") {
+    display: none;
+  }
+}
+
+.tablet-only {
+  padding: 15px;
+  display: none;
+  @include media(("<=tablet") and (">=phone")) {
+    display: block;
+  }
+  @include media(">tablet") {
+    display: none;
+  }
+}
+
+.mobile-only {
+  padding: 15px;
+  display: none;
+  @include media("<=phone") {
+    display: block;
+  }
+}
+
+.row {
+  .left-panel {
+    height: 100%;
+    width: 60%;
+    float: left;
+    padding-right: 40px;
+    width: 100vh;
+    height: 100vh;
+    @include media("<=tablet") {
+      width: 100%;
+      height: 100%;
+      float: left;
+      padding-left: 25px;
+      padding-right: 40px;
+      width: 100vh;
+      height: 120vh;
+      display: block;
+    }
+
+    .left-panel-main-container {
+      position: relative;
+      width: 100%; /* for IE 6 */
+      display: inline-block;
+      overflow: hidden;
+      height: 23.5em;
+      color: white;
+      img {
+        filter: brightness(0.8);
+        transition: transform 0.4s;
+        width: 100%;
+        height: 23.5em;
+        object-fit: cover;
+      }
+      .course-content {
+        position: absolute;
+        padding: 10px;
+        left: 0;
+        width: 100%;
+        cursor: pointer;
+      }
+      @include media("<=tablet") {
+      }
+    }
+
+    .section2-courses {
+      height: 2.5em;
+      cursor: pointer;
+      .section2-courses-img-container {
+        display: inline-block;
+        overflow: hidden;
+      }
+      .section2-courses-img-container-img {
+        width: 100%;
+        height: 14em;
+      }
+      .section2-courses-img-container:hover {
+        display: inline-block;
+        overflow: hidden;
+        img {
+          transform: scale(1.05);
+          transform-origin: 5% 5% 5% 5%;
+          border-bottom: 5px solid orangered;
+          cursor: pointer;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .section2-courses:hover {
+      img {
+        transform: scale(1.05);
+        transform-origin: 5% 5% 5% 5%;
+        border-bottom: 5px solid orangered;
+        cursor: pointer;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .right-panel {
+    height: 100%;
+    width: 40%;
+    float: right;
+
+    @include media("<=tablet") {
+      width: 100vh;
+      height: 100%;
+      display: block;
+      padding-left: 25px;
+      padding-right: 40px;
+      padding-top: 15px;
+    }
+
+    .right-panel-courses {
+      align-content: center;
+      cursor: pointer;
+    }
+
+    .right-panel-courses:hover {
+      align-content: center;
+      border-left: 3px solid orangered;
+      cursor: pointer;
+      h5 {
+        color: black;
+      }
+      h3 {
+        color: #787878;
+      }
+    }
+  }
+}
+
+.container-recentcourses {
+  position: relative;
+}
+
+/* Bottom right text */
+.text-block-recentcourses {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
 }

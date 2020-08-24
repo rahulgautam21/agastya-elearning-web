@@ -41,13 +41,13 @@ export class HeaderComponent implements OnInit {
     //sroll animation
     gsap.to('.header', {
       scrollTrigger: {
-        trigger: '.line', // start the animation when ".box" enters the viewport (once)
-        scrub: 1,
+        trigger: '.header', // start the animation when ".box" enters the viewport (once)
+        scrub: true,
         refreshPriority: 1,
-        start: 'top top', // when the top of the trigger hits the top of the viewport
+        start: '0.01% top', // when the top of the trigger hits the top of the viewport
       },
-      y: -128,
-      duration: 1,
+      y: -110,
+      duration: 0.02,
     });
   }
 
@@ -109,14 +109,13 @@ export class HeaderComponent implements OnInit {
 
   openMenuBar() {
     this.menuState = 'open';
-    gsap.to('.mobile-search', 0, { css: { display: 'none' }, delay: 0.5 });
-
-    openMenu(this.vw, this.vh, 0.3);
+    // gsap.to('.mobile-search', 0, { css: { display: 'none' }, delay: 0.5 });
+    openMenu(this.vw, this.vh, 0.3, this.handSet);
   }
 
   closeMenuBar() {
     this.menuState = 'close';
-    closeMenu();
-    gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
+    closeMenu(this.handSet);
+    // gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
   }
 }
