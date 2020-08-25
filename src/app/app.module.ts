@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -90,7 +91,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatButtonToggleModule,
     MatGridListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatChipsModule
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],

@@ -19,7 +19,7 @@
           background: grey;
 
           @include media("<=phone") {
-            width: 116%;
+            width: 100vw;
             margin-left: -16px;
           }
         }
@@ -101,6 +101,13 @@
               width: 100%;
             }
           }
+        }
+
+        .drawerContent{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
         }
       }
 
