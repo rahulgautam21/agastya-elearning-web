@@ -41,13 +41,14 @@ export class HeaderComponent implements OnInit {
     //sroll animation
     gsap.to('.header', {
       scrollTrigger: {
-        trigger: '.header', // start the animation when ".box" enters the viewport (once)
+        trigger: '.hdrlogo', // start the animation when ".box" enters the viewport (once)
         scrub: true,
         refreshPriority: 1,
-        start: '0.01% top', // when the top of the trigger hits the top of the viewport
+        // markers: true,
+        start: 'top 4%', // when the top of the trigger hits the top of the viewport
       },
-      y: -110,
-      duration: 0.02,
+      y: -150,
+      duration: 0.1,
     });
   }
 
