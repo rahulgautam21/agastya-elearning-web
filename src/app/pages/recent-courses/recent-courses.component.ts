@@ -18,6 +18,7 @@ export class RecentCoursesComponent implements OnInit {
   public course2 : SubTopic;
   public course3 : SubTopic; 
   public restOfTheCourses : SubTopic[];
+  public restOfTheCoursesPlaceholder : Array<any> = new Array(6);
   public restOfTheCoursesMobile : SubTopic[];  
 
   sortRecentCourses(subtopic1: SubTopic, subtopic2: SubTopic) {
@@ -33,6 +34,8 @@ export class RecentCoursesComponent implements OnInit {
   constructor(private contentService : ContentService) { }  
 
   ngOnInit(){
+    this.restOfTheCoursesPlaceholder.fill(1);
+
     this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
       if (data[0].subTopics) {
 
@@ -50,51 +53,86 @@ export class RecentCoursesComponent implements OnInit {
           }
         }
         
-
+        // Reset the Description
+        this.subTopics.map(data =>{
+            data.description = data.name
+        })
         
+        //Get Top 3 Courses
+        this.course1 = this.subTopics[0];
+        this.course2 = this.subTopics[1];
+        this.course3 = this.subTopics[2];
 
-        this.course1 = this.subTopics[5];
-        this.course2 = this.subTopics[0];
-        this.course3 = this.subTopics[4];
-
-        this.restOfTheCourses = this.subTopics.slice(0,6);
-        this.restOfTheCoursesMobile = this.subTopics.slice(0,5)
-
-
+        //Courses for rest of the page & mobile
+        this.restOfTheCourses = this.subTopics.slice(3,9);
+        this.restOfTheCoursesMobile = this.subTopics.slice(0,6)
+       
+        //Rest of the courses
         this.restOfTheCourses.map(data =>{
-              data.description = data.name
+          this.contentService
+            .getTopicById(data.topic)
+            .subscribe((topic:any) => {
+              data.name = topic.categories[0].name+" - "+topic.name
+          });
         })
 
-
+        //Course 1
         this.contentService
               .getTopicById(this.course1.topic)
               .subscribe((topic:any) => {
                 this.course1.name = topic.categories[0].name+" - "+topic.name
-          });
+        });
 
+        //Course 2
         this.contentService
             .getTopicById(this.course2.topic)
             .subscribe((topic:any) => {
               this.course2.name = topic.categories[0].name+" - "+topic.name
         });  
 
+        //Course 3
         this.contentService
           .getTopicById(this.course3.topic)
           .subscribe((topic:any) => {
             this.course3.name = topic.categories[0].name+" - "+topic.name
-      });
-
-      this.restOfTheCourses.map(data =>{
-        this.contentService
-          .getTopicById(data.topic)
-          .subscribe((topic:any) => {
-            data.name = topic.categories[0].name+" - "+topic.name
-      });
-      })
-
+        });
 
       }
     });
+  }
+
+//course1.image?.formats.large.url
+  imageFallBackMechanism(course : SubTopic, imageType:string){
+    
+    if(course != null && course.image!=null &&  course.image.formats!=null){
+      if(imageType =='large'){
+         if(course.image.formats.large != null && course.image.formats.large.url != null && course.image.formats.large.url.trim() != ""){
+          return   course.image.formats.large.url;
+         }else if(course.image.formats.medium.url != null && course.image.formats.medium.url.trim() != "" ){
+          return course.image.formats.medium.url
+         }else if(course.image.formats.small.url != null && course.image.formats.small.url.trim() != ""){
+          return  course.image.formats.small.url;
+         }else{
+           return "assets/images/placeholder.png"   
+         }
+      }else if(imageType =='small'){
+        if(course.image.formats.small!= null && course.image.formats.small.url != null && course.image.formats.small.url.trim() != ""){
+          return  course.image.formats.small.url;
+         }else{
+           return "assets/images/placeholder.png"   
+         }
+      }else if(imageType =='thumbnail'){
+        if(course.image.formats.thumbnail != null && course.image.formats.thumbnail.url != null && course.image.formats.thumbnail.url.trim() != ""){
+          return  course.image.formats.thumbnail.url;
+         }else{
+           return "assets/images/placeholder.png"   
+         }
+      }else{
+        return "assets/images/placeholder.png"  
+      }
+    }else{
+      return "assets/images/placeholder.png"
+    }
   }
 
 
