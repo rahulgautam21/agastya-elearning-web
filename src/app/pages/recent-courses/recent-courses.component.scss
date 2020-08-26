@@ -1,37 +1,44 @@
 @import "../../theme/general.scss";
 
-img {
-  filter: brightness(0.9);
+
+
+img{
+  filter: brightness(0.90);
   object-fit: cover;
 }
 
-.zoom-image:hover {
-  img {
+.zoom-image:hover{
+  img{
     transform: scale(1.2);
     cursor: pointer;
     object-fit: cover;
   }
 }
+ 
 
-::ng-deep .mat-figure {
+
+::ng-deep .mat-figure{
   display: block !important;
 }
 
 ::ng-deep .mat-grid-tile .mat-figure {
-  align-items: flex-start !important;
-  padding-top: 10px;
-}
+    
+    align-items: flex-start !important;
+    padding-top: 10px;
+ }
+
 
 .cases {
   min-height: 50vh; //fallback
   position: relative;
   margin-bottom: 65px;
-
+ 
+  
   .row {
     @include media("<=tablet") {
       flex-direction: column;
       padding: 0;
-    }
+    }  
     .cases-title {
       position: absolute;
       top: -30px;
@@ -183,93 +190,100 @@ img {
   }
 }
 
-.main-panel {
+.main-panel{
   @include media("<=tablet") {
-    // display: none;
-  }
+  // display: none;
+  } 
   @include media("<=phone") {
     display: none;
   }
 }
 
-.tablet-only {
+.tablet-only{
+  
   padding: 15px;
   display: none;
-  @include media(("<=tablet") and (">=phone")) {
+  @include media(( "<=tablet") and (">=phone")){
     display: block;
-  }
-  @include media(">tablet") {
+   } 
+   @include media(">tablet"){
     display: none;
-  }
+   }  
+  
 }
 
-.mobile-only {
+.mobile-only{
   padding: 15px;
   display: none;
-  @include media("<=phone") {
-    display: block;
-  }
+   @include media  ("<=phone") {
+     display: block;
+   }
 }
 
-.row {
-  .left-panel {
+.row{
+  
+
+  .left-panel{
     height: 100%;
     width: 60%;
     float: left;
     padding-right: 40px;
-    width: 100vh;
+    width: 100vh; 
     height: 100vh;
     @include media("<=tablet") {
       width: 100%;
       height: 100%;
       float: left;
-      padding-left: 25px;
+      padding-left:25px;
       padding-right: 40px;
-      width: 100vh;
+      width: 100vh; 
       height: 120vh;
       display: block;
-    }
+    } 
 
-    .left-panel-main-container {
-      position: relative;
+    .left-panel-main-container { 
+      position: relative; 
       width: 100%; /* for IE 6 */
       display: inline-block;
       overflow: hidden;
       height: 23.5em;
       color: white;
-      img {
-        filter: brightness(0.8);
-        transition: transform 0.4s;
-        width: 100%;
+      img{
+        filter: brightness(0.80);
+        transition: transform .4s; 
+        width: 100%; 
         height: 23.5em;
         object-fit: cover;
       }
-      .course-content {
-        position: absolute;
-        padding: 10px;
-        left: 0;
-        width: 100%;
-        cursor: pointer;
-      }
-      @include media("<=tablet") {
-      }
+      .course-content { 
+        position: absolute; 
+        padding:10px;
+        left: 0; 
+        width: 100%; 
+        cursor: pointer;  
+      } 
+      @include media( "<=tablet"){
+        
+      } 
+
     }
 
-    .section2-courses {
+    .section2-courses{
       height: 2.5em;
       cursor: pointer;
-      .section2-courses-img-container {
+      .section2-courses-img-container{   
         display: inline-block;
         overflow: hidden;
+       
       }
-      .section2-courses-img-container-img {
-        width: 100%;
+      .section2-courses-img-container-img{
+        width: 100%; 
         height: 14em;
       }
-      .section2-courses-img-container:hover {
+      .section2-courses-img-container:hover{   
         display: inline-block;
         overflow: hidden;
-        img {
+        img{
           transform: scale(1.05);
           transform-origin: 5% 5% 5% 5%;
           border-bottom: 5px solid orangered;
@@ -279,8 +293,8 @@ img {
       }
     }
 
-    .section2-courses:hover {
-      img {
+    .section2-courses:hover{
+      img{
         transform: scale(1.05);
         transform-origin: 5% 5% 5% 5%;
         border-bottom: 5px solid orangered;
@@ -288,9 +302,12 @@ img {
         object-fit: cover;
       }
     }
+    
   }
 
-  .right-panel {
+
+
+  .right-panel{
     height: 100%;
     width: 40%;
     float: right;
@@ -299,29 +316,32 @@ img {
       width: 100vh;
       height: 100%;
       display: block;
-      padding-left: 25px;
+      padding-left:25px;
       padding-right: 40px;
       padding-top: 15px;
-    }
+    } 
 
-    .right-panel-courses {
+      
+    .right-panel-courses{
       align-content: center;
       cursor: pointer;
-    }
+    } 
 
-    .right-panel-courses:hover {
+
+    .right-panel-courses:hover{
       align-content: center;
       border-left: 3px solid orangered;
       cursor: pointer;
-      h5 {
+      h5{
         color: black;
       }
-      h3 {
+      h3{
         color: #787878;
       }
     }
   }
 }
+
 
 .container-recentcourses {
   position: relative;
@@ -332,7 +352,7 @@ img {
   position: absolute;
   bottom: 20px;
   right: 20px;
-
+  
   color: white;
   padding-left: 20px;
   padding-right: 20px;
