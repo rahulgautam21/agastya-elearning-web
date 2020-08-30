@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy-gh": "ng deploy --base-href /agastya-elearning-web/"
+    "deploy-gh": "ng deploy --base-href /agastya-elearning-web/",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
