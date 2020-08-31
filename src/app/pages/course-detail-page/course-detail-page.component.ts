@@ -31,7 +31,7 @@ export class CourseDetailPageComponent implements OnInit {
 
 
   public languageFilter:string = "English";
-  public classFilter:string;
+  public classFilter:string = "All";
   public audienceFilter:string = "student";
   
   
