@@ -104,25 +104,25 @@ export class RecentCoursesComponent implements OnInit {
 //course1.image?.formats.large.url
   imageFallBackMechanism(course : SubTopic, imageType:string){
     
-    if(course != null && course.image!=null &&  course.image.formats!=null){
+    if(course && course.image &&  course.image.formats){
       if(imageType =='large'){
-         if(course.image.formats.large != null && course.image.formats.large.url != null && course.image.formats.large.url.trim() != ""){
+         if(course.image.formats.large && course.image.formats.large.url && course.image.formats.large.url.trim() != ""){
           return   course.image.formats.large.url;
-         }else if(course.image.formats.medium.url != null && course.image.formats.medium.url.trim() != "" ){
+         }else if(course.image.formats.medium && course.image.formats.medium.url  && course.image.formats.medium.url.trim() != "" ){
           return course.image.formats.medium.url
-         }else if(course.image.formats.small.url != null && course.image.formats.small.url.trim() != ""){
+         }else if(course.image.formats.small && course.image.formats.small.url  && course.image.formats.small.url.trim() != ""){
           return  course.image.formats.small.url;
          }else{
            return "assets/images/placeholder.png"   
          }
       }else if(imageType =='small'){
-        if(course.image.formats.small!= null && course.image.formats.small.url != null && course.image.formats.small.url.trim() != ""){
+        if(course.image.formats.small && course.image.formats.small.url  && course.image.formats.small.url.trim() != ""){
           return  course.image.formats.small.url;
          }else{
            return "assets/images/placeholder.png"   
          }
       }else if(imageType =='thumbnail'){
-        if(course.image.formats.thumbnail != null && course.image.formats.thumbnail.url != null && course.image.formats.thumbnail.url.trim() != ""){
+        if(course.image.formats.thumbnail  && course.image.formats.thumbnail.url  && course.image.formats.thumbnail.url.trim() != ""){
           return  course.image.formats.thumbnail.url;
          }else{
            return "assets/images/placeholder.png"   
