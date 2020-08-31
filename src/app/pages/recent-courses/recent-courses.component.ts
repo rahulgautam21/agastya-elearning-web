@@ -112,12 +112,16 @@ export class RecentCoursesComponent implements OnInit {
           return course.image.formats.medium.url
          }else if(course.image.formats.small && course.image.formats.small.url  && course.image.formats.small.url.trim() != ""){
           return  course.image.formats.small.url;
+         }else if(course.image.formats.thumbnail && course.image.formats.thumbnail.url  && course.image.formats.thumbnail.url.trim() != ""){
+          return  course.image.formats.thumbnail.url;
          }else{
            return "assets/images/placeholder.png"   
          }
       }else if(imageType =='small'){
         if(course.image.formats.small && course.image.formats.small.url  && course.image.formats.small.url.trim() != ""){
           return  course.image.formats.small.url;
+         }else if(course.image.formats.thumbnail && course.image.formats.thumbnail.url  && course.image.formats.thumbnail.url.trim() != ""){
+          return  course.image.formats.thumbnail.url;
          }else{
            return "assets/images/placeholder.png"   
          }
