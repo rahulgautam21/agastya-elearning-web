@@ -3,23 +3,23 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --max_old_space_size=2048 node_modules/.bin/ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy-gh": "ng deploy --base-href /agastya-elearning-web/",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod --base-href /"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~9.1.5",
     "@angular-devkit/build-angular": "~0.901.5",
-    "@angular/compiler-cli": "~9.1.6",
     "@angular/animations": "~9.1.6",
     "@angular/cdk": "^9.2.3",
+    "@angular/cli": "~9.1.5",
     "@angular/common": "~9.1.6",
     "@angular/compiler": "~9.1.6",
+    "@angular/compiler-cli": "~9.1.6",
     "@angular/core": "~9.1.6",
     "@angular/forms": "~9.1.6",
     "@angular/material": "^9.2.3",
@@ -32,12 +32,13 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "express": "^4.17.1",
     "gsap": "^3.4.1",
     "include-media": "^1.4.9",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@types/gsap": "^1.20.2",
