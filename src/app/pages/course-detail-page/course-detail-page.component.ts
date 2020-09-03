@@ -143,7 +143,7 @@ export class CourseDetailPageComponent implements OnInit {
       let url = content.url;
       if(content.type=='word')
           url='https://docs.google.com/viewer?url='+content.url+'&embedded=true';
-      this.loadDialogBox(url,content.name);
+      this.loadDialogBox(url,content.name,content.type);
     } 
   }
 
@@ -162,7 +162,7 @@ export class CourseDetailPageComponent implements OnInit {
     } 
   }
 
-  loadDialogBox(link: String, desc: String) {
+  loadDialogBox(link: String, desc: String, item: String) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -170,7 +170,8 @@ export class CourseDetailPageComponent implements OnInit {
 
     dialogConfig.data = {
       url: link,
-      title: desc 
+      title: desc,
+      type: item 
     };
     
     this.matDialog.open(DialogBoxComponent, dialogConfig);
