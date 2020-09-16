@@ -80,7 +80,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HttpClientModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSelectModule,
     MatButtonModule,
     LayoutModule,
     FontAwesomeModule,

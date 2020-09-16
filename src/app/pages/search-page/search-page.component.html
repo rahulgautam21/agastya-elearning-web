@@ -1,69 +1,7 @@
-<!-- <div style="padding-top: 80px; display: table; width: 100%;">
-    <div class="searchcolumn">
-      <h2>Column 1</h2>
-      <p>Some text..</p>
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <p>search-page works!</p>
     </div>
-    <div class="coursecolumn">
-        <ul *ngFor="let course of courses;"> 
-            <p>{{course.name}}</p>
-            <img src={{course.image.formats.thumbnail.url}}>
-        </ul>>
-    </div>
-</div> -->
-
-<!-- <div class="row">
-    <div class="column">
-        <ul *ngFor="let course of courses;"> 
-            <p>{{course.name}}</p>
-            <img src={{course.image.formats.thumbnail.url}}>
-        </ul>>
-    </div>
-    <div class="column">
-        <ul *ngFor="let course of courses;"> 
-            <p>{{course.name}}</p>
-            <img src={{course.image.formats.thumbnail.url}}>
-        </ul>
-    </div>
-</div> -->
-
-<div class="row">
-    <div class="column">
-        <mat-form-field appearance="fill">
-            <mat-label>Category</mat-label>
-            <mat-select (selectionChange)="onCategory($event.value)">
-              <mat-option *ngFor="let category of categories;" [value]="category">
-                {{category}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Class</mat-label>
-            <mat-select (selectionChange)="onClass($event.value)">
-              <mat-option *ngFor="let class of classes;" [value]="class">
-                {{class}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Language</mat-label>
-            <mat-select  (selectionChange)="onLanguage($event.value)">
-              <mat-option *ngFor="let language of languages;" [value]="language">
-                {{language}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-    <div class="column2">
-        <ul *ngFor="let course of filteredCourses;">
-            <a href="path-to-the-image">
-                <figure>
-                <img src="{{course.image.formats.thumbnail.url}}" alt="">
-                <figcaption>{{course.name}}</figcaption>
-                </figure>
-            </a> 
-        </ul>
-        <!-- other anchors here ... -->
-    
-    </div>
+  </div>
 </div>

@@ -56,12 +56,7 @@ export class FeaturedComponent {
   ngOnChanges() {
     this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
       if (data[0].subTopics) {
-        data.sort(function(a,b) { return a.id - b.id } );
-                
-        this.subTopics = [];
-        for(let featuredSubTopic of data){
-          this.subTopics = this.subTopics.concat(featuredSubTopic.subTopics)
-        }
+        this.subTopics = data[0].subTopics;
 
         this.subTopics.forEach((subTopic) => {
           if (typeof subTopic.topic === 'number') {
