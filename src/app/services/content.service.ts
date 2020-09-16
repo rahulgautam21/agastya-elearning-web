@@ -33,10 +33,13 @@ export class ContentService {
   }
 
   searchCategories(search: string): Observable<Category[]> {
+    console.log(CONSTANTS.CONTENT_SERVICE_URL +
+      'categories' +
+      `?name_contains=${search}&description_contains=${search}`)
     return this.httpClient.get<Category[]>(
       CONSTANTS.CONTENT_SERVICE_URL +
         'categories' +
-        `?title_contains=${search}&categoryDescription_contains=${search}`
+        `?name_contains=${search}&description_contains=${search}`
     );
   }
 
@@ -63,6 +66,12 @@ export class ContentService {
   getLessons(course: Course): Observable<Lesson[]> {
     return this.httpClient.get<Lesson[]>(
       CONSTANTS.CONTENT_SERVICE_URL + 'lessons' + `?course.id=${course.id}`
+    );
+  }
+
+  getCourses(): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(
+      CONSTANTS.CONTENT_SERVICE_URL + 'courses'
     );
   }
 }

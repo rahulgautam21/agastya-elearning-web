@@ -1,10 +1,32 @@
-@import "../../theme/general.scss";
-.page {
-  height: 100vh;
-  width: 100%;
-  background: $white;
-  .row {
+
+.row {
     display: flex;
-    align-items: center;
-  }
+    padding-top: 20vh;
 }
+  
+.column {
+    padding-top: 5%;
+    padding-left: 10%;
+    flex: 30%;
+}
+
+.column2{
+    flex: 70%;
+    flex-wrap: wrap;
+}
+  
+  ul {
+    display: inline-block;
+    margin-bottom: 8px;
+    width: calc(50% - 4px);
+  }
+
+  figcaption{
+      width: max-content;
+  }
+  
+  @media screen and (min-width: 50em) {
+    ul {
+      width: calc(25% - 6px);
+    }
+  }
