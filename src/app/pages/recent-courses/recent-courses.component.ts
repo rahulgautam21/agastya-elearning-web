@@ -21,29 +21,19 @@ export class RecentCoursesComponent implements OnInit {
   public restOfTheCoursesPlaceholder : Array<any> = new Array(6);
   public restOfTheCoursesMobile : SubTopic[];  
 
-  sortRecentCourses(subtopic1: SubTopic, subtopic2: SubTopic) {
-    if ( subtopic1.id < subtopic2.id ){
-      return -1;
-    }else if ( subtopic1.id > subtopic2.id ){
-      return 1;
-    }else{
-     return 0;
-    }
-  } 
-
   constructor(private contentService : ContentService) { }  
 
   ngOnInit(){
     this.restOfTheCoursesPlaceholder.fill(1);
 
-    this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
-      if (data[0].subTopics) {
+    this.contentService.getRecentSubTopic().subscribe((data: any) => {
 
-        this.subTopics = data[0].subTopics;
-        this.subTopics.sort(this.sortRecentCourses)
+      if (data) {
 
+        this.subTopics = data;
+        
         if(this.subTopics.length > 10){
-          this.subTopics = this.subTopics.slice(this.subTopics.length-10, this.subTopics.length)
+          this.subTopics = this.subTopics.slice(0, 10)
         }else{
           this.subTopics = this.subTopics.slice(0,this.subTopics.length);
           this.subTopics.reverse;
@@ -69,33 +59,41 @@ export class RecentCoursesComponent implements OnInit {
        
         //Rest of the courses
         this.restOfTheCourses.map(data =>{
-          this.contentService
-            .getTopicById(data.topic)
-            .subscribe((topic:any) => {
-              data.name = topic.categories[0].name+" - "+topic.name
-          });
+          if(data.topic && data.topic.id){
+            this.contentService
+              .getTopicById(data.topic.id)
+              .subscribe((topic:any) => {
+                data.name = topic.categories[0].name+" - "+topic.name
+            });
+          }
         })
 
         //Course 1
-        this.contentService
-              .getTopicById(this.course1.topic)
-              .subscribe((topic:any) => {
-                this.course1.name = topic.categories[0].name+" - "+topic.name
-        });
+        if(this.course1.topic && this.course1.topic.id){
+          this.contentService
+                .getTopicById(this.course1.topic.id)
+                .subscribe((topic:any) => {
+                  this.course1.name = topic.categories[0].name+" - "+topic.name
+          });
+        }
 
         //Course 2
-        this.contentService
-            .getTopicById(this.course2.topic)
-            .subscribe((topic:any) => {
-              this.course2.name = topic.categories[0].name+" - "+topic.name
-        });  
+        if(this.course2.topic && this.course2.topic.id){
+          this.contentService
+              .getTopicById(this.course2.topic.id)
+              .subscribe((topic:any) => {
+                this.course2.name = topic.categories[0].name+" - "+topic.name
+          });  
+        }
 
         //Course 3
-        this.contentService
-          .getTopicById(this.course3.topic)
-          .subscribe((topic:any) => {
-            this.course3.name = topic.categories[0].name+" - "+topic.name
-        });
+        if(this.course3.topic && this.course3.topic.id){
+          this.contentService
+            .getTopicById(this.course3.topic.id)
+            .subscribe((topic:any) => {
+              this.course3.name = topic.categories[0].name+" - "+topic.name
+          });
+        }
 
       }
     });
