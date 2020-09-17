@@ -12,8 +12,16 @@ import { Topic } from '../models/topic.model';
   providedIn: 'root',
 })
 export class ContentService {
+  showOverlay = true;
   constructor(private httpClient: HttpClient) {}
 
+  getOverlay() {
+    return this.showOverlay;
+  }
+
+  hideOverlay() {
+    this.showOverlay = false;
+  }
   getFeaturedSubTopic() {
     return this.httpClient.get(
       CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics'
@@ -40,9 +48,9 @@ export class ContentService {
     );
   }
 
-  getSubTopicById(id:number) {
+  getSubTopicById(id: number) {
     return this.httpClient.get<SubTopic>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics'+ `/${id}`
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics' + `/${id}`
     );
   }
 
