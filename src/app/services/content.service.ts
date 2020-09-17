@@ -22,6 +22,13 @@ export class ContentService {
   hideOverlay() {
     this.showOverlay = false;
   }
+
+  getRecentSubTopic() {
+    return this.httpClient.get(
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics?_sort=created_at:DESC'
+    );
+  }
+
   getFeaturedSubTopic() {
     return this.httpClient.get(
       CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics'
