@@ -1,151 +1,217 @@
-<section class="cases " [style.height]="vh / 2 + 'px'">
-    <div class="container ">
-      <div class="row" >
-        <div class="cases-title">
-          <span>Recent Courses </span>
-        </div>
-        </div>
+<section class="cases" [style.height]="vh / 2 + 'px'">
+  <div class="container">
+    <div class="row">
+      <div class="cases-title">
+        <span>Recent Courses </span>
+      </div>
     </div>
-    
-   <div class="main-panel"> 
-    <div class="container" style="margin-top: 5px;">
-        <div class="row">
-            
-            <div class="left-panel" >
-            
-                <mat-grid-list cols="1"  *ngIf="course1">
-                    <a [routerLink]="'/course/' + course1.id" routerLinkActive="active">
-                        <div class="mat-card left-panel-main-container">
-                            <div  class="zoom-image">
-                                <img [src]="imageFallBackMechanism(course1,'large')"/>
-                            <span class="course-content">
-                                <h5><b>{{course1.name | uppercase }}</b> </h5>
-                                <h1><b>{{course1.description}}</b></h1>
-                            </span>
-                            </div>
-                        </div>
-                    </a>
-                </mat-grid-list>
-                <mat-grid-list cols="1"  *ngIf="!course1">
-                    <img src="assets/images/placeholder.png"/>
-                </mat-grid-list>
-            
+  </div>
 
-                <div style="padding-top:15px;"> 
-                    <mat-grid-list cols="2"  gutterSize=25px rowHeight="20.5rem">
-                        <mat-grid-tile class="mat-card section2-courses" > 
-                            <div *ngIf="course2">
-                                <a [routerLink]="'/course/' + course2.id" routerLinkActive="active" >
-                                    <div class="section2-courses-img-container">
-                                        <div class="">
-                                            <img [src]="imageFallBackMechanism(course2,'small')" class="section2-courses-img-container-img "   />
-                                        </div>
-                                        <div style="padding-left: 5px;">
-                                            <h5><b>{{course2.name | uppercase }}</b> </h5>
-                                            <h1><b>{{course2.description}}</b></h1>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <img *ngIf="!course2" src="assets/images/placeholder.png"/>
-                        </mat-grid-tile>
-
-                        <mat-grid-tile class="mat-card section2-courses" > 
-                            <div *ngIf="course3">
-                                <a [routerLink]="'/course/' + course2.id" routerLinkActive="active">
-                                    <div class="section2-courses-img-container">
-                                        <div class="">
-                                            <img [src]="imageFallBackMechanism(course3,'small')" class="section2-courses-img-container-img "   />
-                                        </div>
-                                        <div style="padding-left: 5px;">
-                                            <h5><b>{{course3.name | uppercase }}</b> </h5>
-                                            <h1><b>{{(course3.description)}}</b></h1>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <img *ngIf="!course3" src="assets/images/placeholder.png"/>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    
+  <div class="main-panel">
+    <div class="container" style="margin-top: 5px">
+      <div class="row">
+        <div class="left-panel">
+          <mat-grid-list cols="1" *ngIf="course1">
+            <a [routerLink]="'/course/' + course1.id" routerLinkActive="active">
+              <div class="mat-card left-panel-main-container">
+                <div class="zoom-image">
+                  <img [src]="imageFallBackMechanism(course1, 'large')" />
+                  <span class="course-content">
+                    <span class="course-detail">{{
+                      course1.name | uppercase
+                    }}</span>
+                    <h2 class="course-title">{{ course1.description }}</h2>
+                    <!-- <h5><b></b> </h5>
+                                <h1><b></b></h1> -->
+                  </span>
                 </div>
-            </div>
+              </div>
+            </a>
+          </mat-grid-list>
+          <mat-grid-list cols="1" *ngIf="!course1">
+            <img src="assets/images/placeholder.png" />
+          </mat-grid-list>
 
-
-            <div class="right-panel" *ngIf="!restOfTheCourses" >
-                <div  *ngFor="let course of restOfTheCoursesPlaceholder">
-                    <mat-grid-list cols="3" rowHeight="6rem" class="mat-card right-panel-courses"  >
-                        <mat-grid-tile> 
-                            <img mat-card-image style="height: 100%; width: 100%;" src='assets/images/placeholder.png'></mat-grid-tile>
-                            <mat-grid-tile colspan=2  >
-                                <div style="padding-left: 5px;">
-                                    &nbsp;
-                                </div>
-                            </mat-grid-tile>
-                     </mat-grid-list>
-                    <div style="padding-top: 20px;"></div>
-                </div>
-            </div>
-           
-            <div class="right-panel" *ngIf="restOfTheCourses">
-                <div  *ngFor="let course of restOfTheCourses">
-                    <mat-grid-list cols="3" rowHeight="6rem" class="mat-card right-panel-courses"  >
-                        <a [routerLink]="'/course/' + course.id" routerLinkActive="active">
-                            <mat-grid-tile> 
-                                <img mat-card-image style="height: 100%; width: 100%;" [src]='course.image.formats.thumbnail.url'>
-                            </mat-grid-tile>
-                            <mat-grid-tile colspan=2  >
-                                <div style="padding-left: 5px;">
-                                    <h5><b>{{course.name | uppercase }}</b> </h5>
-                                    <h3><b>{{(course.description)}}</b></h3>
-                                </div>
-                            </mat-grid-tile>
-                        </a>
-                     </mat-grid-list>
-                    <div style="padding-top: 20px;"></div>
-                </div>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
-
-
-    <div class="mobile-only" *ngIf="restOfTheCoursesMobile">
-        <div *ngFor="let course of restOfTheCoursesMobile">
-            <mat-grid-list cols="3" rowHeight="6rem" class="mat-card right-panel-courses"  style="width: 100%;">
-                <a [routerLink]="'/course/' + course.id" routerLinkActive="active">
-                    <mat-grid-tile> 
-                        <img mat-card-image style="height: 100%; width: 100%;" [src]='course.image.formats.thumbnail.url'>
-                    </mat-grid-tile>
-                    <mat-grid-tile colspan=2  >
-                        <div style="padding-left: 3px; float: left;">
-                            <h5><b>{{course.name | uppercase }}</b> </h5>
-                            <h3><b>{{course.description}}</b></h3>
-                        </div>
-                    </mat-grid-tile>   
-                </a>
-             </mat-grid-list>
-            <div style="padding-top: 15px;"></div>
-        </div>
-    </div>
-    <div class="mobile-only" *ngIf="!restOfTheCoursesMobile">
-        <div *ngFor="let course of restOfTheCoursesPlaceholder">
-            <mat-grid-list cols="3" rowHeight="6rem" class="mat-card right-panel-courses"  style="width: 100%;">
-                <mat-grid-tile> 
-                    <img mat-card-image style="height: 100%; width: 100%;" src='assets/images/placeholder.png'>
-                </mat-grid-tile>
-                <mat-grid-tile colspan=2  >
-                    <div style="padding-left: 3px; float: left;">
-                        &nbsp;
+          <div style="padding-top: 15px">
+            <mat-grid-list cols="2" gutterSize="25px" rowHeight="20.5rem">
+              <mat-grid-tile class="mat-card section2-courses">
+                <div *ngIf="course2">
+                  <a
+                    [routerLink]="'/course/' + course2.id"
+                    routerLinkActive="active"
+                  >
+                    <div class="section2-courses-img-container">
+                      <div class="">
+                        <img
+                          [src]="imageFallBackMechanism(course2, 'small')"
+                          class="section2-courses-img-container-img"
+                        />
+                      </div>
+                      <div style="padding-left: 5px">
+                        <h5>
+                          <b>{{ course2.name | uppercase }}</b>
+                        </h5>
+                        <h1>
+                          <b>{{ course2.description }}</b>
+                        </h1>
+                      </div>
                     </div>
-                </mat-grid-tile>   
-             </mat-grid-list>
-            <div style="padding-top: 15px;"></div>
+                  </a>
+                </div>
+                <img *ngIf="!course2" src="assets/images/placeholder.png" />
+              </mat-grid-tile>
+
+              <mat-grid-tile class="mat-card section2-courses">
+                <div *ngIf="course3">
+                  <a
+                    [routerLink]="'/course/' + course2.id"
+                    routerLinkActive="active"
+                  >
+                    <div class="section2-courses-img-container">
+                      <div class="">
+                        <img
+                          [src]="imageFallBackMechanism(course3, 'small')"
+                          class="section2-courses-img-container-img"
+                        />
+                      </div>
+                      <div style="padding-left: 5px">
+                        <h5>
+                          <b>{{ course3.name | uppercase }}</b>
+                        </h5>
+                        <h1>
+                          <b>{{ course3.description }}</b>
+                        </h1>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <img *ngIf="!course3" src="assets/images/placeholder.png" />
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
         </div>
+
+        <div class="right-panel" *ngIf="!restOfTheCourses">
+          <div *ngFor="let course of restOfTheCoursesPlaceholder">
+            <mat-grid-list
+              cols="3"
+              rowHeight="6rem"
+              class="mat-card right-panel-courses"
+            >
+              <mat-grid-tile>
+                <img
+                  mat-card-image
+                  style="height: 100%; width: 100%"
+                  src="assets/images/placeholder.png"
+              /></mat-grid-tile>
+              <mat-grid-tile colspan="2">
+                <div style="padding-left: 5px">&nbsp;</div>
+              </mat-grid-tile>
+            </mat-grid-list>
+            <div style="padding-top: 20px"></div>
+          </div>
+        </div>
+
+        <div class="right-panel" *ngIf="restOfTheCourses">
+          <div *ngFor="let course of restOfTheCourses">
+            <mat-grid-list
+              cols="3"
+              rowHeight="6rem"
+              class="mat-card right-panel-courses"
+            >
+              <a
+                [routerLink]="'/course/' + course.id"
+                routerLinkActive="active"
+              >
+                <mat-grid-tile>
+                  <img
+                    mat-card-image
+                    style="height: 100%; width: 100%"
+                    [src]="course.image.formats.thumbnail.url"
+                  />
+                </mat-grid-tile>
+                <mat-grid-tile colspan="2">
+                  <div style="padding-left: 5px; margin-top: 5px">
+                    <h6
+                      style="
+                        letter-spacing: 0.1rem;
+                        margin-bottom: 2px;
+                        color: rgb(68, 67, 67);
+                      "
+                    >
+                      <b>{{ course.name | uppercase }}</b>
+                    </h6>
+                    <h3>
+                      <b>{{ slice(course.description) }}</b>
+                    </h3>
+                  </div>
+                </mat-grid-tile>
+              </a>
+            </mat-grid-list>
+            <div style="padding-top: 20px"></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-
+  <div class="mobile-only" *ngIf="restOfTheCoursesMobile">
+    <div *ngFor="let course of restOfTheCoursesMobile">
+      <mat-grid-list
+        cols="3"
+        rowHeight="6rem"
+        class="mat-card right-panel-courses"
+        style="width: 100%"
+      >
+        <a [routerLink]="'/course/' + course.id" routerLinkActive="active">
+          <mat-grid-tile>
+            <img
+              mat-card-image
+              style="height: 100%; width: 100%"
+              [src]="course.image.formats.thumbnail.url"
+            />
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <div style="padding-left: 3px; float: left; margin-top: 5px">
+              <h6
+                style="
+                  letter-spacing: 0.1rem;
+                  margin-bottom: 2px;
+                  color: rgb(68, 67, 67);
+                "
+              >
+                <b>{{ course.name | uppercase }}</b>
+              </h6>
+              <h4>
+                <b>{{ slice(course.description) }}</b>
+              </h4>
+            </div>
+          </mat-grid-tile>
+        </a>
+      </mat-grid-list>
+      <div style="padding-top: 15px"></div>
+    </div>
+  </div>
+  <div class="mobile-only" *ngIf="!restOfTheCoursesMobile">
+    <div *ngFor="let course of restOfTheCoursesPlaceholder">
+      <mat-grid-list
+        cols="3"
+        rowHeight="6rem"
+        class="mat-card right-panel-courses"
+        style="width: 100%"
+      >
+        <mat-grid-tile>
+          <img
+            mat-card-image
+            style="height: 100%; width: 100%"
+            src="assets/images/placeholder.png"
+          />
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2">
+          <div style="padding-left: 3px; float: left">&nbsp;</div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div style="padding-top: 15px"></div>
+    </div>
+  </div>
 </section>
-  
