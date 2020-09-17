@@ -14,6 +14,13 @@ import { Topic } from '../models/topic.model';
 export class ContentService {
   constructor(private httpClient: HttpClient) {}
 
+  
+  getRecentSubTopic() {
+    return this.httpClient.get(
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics?_sort=created_at:DESC'
+    );
+  }
+
   getFeaturedSubTopic() {
     return this.httpClient.get(
       CONSTANTS.CONTENT_SERVICE_URL + 'featured-sub-topics'
