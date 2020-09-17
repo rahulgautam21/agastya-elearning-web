@@ -25,9 +25,9 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.bannerTl.play();
-    this.to = setTimeout(() => {
-      this.overlayTl.play();
-    }, 2000);
+    // this.to = setTimeout(() => {
+    //   this.overlayTl.play();
+    // }, 2000);
   }
 
   ngOnInit(): void {
@@ -44,12 +44,12 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
     clearTimeout(this.to);
   }
 
-  overlayAnimationComplete(overlayTl: TimelineMax) {
-    this.overlayTl = overlayTl;
-    // this.showOverlay = false;
-    // this.mainTimeLine.add(this.overlayTl);
-    // this.mainTimeLine.play();
-  }
+  // overlayAnimationComplete(overlayTl: TimelineMax) {
+  //   this.overlayTl = overlayTl;
+  //   // this.showOverlay = false;
+  //   // this.mainTimeLine.add(this.overlayTl);
+  //   // this.mainTimeLine.play();
+  // }
 
   bannerAnimationComplete(bannerTl: TimelineMax) {
     this.bannerTl = bannerTl;
