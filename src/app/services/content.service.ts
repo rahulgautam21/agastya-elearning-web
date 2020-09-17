@@ -43,7 +43,7 @@ export class ContentService {
 
   getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'categories'
+      CONSTANTS.CONTENT_SERVICE_URL + 'categories?_sort=name'
     );
   }
 
