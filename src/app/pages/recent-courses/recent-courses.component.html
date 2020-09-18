@@ -20,9 +20,11 @@
                     <span class="course-detail">{{
                       course1.name | uppercase
                     }}</span>
-                    <h2 class="course-title">{{ course1.description }}</h2>
-                    <!-- <h5><b></b> </h5>
-                                <h1><b></b></h1> -->
+                    <h3 class="course-title">
+                      {{ slice(course1.description) }}
+                    </h3>
+                    <!-- <h5> </h5>
+                                <h1></h1> -->
                   </span>
                 </div>
               </div>
@@ -48,12 +50,12 @@
                         />
                       </div>
                       <div style="padding-left: 5px">
-                        <h5>
-                          <b>{{ course2.name | uppercase }}</b>
+                        <h5 style="letter-spacing: 0.1em; color: black">
+                          {{ course2.name | uppercase }}
                         </h5>
-                        <h1>
-                          <b>{{ course2.description }}</b>
-                        </h1>
+                        <h2>
+                          {{ course2.description }}
+                        </h2>
                       </div>
                     </div>
                   </a>
@@ -75,12 +77,12 @@
                         />
                       </div>
                       <div style="padding-left: 5px">
-                        <h5>
-                          <b>{{ course3.name | uppercase }}</b>
+                        <h5 style="letter-spacing: 0.1em; color: black">
+                          {{ course3.name | uppercase }}
                         </h5>
-                        <h1>
-                          <b>{{ course3.description }}</b>
-                        </h1>
+                        <h2>
+                          {{ course3.description }}
+                        </h2>
                       </div>
                     </div>
                   </a>
@@ -136,13 +138,13 @@
                       style="
                         letter-spacing: 0.1rem;
                         margin-bottom: 2px;
-                        color: rgb(68, 67, 67);
+                        color: black;
                       "
                     >
-                      <b>{{ course.name | uppercase }}</b>
+                      {{ course.name | uppercase }}
                     </h6>
                     <h3>
-                      <b>{{ slice(course.description) }}</b>
+                      {{ slice(course.description) }}
                     </h3>
                   </div>
                 </mat-grid-tile>
@@ -174,16 +176,12 @@
           <mat-grid-tile colspan="2">
             <div style="padding-left: 3px; float: left; margin-top: 5px">
               <h6
-                style="
-                  letter-spacing: 0.1rem;
-                  margin-bottom: 2px;
-                  color: rgb(68, 67, 67);
-                "
+                style="letter-spacing: 0.1rem; margin-bottom: 2px; color: black"
               >
-                <b>{{ course.name | uppercase }}</b>
+                {{ course.name | uppercase }}
               </h6>
               <h4>
-                <b>{{ slice(course.description) }}</b>
+                {{ slice(course.description) }}
               </h4>
             </div>
           </mat-grid-tile>
