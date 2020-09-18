@@ -1,9 +1,10 @@
 <nav>
   <img
     *ngIf="
-      category.image.formats.large ||
-      category.image.formats.medium ||
-      category.image.formats.small
+      category &&
+      (category.image.formats.large ||
+        category.image.formats.medium ||
+        category.image.formats.small)
     "
     [src]="
       category.image.formats.large
