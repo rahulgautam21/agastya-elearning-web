@@ -28,9 +28,9 @@ export class CourseDetailPageComponent implements OnInit {
   public topicName = "";
   public subTopicName = "";
  
-  public intermediary: CustomContent[];
-  public basic: CustomContent[];
-  public advanced: CustomContent[];
+  public intermediary: CustomContent[] = [];
+  public basic: CustomContent[] = [];
+  public advanced: CustomContent[] = [];
 
 
   public languageFilter:string = "English";
