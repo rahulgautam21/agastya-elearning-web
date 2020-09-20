@@ -24,6 +24,9 @@ export class CourseDetailPageComponent implements OnInit {
 
   public categoryId: number;
   public subTopic: SubTopic;
+
+  public topicName = "";
+  public subTopicName = "";
  
   public intermediary: CustomContent[];
   public basic: CustomContent[];
@@ -52,6 +55,7 @@ export class CourseDetailPageComponent implements OnInit {
       this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
         this.subTopic = subTopic;
         this.clearPrevStateAndSetDefault()
+        this.setbanner();
         this.loadFilters();
         this.distributeContent();
       }); 
@@ -186,5 +190,19 @@ export class CourseDetailPageComponent implements OnInit {
   onNavBarClose(){
     document.getElementById('mobile-nav-panel').style.height = 'fit-content';
     this.sidenav.toggle();
+  }
+
+  setbanner(){
+    this.topicName = this.subTopic.topic.name;
+    this.subTopicName = this.subTopic.name;
+    if(this.subTopic.image.formats.large != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.large.url;
+    }else if(this.subTopic.image.formats.medium != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.medium.url;
+    }else if(this.subTopic.image.formats.small != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.small.url;
+    } else {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = "/assets/images/placeholder.png";
+    }
   }
 }
