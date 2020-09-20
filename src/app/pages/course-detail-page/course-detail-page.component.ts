@@ -5,7 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
-import { faFilePdf , faVideo, faCoffee, IconDefinition, faFileWord, faCogs} from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf , faVideo, IconDefinition, faFileWord, faCogs} from '@fortawesome/free-solid-svg-icons';
 import { SubTopic } from 'src/app/models/sub-topic.model';
 import { Content, Class } from 'src/app/models/content.model';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -22,23 +22,24 @@ export interface CustomContent{
 })
 export class CourseDetailPageComponent implements OnInit {
 
-  public categoryId: number;
   public subTopic: SubTopic;
+  
+  public topicName;
+  public subTopicName;
  
-  public intermediary: CustomContent[];
-  public basic: CustomContent[];
-  public advanced: CustomContent[];
+  public intermediaryContent: CustomContent[];
+  public basicContent: CustomContent[];
+  public advanceContent: CustomContent[];
 
-
-  public languageFilter:string = "English";
-  public classFilter:string = "All";
-  public audienceFilter:string = "student";
+  public languageFilter:string;
+  public classFilter:string;
+  public audienceFilter:string;
   
   
-  public levels = ['basic','intermediary','advanced'];
+  public levels: string[];
   public languages: string[];
   public classes: string[];
-  public iconType: string[] = ['scorm','pdf','youtube','word'];
+  public iconType: string[];
 
 
   @ViewChild('drawer') sidenav: MatSidenav;
@@ -47,18 +48,37 @@ export class CourseDetailPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public matDialog: MatDialog) { 
     this.activatedRoute.params.subscribe((params: Params)=>{
-      this.categoryId = parseInt(params['id']);
+      this.setDefaultPageState();
 
-      this.contentService.getSubTopicById(this.categoryId).subscribe(subTopic => {
+      this.contentService.getSubTopicById(parseInt(params['id'])).subscribe(subTopic => {
         this.subTopic = subTopic;
-        this.clearPrevStateAndSetDefault()
-        this.loadFilters();
-        this.distributeContent();
+        this.setBanner();
+        this.setDefaultFilters()
+        this.loadFilterValues();
+        this.distributeContentByLevel();
       }); 
     });
   }
 
-  clearPrevStateAndSetDefault(){
+  setDefaultPageState(){
+    this.topicName = "";
+    this.subTopicName = "";
+   
+    this.intermediaryContent = [];
+    this.basicContent = [];
+    this.advanceContent = [];
+  
+    this.languageFilter = "English";
+    this.classFilter = "All";
+    this.audienceFilter = "student";
+    
+    this.levels = ['basic','intermediary','advanced'];
+    this.languages = [];
+    this.classes = [];
+    this.iconType = ['scorm','pdf','youtube','word'];
+  }
+
+  setDefaultFilters(){
     this.languageFilter = "English";
     this.audienceFilter = "student";
     this.classFilter = "All";
@@ -67,7 +87,7 @@ export class CourseDetailPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadFilters(){
+  loadFilterValues(){
     let languages = new Set<string>();
     let classes = new Set<string>();
     let englishLanguagePresent = false;
@@ -111,19 +131,19 @@ export class CourseDetailPageComponent implements OnInit {
 
   assignContentByLevel(content:Content){
     if(content.level == 'basic'){
-      this.basic.push({data:content,icon:this.getIcon(content.type)});
+      this.basicContent.push({data:content,icon:this.getIcon(content.type)});
     } else if(content.level == 'intermediary'){
-      this.intermediary.push({data:content,icon:this.getIcon(content.type)});
+      this.intermediaryContent.push({data:content,icon:this.getIcon(content.type)});
     } else{
-      this.advanced.push({data:content,icon:this.getIcon(content.type)});
+      this.advanceContent.push({data:content,icon:this.getIcon(content.type)});
     }
   }
 
-  distributeContent(){
+  distributeContentByLevel(){
 
-    this.basic = [];
-    this.intermediary = [];
-    this.advanced = [];
+    this.basicContent = [];
+    this.intermediaryContent = [];
+    this.advanceContent = [];
 
     for(var content of this.subTopic.contents){
       if(this.isEligibleAfterFiltering(content)){
@@ -134,11 +154,11 @@ export class CourseDetailPageComponent implements OnInit {
 
   getContentByLevel(level:string):CustomContent[]{
     if(level == 'basic')
-      return this.basic;
+      return this.basicContent;
     else if(level == 'intermediary')
-      return this.intermediary;
+      return this.intermediaryContent;
     else  
-      return this.advanced;
+      return this.advanceContent;
   }
 
   onClick(event: Event, content: Content){
@@ -191,5 +211,19 @@ export class CourseDetailPageComponent implements OnInit {
   onNavBarClose(){
     document.getElementById('mobile-nav-panel').style.height = 'fit-content';
     this.sidenav.toggle();
+  }
+
+  setBanner(){
+    this.topicName = this.subTopic.topic.name;
+    this.subTopicName = this.subTopic.name;
+    if(this.subTopic.image.formats.large != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.large.url;
+    }else if(this.subTopic.image.formats.medium != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.medium.url;
+    }else if(this.subTopic.image.formats.small != null) {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = this.subTopic.image.formats.small.url;
+    } else {
+      (<HTMLImageElement>document.getElementById("bannerImage")).src = "/assets/images/placeholder.png";
+    }
   }
 }
