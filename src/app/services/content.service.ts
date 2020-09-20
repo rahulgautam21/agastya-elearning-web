@@ -12,9 +12,17 @@ import { Topic } from '../models/topic.model';
   providedIn: 'root',
 })
 export class ContentService {
+  showOverlay = true;
   constructor(private httpClient: HttpClient) {}
 
-  
+  getOverlay() {
+    return this.showOverlay;
+  }
+
+  hideOverlay() {
+    this.showOverlay = false;
+  }
+
   getRecentSubTopic() {
     return this.httpClient.get(
       CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics?_sort=created_at:DESC'
@@ -35,7 +43,7 @@ export class ContentService {
 
   getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'categories'
+      CONSTANTS.CONTENT_SERVICE_URL + 'categories?_sort=name'
     );
   }
 
@@ -47,9 +55,9 @@ export class ContentService {
     );
   }
 
-  getSubTopicById(id:number) {
+  getSubTopicById(id: number) {
     return this.httpClient.get<SubTopic>(
-      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics'+ `/${id}`
+      CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics' + `/${id}`
     );
   }
 

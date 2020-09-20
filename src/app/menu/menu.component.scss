@@ -1,6 +1,26 @@
 @import "../theme/general.scss";
 
 nav {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
   left: 0;
   top: -1px;
   width: 100%;
@@ -8,8 +28,7 @@ nav {
   z-index: 1;
   display: none;
   position: fixed;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
   background: $grey;
   .category-image {
     position: fixed;
@@ -137,8 +156,13 @@ nav {
         }
       }
       .nav-links {
-        padding: 0;
-        margin-top: 3rem;
+        overflow-y: auto;
+        position: absolute;
+        width: 110%;
+        max-height: 425px;
+        padding: 15px;
+        margin-top: 2rem;
+
         @include media("<=phone") {
           margin-top: 0;
         }

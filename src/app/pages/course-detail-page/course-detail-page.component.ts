@@ -74,14 +74,19 @@ export class CourseDetailPageComponent implements OnInit {
   loadFilters(){
     let languages = new Set<string>();
     let classes = new Set<string>();
-
+    let englishLanguagePresent = false;
+    
     for(var content of this.subTopic.contents){
       languages.add(content.language);
-
+      if(content.language == "English")
+        englishLanguagePresent = true;
       for(var cls of content.classes)
         classes.add(cls.name);
     }
 
+    if(!englishLanguagePresent){
+      this.languageFilter = languages.values().next().value;
+    }
     classes.add('All');
 
     this.languages = Array.from<string>(languages).sort();
