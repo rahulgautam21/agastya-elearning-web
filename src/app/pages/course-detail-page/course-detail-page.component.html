@@ -14,7 +14,7 @@
           <div class='main-filter'>
              <mat-form-field appearance="fill">
                 <mat-label>Language</mat-label>
-                <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContent()">  
+                <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContentByLevel()">  
                   <mat-option *ngFor="let language of languages" [value]="language">
                     {{language}}
                   </mat-option>
@@ -23,14 +23,14 @@
  
              <mat-form-field  appearance="fill">
                 <mat-label>Class</mat-label>
-                <mat-select [(ngModel)]="classFilter" (selectionChange)="distributeContent()">  
+                <mat-select [(ngModel)]="classFilter" (selectionChange)="distributeContentByLevel()">  
                   <mat-option *ngFor="let class of classes" [value]="class">
                     {{class}}
                   </mat-option>
                 </mat-select>
              </mat-form-field>
           </div>
-          <mat-button-toggle-group class="main-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContent()" >
+          <mat-button-toggle-group class="main-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
              <mat-button-toggle value="student">Student</mat-button-toggle>
              <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
           </mat-button-toggle-group>
@@ -39,14 +39,14 @@
         <mat-drawer-container id="mobile-nav-panel" class="mobile-nav-panel">
           <mat-drawer #drawer mode="side" class="drawer">
             <div class="mobile-filter-panel">
-              <mat-button-toggle-group class="mobile-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContent()" >
+              <mat-button-toggle-group class="mobile-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
                 <mat-button-toggle value="student">Student</mat-button-toggle>
                 <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
              </mat-button-toggle-group>
               <div class='mobile-filter'>
                  <mat-form-field appearance="fill"> 
                     <mat-label>Language</mat-label>
-                    <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContent()">  
+                    <mat-select [(ngModel)]="languageFilter" (selectionChange)="distributeContentByLevel()">  
                       <mat-option *ngFor="let language of languages" [value]="language">
                         {{language}}
                       </mat-option>
@@ -55,7 +55,7 @@
      
                  <mat-form-field appearance="fill">
                     <mat-label>Class</mat-label>
-                    <mat-select [(ngModel)]="classFilter" (selectionChange)="distributeContent()">  
+                    <mat-select [(ngModel)]="classFilter" (selectionChange)="distributeContentByLevel()">  
                       <mat-option *ngFor="let class of classes" [value]="class">
                         {{class}}
                       </mat-option>
