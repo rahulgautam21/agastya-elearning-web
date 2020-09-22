@@ -46,6 +46,7 @@ import { UparrowCircleComponent } from './svg/uparrow/uparrow-circle/uparrow-cir
 import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog-box.component';
 import { RecentCoursesComponent } from './pages/recent-courses/recent-courses.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatGridListModule,
     MatSidenavModule,
     MatChipsModule,
+    ScrollingModule,
   ],
   providers: [HttpClient, ViewportRuler],
   bootstrap: [AppComponent],
