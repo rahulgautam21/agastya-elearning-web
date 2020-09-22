@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { TimelineMax } from 'gsap';
 import { openMenu, closeMenu } from './menuAnimations.js';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import gsap from 'gsap';
 
 @Component({
   selector: 'app-header',
@@ -19,10 +17,9 @@ export class HeaderComponent implements OnInit {
   handSet = false;
   vw: number;
   vh: number;
-  tl1 = new TimelineMax({ paused: true, reversed: true });
+  // tl1 = new TimelineMax({ paused: true, reversed: true });
 
   constructor(
-    private contentService: ContentService,
     private breakpointObserver: BreakpointObserver,
     private viewPortRuler: ViewportRuler
   ) {}
@@ -39,17 +36,17 @@ export class HeaderComponent implements OnInit {
     this.vh = this.viewPortRuler.getViewportSize().height;
 
     //sroll animation
-    gsap.to('.header', {
-      scrollTrigger: {
-        trigger: '.hdrlogo', // start the animation when ".box" enters the viewport (once)
-        scrub: true,
-        refreshPriority: 1,
-        // markers: true,
-        start: 'top 4%', // when the top of the trigger hits the top of the viewport
-      },
-      y: -150,
-      duration: 0.1,
-    });
+    // gsap.to('.header', {
+    //   scrollTrigger: {
+    //     trigger: '.hdrlogo', // start the animation when ".box" enters the viewport (once)
+    //     scrub: true,
+    //     refreshPriority: 1,
+    //     // markers: true,
+    //     start: 'top 4%', // when the top of the trigger hits the top of the viewport
+    //   },
+    //   y: -150,
+    //   duration: 0.1,
+    // });
   }
 
   ngAfterViewInit() {}
