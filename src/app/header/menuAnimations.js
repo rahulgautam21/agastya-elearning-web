@@ -12,12 +12,18 @@ export const openMenu = (width, height, delay, handset) => {
       y: height,
       ease: "expo.inOut",
     })
-    .to(handset ? ".hamburger-menu span" : ".hamburger-menu button", 0.6, {
-      delay: -1,
-      scaleX: 0,
-      transformOrigin: "50% 0%",
-      ease: "expo.inOut",
-    })
+    .to(
+      handset
+        ? [".hamburger-menu span", ".hamburger-menu.mat-icon"]
+        : ".hamburger-menu button",
+      0.6,
+      {
+        delay: -1,
+        scaleX: 0,
+        transformOrigin: "50% 0%",
+        ease: "expo.inOut",
+      }
+    )
     .to("#Path_1", 0.4, {
       delay: -0.6,
       css: {
@@ -85,12 +91,18 @@ export const closeMenu = (handset) => {
         strokeDasharray: 40,
       },
     })
-    .to(handset ? ".hamburger-menu span" : ".hamburger-menu button", 0.6, {
-      delay: -0.6,
-      scaleX: 1,
-      transformOrigin: "50% 0%",
-      ease: "expo.inOut",
-    })
+    .to(
+      handset
+        ? [".hamburger-menu span", ".hamburger-menu.mat-icon"]
+        : ".hamburger-menu button",
+      0.6,
+      {
+        delay: -0.6,
+        scaleX: 1,
+        transformOrigin: "50% 0%",
+        ease: "expo.inOut",
+      }
+    )
     .to(".hamburger-menu-close", 0, {
       delay: -0.1,
       css: { display: "none" },

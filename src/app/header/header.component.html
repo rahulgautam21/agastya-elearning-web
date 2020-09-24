@@ -28,8 +28,9 @@
         <mat-icon (click)="show($event)" class="mobile-search">search</mat-icon> -->
         <div class="nav-toggle">
           <mat-icon
-            *ngIf="handSet"
+            *ngIf="handSet && !(user | async)"
             (click)="openLogin()"
+            class="hamburger-menu"
             aria-hidden="false"
             aria-label="Teacher Login"
             >person_outline
@@ -41,6 +42,12 @@
           >
             <button mat-stroked-button>Login</button>
           </div>
+          <mat-icon
+            *ngIf="handSet && (user | async)"
+            (click)="logout()"
+            class="hamburger-menu"
+            >power_settings_new
+          </mat-icon>
           <div
             *ngIf="!handSet && (user | async)"
             (click)="logout()"
