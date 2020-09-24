@@ -23,32 +23,29 @@ export class AppComponent {
     private viewPortScroller: ViewportScroller,
     private scrollDispatcher: ScrollDispatcher,
     private cdr: ChangeDetectorRef,
-    private viewPortRuler: ViewportRuler,
-
-  ) {
-    
-  }
+    private viewPortRuler: ViewportRuler
+  ) {}
   onScroll(event) {
     console.log('scroll', event);
   }
 
-  ngOnInit()	
-{
+  ngOnInit() {
     this.cdr.detectChanges();
     this.prevPos = this.viewPortScroller.getScrollPosition()[1];
     this.scrollDispatcher.scrolled().subscribe(() => {
-      if (!this.hide && this.prevPos < this.viewPortScroller.getScrollPosition()[1] && this.viewPortScroller.getScrollPosition()[1] < 50)  {
+      const currentPos = this.viewPortScroller.getScrollPosition()[1];
+
+      if (!this.hide && this.prevPos < currentPos && currentPos < 300) {
         this.hide = true;
         this.cdr.detectChanges();
       }
 
-      if (this.hide && this.prevPos >= this.viewPortScroller.getScrollPosition()[1] && this.viewPortScroller.getScrollPosition()[1] < 50) {
+      if (this.hide && this.prevPos >= currentPos && currentPos < 50) {
         this.hide = false;
         this.cdr.detectChanges();
       }
 
       this.prevPos = this.viewPortScroller.getScrollPosition()[1];
-
     });
   }
 }

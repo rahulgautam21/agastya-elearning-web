@@ -20,7 +20,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -47,6 +51,10 @@ import { DialogBoxComponent } from './pages/course-detail-page/dialog-box/dialog
 import { RecentCoursesComponent } from './pages/recent-courses/recent-courses.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LoginComponent } from './auth/login/login.component';
+import { JwtInterceptor } from './utility/jwt.interceptor';
+import { ErrorInterceptor } from './utility/error.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -69,11 +77,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     UparrowCircleComponent,
     DialogBoxComponent,
     RecentCoursesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatIconModule,
     MatInputModule,
@@ -96,7 +106,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatChipsModule,
     ScrollingModule,
   ],
-  providers: [HttpClient, ViewportRuler],
+  providers: [
+    HttpClient,
+    ViewportRuler,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+
   bootstrap: [AppComponent],
   entryComponents: [DialogBoxComponent],
 })

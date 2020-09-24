@@ -15,14 +15,6 @@ export class ContentService {
   showOverlay = true;
   constructor(private httpClient: HttpClient) {}
 
-  getOverlay() {
-    return this.showOverlay;
-  }
-
-  hideOverlay() {
-    this.showOverlay = false;
-  }
-
   getRecentSubTopic() {
     return this.httpClient.get(
       CONSTANTS.CONTENT_SERVICE_URL + 'sub-topics?_sort=created_at:DESC'

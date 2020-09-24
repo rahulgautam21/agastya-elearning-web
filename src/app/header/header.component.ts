@@ -1,8 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ContentService } from '../services/content.service';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { openMenu, closeMenu } from './menuAnimations.js';
 import { ViewportRuler } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../auth/login/login.component';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { CurrentUser } from '../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +21,14 @@ export class HeaderComponent implements OnInit {
   handSet = false;
   vw: number;
   vh: number;
+  user: Observable<CurrentUser>;
   // tl1 = new TimelineMax({ paused: true, reversed: true });
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private viewPortRuler: ViewportRuler
+    private viewPortRuler: ViewportRuler,
+    public dialog: MatDialog,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +41,7 @@ export class HeaderComponent implements OnInit {
       });
     this.vw = this.viewPortRuler.getViewportSize().width;
     this.vh = this.viewPortRuler.getViewportSize().height;
+    this.user = this.auth.currentUser;
 
     //sroll animation
     // gsap.to('.header', {
@@ -115,5 +123,20 @@ export class HeaderComponent implements OnInit {
     this.menuState = 'close';
     closeMenu(this.handSet);
     // gsap.to('.mobile-search', 0, { delay: 1, css: { display: 'block' } });
+  }
+
+  openLogin() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

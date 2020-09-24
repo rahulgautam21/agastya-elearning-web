@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Teacher Login</h1>
+
+<div mat-dialog-content>
+  <form #login [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <p>Enter Username and Password</p>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <!-- <mat-error *ngIf="loginForm.username.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" />
+      <!-- <mat-error *ngIf="loginForm.password.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+    <mat-error *ngIf="error">
+      {{ error }}
+    </mat-error>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button [disabled]="!loginForm.valid" (click)="onSubmit()">
+    Submit
+  </button>
+</div>
