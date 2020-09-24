@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   handSet = false;
   vw: number;
   vh: number;
-  user: Observable<CurrentUser>;
+  user: Observable<CurrentUser> = null;
   // tl1 = new TimelineMax({ paused: true, reversed: true });
 
   constructor(
@@ -56,8 +56,6 @@ export class HeaderComponent implements OnInit {
     //   duration: 0.1,
     // });
   }
-
-  ngAfterViewInit() {}
 
   activateHandsetLayout() {
     this.handSet = true;
@@ -128,12 +126,10 @@ export class HeaderComponent implements OnInit {
   openLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '250px',
-      data: {},
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    // });
   }
 
   logout() {
