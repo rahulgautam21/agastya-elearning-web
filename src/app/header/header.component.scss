@@ -57,12 +57,13 @@
     }
 
     .mat-icon {
-      font-weight: bold;
+      font-weight: 500;
       margin: 0 10px;
       width: 25px;
       // display: none;
       @include media("<=phone") {
-        margin: 0 5px;
+        margin-bottom: 8px;
+        margin-right: 10px;
         // display: block;
       }
     }
@@ -72,13 +73,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      @include media("<=tablet") {
-        margin-right: 24px;
-      }
-      @include media("<=phone") {
-        width: 20px;
-        margin-right: 16px;
-      }
+      // @include media("<=tablet") {
+      //   margin-right: 24px;
+      // }
+      // @include media("<=phone") {
+      //   width: 20px;
+      //   margin-right: 16px;
+      // }
 
       .mat-stroked-button {
         letter-spacing: 1.2px;
