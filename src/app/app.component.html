@@ -1,5 +1,5 @@
 <div id="#page" [ngClass]="theme">
-  <app-header *ngIf="!hide"></app-header>
+  <app-header [class]="hide ? 'hide' : ''"></app-header>
   <div class="App">
     <router-outlet></router-outlet>
     <app-footer></app-footer>
