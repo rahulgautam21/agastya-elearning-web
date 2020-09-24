@@ -27,6 +27,27 @@
         </mat-form-field>
         <mat-icon (click)="show($event)" class="mobile-search">search</mat-icon> -->
         <div class="nav-toggle">
+          <mat-icon
+            *ngIf="handSet"
+            (click)="openLogin()"
+            aria-hidden="false"
+            aria-label="Teacher Login"
+            >person_outline
+          </mat-icon>
+          <div
+            *ngIf="!handSet && !(user | async)"
+            (click)="openLogin()"
+            class="hamburger-menu"
+          >
+            <button mat-stroked-button>Login</button>
+          </div>
+          <div
+            *ngIf="!handSet && (user | async)"
+            (click)="logout()"
+            class="hamburger-menu"
+          >
+            <button mat-stroked-button>Logout</button>
+          </div>
           <div *ngIf="handSet" (click)="openMenuBar()" class="hamburger-menu">
             <span></span>
             <span></span>
