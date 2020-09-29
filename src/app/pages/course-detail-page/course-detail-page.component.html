@@ -30,7 +30,7 @@
                 </mat-select>
              </mat-form-field>
           </div>
-          <mat-button-toggle-group class="main-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
+          <mat-button-toggle-group *ngIf="!isUserLogged" class="main-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
              <mat-button-toggle value="student">Student</mat-button-toggle>
              <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
           </mat-button-toggle-group>
@@ -39,7 +39,7 @@
         <mat-drawer-container id="mobile-nav-panel" class="mobile-nav-panel">
           <mat-drawer #drawer mode="side" class="drawer">
             <div class="mobile-filter-panel">
-              <mat-button-toggle-group class="mobile-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
+              <mat-button-toggle-group *ngIf="!isUserLogged" class="mobile-btn-group" [(ngModel)]="audienceFilter"  (change)="distributeContentByLevel()" >
                 <mat-button-toggle value="student">Student</mat-button-toggle>
                 <mat-button-toggle value="teacher">Teacher</mat-button-toggle>
              </mat-button-toggle-group>
@@ -69,13 +69,14 @@
             <mat-chip-list class="chips">
               <mat-chip>{{languageFilter | titlecase}}</mat-chip>
               <mat-chip>{{classFilter | titlecase}}</mat-chip>
-              <mat-chip>{{audienceFilter | titlecase}}</mat-chip>
+              <mat-chip *ngIf="!isUserLogged">{{audienceFilter | titlecase}}</mat-chip>
             </mat-chip-list>
             <button  mat-raised-button (click)="onNavBarOpen()">Filter</button>
           </mat-drawer-content> 
          </mat-drawer-container>  
 
-         <div class="levels" *ngFor="let level of levels"> 
+         <div *ngIf="!isUserLogged">
+          <div class="levels" *ngFor="let level of levels"> 
             <mat-expansion-panel   *ngIf="getContentByLevel(level).length>0" [expanded]="true">
                <mat-expansion-panel-header >
                  <mat-panel-title>
@@ -91,6 +92,25 @@
                </div>
              </mat-expansion-panel>
          </div>
+         </div>
+         
+         <div *ngIf="isUserLogged" class="levels"> 
+          <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                  <div class="level">Topics</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div *ngFor="let level of levels">
+                <div class="content" *ngFor="let content of getContentByLevel(level)">
+                  <button class="content-btn" mat-button  (click)="onClick($event,content.data)">
+                     <fa-icon class="logo" [icon]="content.icon"></fa-icon>  
+                     <span>{{content.data.name}}</span>
+                  </button>
+               </div>
+              </div>
+           </mat-expansion-panel>
+       </div>
     </div>
   </div>
 </div>  
