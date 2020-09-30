@@ -73,11 +73,11 @@ export class ContentService {
     );
   }
 
-  registerContentView(teacherId, contentId) {
+  registerContentView(teacher, content) {
     this.httpClient
       .post<any>(CONSTANTS.CONTENT_SERVICE_URL + 'teacher-contents', {
-        teacherId,
-        contentId
+        teacher,
+        content
     });
   }
 }

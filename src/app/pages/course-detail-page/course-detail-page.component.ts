@@ -6,7 +6,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
-import { faFilePdf , faVideo, IconDefinition, faFileWord, faCogs, faPlay, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf , faVideo, IconDefinition, faFileWord, faCogs, faPlay, faPlayCircle, faGlobe} from '@fortawesome/free-solid-svg-icons';
 import { SubTopic } from 'src/app/models/sub-topic.model';
 import { Content, Class } from 'src/app/models/content.model';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -211,6 +211,9 @@ export class CourseDetailPageComponent implements OnInit {
     } 
     if (type == "word"){
       return faFileWord
+    }
+    if (type == "feedback"){
+      return faGlobe
     } 
   }
 
