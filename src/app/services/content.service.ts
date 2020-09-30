@@ -72,4 +72,12 @@ export class ContentService {
       CONSTANTS.CONTENT_SERVICE_URL + 'lessons' + `?course.id=${course.id}`
     );
   }
+
+  registerContentView(teacher, content) {
+    this.httpClient
+      .post<any>(CONSTANTS.CONTENT_SERVICE_URL + 'teacher-contents', {
+        teacher,
+        content
+    });
+  }
 }
