@@ -78,6 +78,6 @@ export class ContentService {
       .post<any>(CONSTANTS.CONTENT_SERVICE_URL + 'teacher-contents', {
         teacher,
         content
-    });
+    }).subscribe();
   }
 }
