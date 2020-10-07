@@ -2,10 +2,10 @@ import {
   Component,
   OnInit,
   Input,
-  EventEmitter,
-  AfterViewInit,
-  ViewChild,
-  TemplateRef,
+  // EventEmitter,
+  // AfterViewInit,
+  // ViewChild,
+  // TemplateRef,
   ElementRef,
   ViewChildren,
   QueryList,
@@ -13,10 +13,9 @@ import {
 } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import CONSTANTS from '../../constants';
-import gsap from 'gsap';
+// import gsap from 'gsap';
 import { ContentService } from 'src/app/services/content.service';
 import { SubTopic } from 'src/app/models/sub-topic.model';
-import { isNumber } from 'util';
 
 @Component({
   selector: 'app-featured',
@@ -51,9 +50,7 @@ export class FeaturedComponent {
     private contentService: ContentService
   ) {}
 
-  ngOnInit() {}
-
-  ngOnChanges() {
+  ngOnInit() {
     this.contentService.getFeaturedSubTopic().subscribe((data: any) => {
       if (data[0].subTopics) {
         data.sort(function (a, b) {
@@ -65,16 +62,6 @@ export class FeaturedComponent {
           this.subTopics = this.subTopics.concat(featuredSubTopic.subTopics);
         }
 
-        this.subTopics.forEach((subTopic) => {
-          if (typeof subTopic.topic === 'number') {
-            this.contentService
-              .getTopicById(subTopic.topic)
-              .subscribe((topic) => {
-                subTopic.topic = topic;
-                // this.cdr.detectChanges();
-              });
-          }
-        });
         this.start = 0;
         this.end = this.subTopics.length;
         this.setTopicsDisplay();
@@ -144,7 +131,16 @@ export class FeaturedComponent {
     );
   }
 
-  slice(str: string, len: number = 25) {
+  slice(str: string, len: number = 30) {
     return str.length > len ? str.slice(0, len + 1) + '..' : str;
+  }
+
+  langText(subTopic) {
+    return subTopic.languages.length > 1
+      ? subTopic.languages.sort().slice(0, 2).join(' | ') +
+          ' | ' +
+          (subTopic.languages.length - 1) +
+          ' Other languages'
+      : subTopic?.languages[0];
   }
 }

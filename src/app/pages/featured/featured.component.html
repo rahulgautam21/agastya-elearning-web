@@ -10,10 +10,10 @@
             <!-- <span>{{ subTopic.topic.catergories }}</span> -->
             <span class="category-detail"
               >{{ subTopic?.topic.categories[0].name }} -
-              {{ subTopic?.topic.name  }}</span
+              {{ subTopic?.topic.name }}</span
             >
-            <!-- <span class="topic-detail"></span> -->
-            <h2>{{ slice(subTopic.name) }}</h2>
+            <span class="language" [innerText]="langText(subTopic)"></span>
+            <h2>{{ slice(subTopic.name, 35) }}</h2>
           </div>
           <div class="case-image">
             <img src="assets/images/child.jpg" />
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div class="container" style="height: 0;">
+  <div class="container" style="height: 0">
     <div class="cases-navigation" *ngIf="displayedTopics">
       <div class="cases-arrow prev">
         <arrow-left (click)="onLeftArrowClick($event)"></arrow-left>
